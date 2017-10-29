@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/8f3ae1a50a32ad581ff0051f742b517ede5a8f17/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_4465b907bce666cd3f640737880ed23c64fd66d4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/gson-2.7_1dfa01966147cde259539eaa67f78efda9b315ef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_3ccfa290e7c8ce80d33fd35a0b954e1c4774d814.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/3d7853b61ba7a15b6c1ea019e7ba10fd31766464/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_6228af2c868a5cf4dfc42447110363e44967a0a9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/10dad87b15f68fcd4280e44c89cb214093d0b4b0/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_31fdc3d29e11bbffc568caa655f2ab003dbd5d3a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/d067c0d6639f87891267247d9466c985021a8964/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_c1b18a7055460654d3c3b3d0bff37897782a9c39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/8547ba321c6348c74aca175a26135fcefd21b287/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_6d625f059570409b90d7aaadec0f59a792b71dcc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/86e20a3433fda01023781ffd245a732fd001f160/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_cd3bd00b7b422b4fb57416ab21d82e002f5e4ed7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/picasso-2.5.2_a46963df8f6296a0245078c0c9b8d2aacd987807.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.2.0/a09926806199499a20b2f5168779499abfa33342/converter-gson-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a09926806199499a20b2f5168779499abfa33342">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/converter-gson-2.2.0_a045b2200f1cb1ccab4b8661de09b650a6e540fa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/790a1814c2f53175c08b634dc45a7c84fd421d08/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_74e67f423974bf646b89999aa25ee4e729dde993.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/37d1156862347c750e3b81940ed13a3457e9e581/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_6928c9b6bbbd5b6b202f8c0979161b86bc9cc291.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/6b0a6f4576dbe0c050c144a5db3233e183b4c5b9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_f6fc5aa3cedb5aa309bd7c90bf647989787c1891.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.11.0/840897fcd7223a8143f1d9b6f69714e7be34fd50/okio-1.11.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/okio-1.11.0_edfbbd2154a10dac86c38f7c58b72b1cd2bfdd69.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.2.0/41e67dba73c3347e4503761642c39d0e06ca1f2/retrofit-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="041e67dba73c3347e4503761642c39d0e06ca1f2">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/retrofit-2.2.0_300cd5c07f026989a5a630f1af97b33267286356.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/9b6fafc068385d8d3951b83dd26b8c271cff5927/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_9bd5a6986a76f19c00d4df1392949bff306b959b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/8248d16e4898feb5708b88a10b31e45f9d16b177/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_81d79db75f09961ab8c1aeb2bcc61dd204b073d0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/86c1c5e9fd13d66ab151a4fff32e9b8fc5b23316/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_98398dd3f49b16efe8a1f0c03834fdbf4e754d84.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/support-annotations-26.0.0-alpha1_b79d2c346ac855487ee3a3c6fc0e59e35d38085d.jar" />
+    </item>
+
+</items>
