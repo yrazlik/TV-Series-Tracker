@@ -19,4 +19,15 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="ProgressBarGray">
+        <item name="android:indeterminateOnly">true</item>
+        <item name="android:indeterminateDrawable">@drawable/loading_progress_gray</item>
+        <item name="android:indeterminateBehavior">repeat</item>
+        <item name="android:indeterminateDuration">1500</item>
+        <item name="android:minWidth">37dip</item>
+        <item name="android:maxWidth">37dip</item>
+        <item name="android:minHeight">37dip</item>
+        <item name="android:maxHeight">37dip</item>
+    </style>
+
 </resources>
