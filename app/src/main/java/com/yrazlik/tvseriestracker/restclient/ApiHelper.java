@@ -1,10 +1,11 @@
 package com.yrazlik.tvseriestracker.restclient;
 
 import android.content.Context;
-import android.util.Log;
 
+import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.SearchResultDto;
-import com.yrazlik.tvseriestracker.response.SearchResultResponse;
+import com.yrazlik.tvseriestracker.data.SeasonDto;
+import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.util.Utils;
 
 import java.io.IOException;
@@ -58,10 +59,10 @@ public class ApiHelper {
         }
     }
 
-    public void searchShow(final String showName, final ApiResponseListener responseListener) {
+    public void searchShows(final String showName, final ApiResponseListener responseListener) {
 
         if(!Utils.isNullOrEmpty(showName)) {
-            Call<List<SearchResultDto>> call = TvSeriesApiClient.getApiInterface().getSearchResult(showName);
+            Call<List<SearchResultDto>> call = TvSeriesApiClient.getApiInterface().getSearchResults(showName);
             call.enqueue(new Callback<List<SearchResultDto>>() {
                 @Override
                 public void onResponse(Call<List<SearchResultDto>> call, Response<List<SearchResultDto>> response) {
@@ -70,6 +71,132 @@ public class ApiHelper {
 
                 @Override
                 public void onFailure(Call<List<SearchResultDto>> call, Throwable t) {
+                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                }
+            });
+        }
+    }
+
+    public void searchShow(final String showName, final ApiResponseListener responseListener) {
+
+        if(!Utils.isNullOrEmpty(showName)) {
+            Call<ShowDto> call = TvSeriesApiClient.getApiInterface().getSingleSearchResult(showName);
+            call.enqueue(new Callback<ShowDto>() {
+                @Override
+                public void onResponse(Call<ShowDto> call, Response<ShowDto> response) {
+                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                }
+
+                @Override
+                public void onFailure(Call<ShowDto> call, Throwable t) {
+                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                }
+            });
+        }
+    }
+
+    public void searchShowById(final long id, final ApiResponseListener responseListener) {
+
+        if(id > 0) {
+            Call<ShowDto> call = TvSeriesApiClient.getApiInterface().getShowInfoById(id);
+            call.enqueue(new Callback<ShowDto>() {
+                @Override
+                public void onResponse(Call<ShowDto> call, Response<ShowDto> response) {
+                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                }
+
+                @Override
+                public void onFailure(Call<ShowDto> call, Throwable t) {
+                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                }
+            });
+        }
+    }
+
+    public void searchShowByIdWithCast(final long id, final ApiResponseListener responseListener) {
+
+        if(id > 0) {
+            Call<ShowDto> call = TvSeriesApiClient.getApiInterface().getShowInfoByIdWithCast(id, "cast");
+            call.enqueue(new Callback<ShowDto>() {
+                @Override
+                public void onResponse(Call<ShowDto> call, Response<ShowDto> response) {
+                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                }
+
+                @Override
+                public void onFailure(Call<ShowDto> call, Throwable t) {
+                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                }
+            });
+        }
+    }
+
+    public void getAllEpisodes(final long id, final ApiResponseListener responseListener) {
+
+        if(id > 0) {
+            Call<List<EpisodeDto>> call = TvSeriesApiClient.getApiInterface().getAllEpisodes(id);
+            call.enqueue(new Callback<List<EpisodeDto>>() {
+                @Override
+                public void onResponse(Call<List<EpisodeDto>> call, Response<List<EpisodeDto>> response) {
+                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                }
+
+                @Override
+                public void onFailure(Call<List<EpisodeDto>> call, Throwable t) {
+                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                }
+            });
+        }
+    }
+
+    public void getSeasonEpisodes(final long id, final ApiResponseListener responseListener) {
+
+        if(id > 0) {
+            Call<List<EpisodeDto>> call = TvSeriesApiClient.getApiInterface().getSeasonEpisodes(id);
+            call.enqueue(new Callback<List<EpisodeDto>>() {
+                @Override
+                public void onResponse(Call<List<EpisodeDto>> call, Response<List<EpisodeDto>> response) {
+                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                }
+
+                @Override
+                public void onFailure(Call<List<EpisodeDto>> call, Throwable t) {
+                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                }
+            });
+        }
+    }
+
+    public void getEpisode(final long id, final long season, final long number, final ApiResponseListener responseListener) {
+
+        if(id > 0) {
+            Call<EpisodeDto> call = TvSeriesApiClient.getApiInterface().getEpisode(id, season, number);
+            call.enqueue(new Callback<EpisodeDto>() {
+                @Override
+                public void onResponse(Call<EpisodeDto> call, Response<EpisodeDto> response) {
+                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                }
+
+                @Override
+                public void onFailure(Call<EpisodeDto> call, Throwable t) {
+                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                }
+            });
+        }
+    }
+
+    public void getSeasons(final long id, final ApiResponseListener responseListener) {
+
+        if(id > 0) {
+            Call<List<SeasonDto>> call = TvSeriesApiClient.getApiInterface().getSeasons(id);
+            call.enqueue(new Callback<List<SeasonDto>>() {
+                @Override
+                public void onResponse(Call<List<SeasonDto>> call, Response<List<SeasonDto>> response) {
+                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                }
+
+                @Override
+                public void onFailure(Call<List<SeasonDto>> call, Throwable t) {
                     onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
                 }
             });

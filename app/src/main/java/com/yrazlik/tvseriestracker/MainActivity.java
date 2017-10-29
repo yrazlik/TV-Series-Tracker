@@ -49,7 +49,14 @@ public class MainActivity extends AppCompatActivity implements ApiResponseListen
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        ApiHelper.getInstance(this).searchShow("hello", this);
+      //  ApiHelper.getInstance(this).searchShows("hello", this);
+      //  ApiHelper.getInstance(this).searchShow("friends", this);
+      //  ApiHelper.getInstance(this).searchShowById(82, this);
+      //  ApiHelper.getInstance(this).searchShowByIdWithCast(82, this);
+      //  ApiHelper.getInstance(this).getAllEpisodes(1, this);
+      //  ApiHelper.getInstance(this).getEpisode(1, 1, 1, this);
+      //  ApiHelper.getInstance(this).getSeasons(1, this);
+        ApiHelper.getInstance(this).getSeasonEpisodes(1, this);
 
     }
 

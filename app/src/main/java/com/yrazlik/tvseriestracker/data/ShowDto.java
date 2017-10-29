@@ -1,5 +1,7 @@
 package com.yrazlik.tvseriestracker.data;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -27,7 +29,9 @@ public class ShowDto {
     private ImageDto image;
     private String summary;
     private long updated;
-    private LinksDto _links;
+    @SerializedName("_links")
+    private LinksDto links;
+    private EmbeddedDto _embedded;
 
     public long getId() {
         return id;
@@ -181,11 +185,23 @@ public class ShowDto {
         this.updated = updated;
     }
 
-    public LinksDto get_links() {
-        return _links;
+    public LinksDto getLinks() {
+        return links;
     }
 
-    public void set_links(LinksDto _links) {
-        this._links = _links;
+    public void setLinks(LinksDto links) {
+        this.links = links;
+    }
+
+    public EmbeddedDto get_embedded() {
+        return _embedded;
+    }
+
+    public void set_embedded(EmbeddedDto _embedded) {
+        this._embedded = _embedded;
+    }
+
+    public double getWeightedRating() {
+        return ((weight / 10.0) * 0.35) + (rating.getAverage() * 0.65);
     }
 }
