@@ -59,6 +59,22 @@ public class ApiHelper {
         }
     }
 
+    public void getShows(final int page, final ApiResponseListener responseListener) {
+
+        Call<List<ShowDto>> call = TvSeriesApiClient.getApiInterface().getShows(page);
+        call.enqueue(new Callback<List<ShowDto>>() {
+            @Override
+            public void onResponse(Call<List<ShowDto>> call, Response<List<ShowDto>> response) {
+                onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+            }
+
+            @Override
+            public void onFailure(Call<List<ShowDto>> call, Throwable t) {
+                onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+            }
+        });
+    }
+
     public void searchShows(final String showName, final ApiResponseListener responseListener) {
 
         if(!Utils.isNullOrEmpty(showName)) {

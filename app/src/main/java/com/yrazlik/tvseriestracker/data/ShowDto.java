@@ -10,6 +10,9 @@ import java.util.List;
 
 public class ShowDto {
 
+    private static final String STATUS_ENDED = "Ended";
+    private static final String STATUS_RUNNING = "Running";
+
     private long id;
     private String url;
     private String name;
@@ -202,6 +205,23 @@ public class ShowDto {
     }
 
     public double getWeightedRating() {
-        return ((weight / 10.0) * 0.35) + (rating.getAverage() * 0.65);
+        double avgRating = rating == null ? 0 : rating.getAverage();
+        double runningBonus = (status != null && status.equalsIgnoreCase(STATUS_RUNNING)) ? (avgRating * 0.05) : 0;
+        return ((weight / 10.0) * 0.62) + (avgRating * 0.38) + runningBonus;
+    }
+
+    public String getGenresText() {
+        String genresText = "";
+        if(genres != null && genres.size() > 0) {
+            for(String genre : genres) {
+                if (genre != null) {
+                    genresText += genre + ", ";
+                }
+            }
+            if(genresText != null && genresText.length() > 0) {
+                genresText = genresText.substring(0, genresText.length() - 2);
+            }
+        }
+        return (genresText != null && genresText.length() > 0) ? genresText : "-";
     }
 }

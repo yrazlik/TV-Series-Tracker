@@ -18,6 +18,9 @@ import retrofit2.http.Query;
 
 public interface TvSeriesApiInterface {
 
+    @GET("shows")
+    Call<List<ShowDto>> getShows(@Query("page") int page);
+
     @GET("search/shows")
     Call<List<SearchResultDto>> getSearchResults(@Query("q") String showName);
 
