@@ -13,5 +13,5 @@
     <string name="premiered">Premiered:</string>
     <string name="genres">Genres:</string>
     <string name="status">Status</string>
-    <string name="next_episode">Next Episode:</string>
+    <string name="rating">Rating:</string>
 </resources>

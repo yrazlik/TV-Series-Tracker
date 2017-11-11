@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.data.NetworkDto;
+import com.yrazlik.tvseriestracker.data.RatingDto;
 import com.yrazlik.tvseriestracker.data.ScheduleDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class ShowSummaryInfoFragment extends BaseFragment {
 
-    private RobotoTextView showTitle, airsOnTV, scheduledTV, premieredTV, genresTV, statusTV, nextEpisodeTV;
+    private RobotoTextView showTitle, airsOnTV, scheduledTV, premieredTV, genresTV, statusTV, ratingTV, showSummaryTV;
 
     private ShowDto showDto;
 
@@ -47,9 +48,11 @@ public class ShowSummaryInfoFragment extends BaseFragment {
         premieredTV = rootView.findViewById(R.id.premieredTV);
         genresTV = rootView.findViewById(R.id.genresTV);
         statusTV = rootView.findViewById(R.id.statusTV);
-        nextEpisodeTV = rootView.findViewById(R.id.nextEpisodeTV);
+        ratingTV = rootView.findViewById(R.id.ratingTV);
+        showSummaryTV = rootView.findViewById(R.id.showSummaryTV);
 
         if(showDto != null) {
+            RatingDto ratingDto = showDto.getRating();
             NetworkDto network = showDto.getNetwork();
             ScheduleDto schedule = showDto.getSchedule();
             String premiered = showDto.getPremiered();
@@ -57,6 +60,7 @@ public class ShowSummaryInfoFragment extends BaseFragment {
             String status = showDto.getStatus();
 
             showTitle.setText(showDto.getName());
+            ratingTV.setText(ratingDto != null ? ratingDto.getAverage() + "" : "-");
             airsOnTV.setText((network != null && network.getName() != null && !network.getName().equalsIgnoreCase("")) ? network.getName() : "-");
 
             String scheduledText = "-";
@@ -75,6 +79,7 @@ public class ShowSummaryInfoFragment extends BaseFragment {
             premieredTV.setText(premiered != null && !premiered.equalsIgnoreCase("") ? premiered : "-");
             genresTV.setText(genres != null && !genres.equalsIgnoreCase("") ? genres : "-");
             statusTV.setText(status != null && !status.equalsIgnoreCase("") ? status : "-");
+            showSummaryTV.setText(showDto.getSummary() != null ? android.text.Html.fromHtml(showDto.getSummary()).toString() : "...");
 
         }
     }
