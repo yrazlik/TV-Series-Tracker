@@ -53,15 +53,14 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
         showDetailPager = (ViewPager) findViewById(R.id.showDetailPager);
         showDetailPager.setOffscreenPageLimit(3);
         showIV = (ImageView) findViewById(R.id.showIV);
-        setupShowsPager();
     }
 
     private void setupShowsPager() {
         tabs = (TabLayout) findViewById(R.id.tabs);
         showDetailPagerAdapter = new ShowDetailPagerAdapter(getSupportFragmentManager());
-      //  ShowSummaryInfoFragment showSummaryInfoFragment = ShowSummaryInfoFragment.newInstance(showData);
+        ShowSummaryInfoFragment showSummaryInfoFragment = ShowSummaryInfoFragment.newInstance(showData);
         ShowCastInfoFragment showCastInfoFragment = ShowCastInfoFragment.newInstance(showData);
-        //showDetailPagerAdapter.addFragment(showSummaryInfoFragment, getResources().getString(showSummaryInfoFragment.getTitle()));
+        showDetailPagerAdapter.addFragment(showSummaryInfoFragment, getResources().getString(showSummaryInfoFragment.getTitle()));
         showDetailPagerAdapter.addFragment(showCastInfoFragment, getResources().getString(showCastInfoFragment.getTitle()));
         showDetailPager.setAdapter(showDetailPagerAdapter);
         tabs.setupWithViewPager(showDetailPager);
@@ -72,6 +71,7 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
     }
 
     private void populatePage() {
+        setupShowsPager();
         if(showData != null) {
             ImageDto showImage = showData.getImage();
             if(showImage != null) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/colorAccent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent">
 
     <RelativeLayout
         android:id="@+id/showDetailTitleContainer"
@@ -40,6 +40,7 @@
             android:layout_height="wrap_content">
 
             <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/airsOnTitle"
                 style="@style/ShowDetailTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/airsOnTitle"
                 android:ellipsize="end"
                 android:maxLines="1" />
         </RelativeLayout>
@@ -62,6 +64,7 @@
             android:layout_below="@+id/airsOnRL">
 
             <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/scheduledTitle"
                 style="@style/ShowDetailTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/scheduledTitle"
                 android:ellipsize="end"
                 android:maxLines="1" />
         </RelativeLayout>
@@ -84,6 +88,7 @@
             android:layout_below="@+id/scheduledRL">
 
             <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/premieredTitle"
                 style="@style/ShowDetailTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,6 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/premieredTitle"
                 android:ellipsize="end"
                 android:maxLines="1" />
         </RelativeLayout>
@@ -106,6 +112,7 @@
             android:layout_below="@+id/premieredRL">
 
             <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/genresTitle"
                 style="@style/ShowDetailTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/genresTitle"
                 android:ellipsize="end"
                 android:maxLines="1" />
         </RelativeLayout>
@@ -128,6 +136,7 @@
             android:layout_below="@+id/genresRL">
 
             <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/statusTitle"
                 style="@style/ShowDetailTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,6 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/statusTitle"
                 android:ellipsize="end"
                 android:maxLines="1" />
         </RelativeLayout>
@@ -150,6 +160,7 @@
             android:layout_below="@+id/statusRL">
 
             <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/nextEpisodeTitle"
                 style="@style/ShowDetailTitleStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,6 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/nextEpisodeTitle"
                 android:ellipsize="end"
                 android:maxLines="1" />
         </RelativeLayout>

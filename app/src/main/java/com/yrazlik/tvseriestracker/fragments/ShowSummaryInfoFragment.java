@@ -56,6 +56,7 @@ public class ShowSummaryInfoFragment extends BaseFragment {
             String genres = showDto.getGenresText();
             String status = showDto.getStatus();
 
+            showTitle.setText(showDto.getName());
             airsOnTV.setText((network != null && network.getName() != null && !network.getName().equalsIgnoreCase("")) ? network.getName() : "-");
 
             String scheduledText = "-";

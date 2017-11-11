@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
     tools:context="com.yrazlik.tvseriestracker.activities.ShowDetailActivity">
 
     <RelativeLayout
@@ -29,7 +30,6 @@
             android:id="@+id/showDetailPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"
             android:layout_below="@+id/tabs"/>
     </RelativeLayout>
 </ScrollView>
