@@ -1,13 +1,16 @@
 package com.yrazlik.tvseriestracker.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.activities.ShowDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.TrendingShowsListAdapter;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
@@ -17,11 +20,13 @@ import com.yrazlik.tvseriestracker.util.Utils;
 
 import java.util.List;
 
+import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_ID;
+
 /**
  * Created by yrazlik on 29.10.2017.
  */
 
-public class TrendingShowsFragment extends BaseFragment implements ApiResponseListener {
+public class TrendingShowsFragment extends BaseFragment implements ApiResponseListener, AdapterView.OnItemClickListener {
 
     private ListViewCompat trendingShowsList;
     private TrendingShowsListAdapter trendingShowsListAdapter;
@@ -36,6 +41,7 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
 
     private void initUI() {
         trendingShowsList = rootView.findViewById(R.id.trendingShowsList);
+        trendingShowsList.setOnItemClickListener(this);
     }
 
     @Override
@@ -49,6 +55,14 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
 
     private void requestTrendingShows() {
         ApiHelper.getInstance(getContext()).getShows(0, this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        ShowDto show = trendingShowsListAdapter.getItem(i);
+        Intent intent = new Intent(getContext(), ShowDetailActivity.class);
+        intent.putExtra(EXTRA_SHOW_ID, show.getId());
+        startActivity(intent);
     }
 
     @Override
@@ -75,6 +89,6 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
         if(apiError != null) {
             Toast.makeText(getContext(), apiError.getErrorMessage(), Toast.LENGTH_SHORT).show();
         }
-
+        showRetryView();
     }
 }

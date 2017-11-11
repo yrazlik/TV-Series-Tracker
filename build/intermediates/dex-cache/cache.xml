@@ -2,13 +2,31 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a8e020225bb9b1ca0d892de1eea8ca4e728e712d">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_6d739410e87e7fd996d772220d78bc23a12f59d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/yrazlik/.android/build-cache/5926be683a7454fdcc503fd20c3b3c001ca51715/output/jars/classes.jar"
-        jumboMode="false"
+        jumboMode="true"
         optimize="true"
         revision="26.0.1"
         sha1="8dd49930e4f9dde1a42d37e362b9fea8b1b69c0d">
-        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_0996c575cee40fa973dafe9e1b9cbcb6acb00c89.jar" />
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0996c575cee40fa973dafe9e1b9cbcb6acb00c89/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b9de9f36fea40db8c158beb4f8ab769af69960d0/classes.dex" />
     </item>
 
 </items>

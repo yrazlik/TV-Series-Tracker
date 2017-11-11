@@ -21,6 +21,8 @@ import retrofit2.Response;
 
 public class ApiHelper {
 
+    private static final String CAST = "cast";
+
     private Context mContext;
 
     private static ApiHelper mInstance;
@@ -70,6 +72,21 @@ public class ApiHelper {
 
             @Override
             public void onFailure(Call<List<ShowDto>> call, Throwable t) {
+                onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+            }
+        });
+    }
+
+    public void getShowInfoByIdWithCast(final long showId, final ApiResponseListener responseListener) {
+        Call<ShowDto> call = TvSeriesApiClient.getApiInterface().getShowInfoByIdWithCast(showId, CAST);
+        call.enqueue(new Callback<ShowDto>() {
+            @Override
+            public void onResponse(Call<ShowDto> call, Response<ShowDto> response) {
+                onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+            }
+
+            @Override
+            public void onFailure(Call<ShowDto> call, Throwable t) {
                 onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
             }
         });
