@@ -17,7 +17,7 @@ public class NullFragment extends BaseFragment {
     public static NullFragment instantiateFragment() {
         NullFragment nullFragment = new NullFragment();
         nullFragment.setFragmentStartTransaction(-1);
-        nullFragment.startFragment(true);
+      //  nullFragment.startFragment(true);
         return nullFragment;
     }
 

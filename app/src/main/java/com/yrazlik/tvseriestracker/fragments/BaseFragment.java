@@ -37,26 +37,6 @@ public abstract class BaseFragment extends Fragment {
         this.fragmentStartTransaction = fragmentStartTransaction;
     }
 
-    public void startFragment(boolean addToBackStack){
-        openFragment(addToBackStack, null);
-    }
-
-    private void openFragment(boolean addToBackStack, String backstackName) {
-        Fragment currentTabFragment = GGMainActivity.mainInstance.getSupportFragmentManager().findFragmentById(R.id.frame_main);
-        FragmentTransaction ft = currentTabFragment.getChildFragmentManager().beginTransaction();
-        setAnimation(ft, getFragmentStartTransaction());
-
-        try {
-            if (addToBackStack) {
-                ft.replace(R.id.fragment_tab_container, this).addToBackStack(backstackName).commit();
-            } else {
-                ft.replace(R.id.fragment_tab_container, this).commit();
-            }
-        } catch (IllegalStateException e) {
-            Log.d(GGLogger.TAG_APP_LOG, "Tried to replace fragment after saveInstanceState(). Do not replace it and prevent app from crash.");
-        }
-    }
-
     protected void showProgressWithWhiteBG() {
         if(rootView != null) {
             CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
