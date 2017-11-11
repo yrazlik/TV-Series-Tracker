@@ -33,4 +33,15 @@ public class Utils {
 
         return shows;
     }
+
+    public static String makeTwoDigits(long number) {
+        if(number < 10) {
+            return "0" + number;
+        }
+        return number + "";
+    }
+
+    public static String getEpisodesText(long season, long number) {
+        return "S" + makeTwoDigits(season) + " E" + makeTwoDigits(number);
+    }
 }

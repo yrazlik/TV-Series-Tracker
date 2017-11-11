@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp">
+
+    <com.yrazlik.tvseriestracker.view.RobotoTextView
+        android:id="@+id/episodeTitleTV"
+        style="@style/EpisodeNameTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1" />
+
+    <RelativeLayout
+        android:id="@+id/episodeDetailsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/episodeTitleTV"
+        android:layout_marginTop="5dp">
+
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
+            android:id="@+id/episodeCountTV"
+            style="@style/EpisodeCountTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
+            android:id="@+id/episodeDateTV"
+            style="@style/EpisodeDateTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/episodeCountTV"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
