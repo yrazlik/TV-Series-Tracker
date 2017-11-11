@@ -1,5 +1,6 @@
 package com.yrazlik.tvseriestracker.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.SeasonsListAdapter;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
@@ -20,11 +22,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA_EPISODE;
+import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA_EPISODE_DATE;
+import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA_EPISODE_IMAGE;
+import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA_EPISODE_NAME;
+import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA_EPISODE_SUMMARY;
+import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA_SEASON;
+import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA_SHOW_ID;
+import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA_SHOW_NAME;
+
 /**
  * Created by yrazlik on 11.11.2017.
  */
 
-public class EpisodesFragment extends BaseFragment implements ApiResponseListener{
+public class EpisodesFragment extends BaseFragment implements ApiResponseListener, ExpandableListView.OnChildClickListener{
 
     private ExpandableListView episodesLV;
 
@@ -53,6 +64,7 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
 
     private void initUI() {
         episodesLV = rootView.findViewById(R.id.episodesLV);
+        episodesLV.setOnChildClickListener(this);
     }
 
     private void requestEpisodes() {
@@ -85,6 +97,25 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
             SeasonsListAdapter seasonsListAdapter = new SeasonsListAdapter(getContext(), seasons, episodesMap);
             episodesLV.setAdapter(seasonsListAdapter);
         }
+    }
+
+    @Override
+    public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long l) {
+        EpisodeDto episodeDto = (EpisodeDto) expandableListView.getExpandableListAdapter().getChild(groupPosition, childPosition);
+
+        Intent i = new Intent(getContext(), EpisodeDetailActivity.class);
+        i.putExtra(EXTRA_SHOW_ID, showDto.getId());
+        i.putExtra(EXTRA_SEASON, episodeDto.getSeason());
+        i.putExtra(EXTRA_EPISODE, episodeDto.getNumber());
+        i.putExtra(EXTRA_SHOW_NAME, showDto.getName());
+        i.putExtra(EXTRA_EPISODE_NAME, episodeDto.getName());
+        i.putExtra(EXTRA_EPISODE_DATE, episodeDto.getAirStamp());
+        i.putExtra(EXTRA_EPISODE_SUMMARY, episodeDto.getSummary());
+        i.putExtra(EXTRA_EPISODE_IMAGE, episodeDto.getImage() != null ? episodeDto.getImage().getOriginal() : "");
+
+        startActivity(i);
+
+        return true;
     }
 
     @Override

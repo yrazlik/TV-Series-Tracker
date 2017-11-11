@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/episodeIV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_below="@+id/episodeIV"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_height="wrap_content">
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/seriesNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/episodeNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seriesNameTV"
+                android:layout_marginTop="10dp" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/episodeCountTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/episodeNameTV"
+                android:layout_marginTop="5dp" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/episodeDateTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/episodeCountTV"
+                android:layout_marginTop="5dp" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/episodeSummaryTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/episodeDateTV"
+                android:layout_marginTop="15dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
