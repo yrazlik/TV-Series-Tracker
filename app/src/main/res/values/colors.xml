@@ -6,4 +6,6 @@
     <color name="white">#ffffff</color>
     <color name="background_tab_pressed">#F6F6F6</color>
     <color name="tab_color">#248F46</color>
+    <color name="text_black">#232222</color>
+    <color name="show_detail_summary_gray">#e2e2e2</color>
 </resources>

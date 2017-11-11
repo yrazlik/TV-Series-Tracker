@@ -7,6 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.data.NetworkDto;
+import com.yrazlik.tvseriestracker.data.ScheduleDto;
+import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.view.RobotoTextView;
+
+import java.util.List;
 
 /**
  * Created by yrazlik on 11.11.2017.
@@ -14,15 +20,62 @@ import com.yrazlik.tvseriestracker.R;
 
 public class ShowSummaryInfoFragment extends BaseFragment {
 
-    public ShowSummaryInfoFragment() {
+    private RobotoTextView showTitle, airsOnTV, scheduledTV, premieredTV, genresTV, statusTV, nextEpisodeTV;
 
+    private ShowDto showDto;
+
+    public ShowSummaryInfoFragment() {}
+
+    public static ShowSummaryInfoFragment newInstance(ShowDto showDto) {
+        ShowSummaryInfoFragment showSummaryInfoFragment = new ShowSummaryInfoFragment();
+        showSummaryInfoFragment.showDto = showDto;
+        return showSummaryInfoFragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        initUI();
         return rootView;
+    }
+
+    private void initUI() {
+        showTitle = rootView.findViewById(R.id.showTitle);
+        airsOnTV = rootView.findViewById(R.id.airsOnTV);
+        scheduledTV = rootView.findViewById(R.id.scheduledTV);
+        premieredTV = rootView.findViewById(R.id.premieredTV);
+        genresTV = rootView.findViewById(R.id.genresTV);
+        statusTV = rootView.findViewById(R.id.statusTV);
+        nextEpisodeTV = rootView.findViewById(R.id.nextEpisodeTV);
+
+        if(showDto != null) {
+            NetworkDto network = showDto.getNetwork();
+            ScheduleDto schedule = showDto.getSchedule();
+            String premiered = showDto.getPremiered();
+            String genres = showDto.getGenresText();
+            String status = showDto.getStatus();
+
+            airsOnTV.setText((network != null && network.getName() != null && !network.getName().equalsIgnoreCase("")) ? network.getName() : "-");
+
+            String scheduledText = "-";
+            if(schedule != null) {
+                List<String> days = schedule.getDays();
+                if(days != null && days.size() > 0 && schedule.getTime() != null) {
+                    scheduledText = "";
+                    for(String day : days) {
+                        scheduledText += day + ",";
+                    }
+                    scheduledText += " at " + schedule.getTime();
+                }
+            }
+
+            scheduledTV.setText(scheduledText);
+            premieredTV.setText(premiered != null && !premiered.equalsIgnoreCase("") ? premiered : "-");
+            genresTV.setText(genres != null && !genres.equalsIgnoreCase("") ? genres : "-");
+            statusTV.setText(status != null && !status.equalsIgnoreCase("") ? status : "-");
+
+        }
     }
 
     @Override

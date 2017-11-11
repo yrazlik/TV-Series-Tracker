@@ -10,6 +10,7 @@ import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.adapters.ShowDetailPagerAdapter;
 import com.yrazlik.tvseriestracker.data.ImageDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.fragments.ShowCastInfoFragment;
 import com.yrazlik.tvseriestracker.fragments.ShowSummaryInfoFragment;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
@@ -58,8 +59,10 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
     private void setupShowsPager() {
         tabs = (TabLayout) findViewById(R.id.tabs);
         showDetailPagerAdapter = new ShowDetailPagerAdapter(getSupportFragmentManager());
-        ShowSummaryInfoFragment showSummaryInfoFragment = new ShowSummaryInfoFragment();
-        showDetailPagerAdapter.addFragment(showSummaryInfoFragment, getResources().getString(showSummaryInfoFragment.getTitle()));
+      //  ShowSummaryInfoFragment showSummaryInfoFragment = ShowSummaryInfoFragment.newInstance(showData);
+        ShowCastInfoFragment showCastInfoFragment = ShowCastInfoFragment.newInstance(showData);
+        //showDetailPagerAdapter.addFragment(showSummaryInfoFragment, getResources().getString(showSummaryInfoFragment.getTitle()));
+        showDetailPagerAdapter.addFragment(showCastInfoFragment, getResources().getString(showCastInfoFragment.getTitle()));
         showDetailPager.setAdapter(showDetailPagerAdapter);
         tabs.setupWithViewPager(showDetailPager);
     }

@@ -17,6 +17,23 @@
     <style name="TrendingShowsSubtitle">
         <item name="android:textColor">#878787</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ShowDetailMainTitleStyle">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ShowDetailTitleStyle">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ShowDetailTextStyle">
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="ProgressBarGray">

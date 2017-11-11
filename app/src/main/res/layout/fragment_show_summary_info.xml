@@ -4,9 +4,166 @@
     android:background="@color/colorAccent"
     android:layout_height="match_parent">
 
-    <com.yrazlik.tvseriestracker.view.RobotoTextView
+    <RelativeLayout
+        android:id="@+id/showDetailTitleContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Show Summary Info"/>
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
+            android:id="@+id/showTitle"
+            style="@style/ShowDetailMainTitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="..">
+
+        </com.yrazlik.tvseriestracker.view.RobotoTextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/detailContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showDetailTitleContainer"
+        android:background="@color/show_detail_summary_gray"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:id="@+id/airsOnRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                style="@style/ShowDetailTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/airs_on" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/airsOnTV"
+                style="@style/ShowDetailTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:ellipsize="end"
+                android:maxLines="1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/scheduledRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/airsOnRL">
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                style="@style/ShowDetailTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/scheduled" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/scheduledTV"
+                style="@style/ShowDetailTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:ellipsize="end"
+                android:maxLines="1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/premieredRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scheduledRL">
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                style="@style/ShowDetailTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/premiered" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/premieredTV"
+                style="@style/ShowDetailTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:ellipsize="end"
+                android:maxLines="1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/genresRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/premieredRL">
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                style="@style/ShowDetailTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/genres" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/genresTV"
+                style="@style/ShowDetailTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:ellipsize="end"
+                android:maxLines="1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/statusRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/genresRL">
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                style="@style/ShowDetailTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/statusTV"
+                style="@style/ShowDetailTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:ellipsize="end"
+                android:maxLines="1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/nextEpisodeRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/statusRL">
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                style="@style/ShowDetailTitleStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next_episode" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/nextEpisodeTV"
+                style="@style/ShowDetailTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:ellipsize="end"
+                android:maxLines="1" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
