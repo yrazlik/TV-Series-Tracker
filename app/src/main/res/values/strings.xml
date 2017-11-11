@@ -8,6 +8,7 @@
     <string name="retry">Retry</string>
     <string name="unknown_error">We cannot process this request now, please try again later.</string>
     <string name="fragment_title_show_summary_info">Detail</string>
+    <string name="fragment_title_show_cast_info">Cast</string>
     <string name="airs_on">Airs On:</string>
     <string name="scheduled">Scheduled:</string>
     <string name="premiered">Premiered:</string>

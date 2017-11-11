@@ -8,4 +8,5 @@
     <color name="tab_color">#248F46</color>
     <color name="text_black">#232222</color>
     <color name="show_detail_summary_gray">#e2e2e2</color>
+    <color name="text_gray">#a0a0a0</color>
 </resources>
