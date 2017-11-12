@@ -94,7 +94,7 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
                 episodesMap.put(season, episodeDtos);
             }
 
-            SeasonsListAdapter seasonsListAdapter = new SeasonsListAdapter(getContext(), seasons, episodesMap);
+            SeasonsListAdapter seasonsListAdapter = new SeasonsListAdapter(getContext(), seasons, episodesMap, showDto.getId());
             episodesLV.setAdapter(seasonsListAdapter);
         }
     }

@@ -1,16 +1,29 @@
 package com.yrazlik.tvseriestracker.util;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
+import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 
+import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yrazlik on 29.10.2017.
  */
 
 public class Utils {
+
+    public static final String TV_SERIES_TRACKER_SHARED_PREFS = "TV_SERIES_TRACKER_SHARED_PREFS";
+    public static final String WATCHED_LIST = "com.yrazlik.tvseriestracker.watchedlist";
 
     public static boolean isNullOrEmpty(String s) {
         return s == null || s.equals("");
@@ -43,5 +56,82 @@ public class Utils {
 
     public static String getEpisodesText(long season, long number) {
         return "S" + makeTwoDigits(season) + " E" + makeTwoDigits(number);
+    }
+
+    public static  Map<Long, Map<Long, EpisodeDto>> getWatchedList(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(TV_SERIES_TRACKER_SHARED_PREFS, 0);
+        String watchedEpisodes = prefs.getString(WATCHED_LIST, null);
+        Map<Long, Map<Long, EpisodeDto>> watchedList = null;
+        try {
+            Type type = new TypeToken<Map<Long, Map<Long, EpisodeDto>>>(){}.getType();
+            watchedList = new Gson().fromJson(watchedEpisodes, type);
+        } catch (Exception e) {
+            watchedList = null;
+        }
+
+        if(watchedList == null) {
+            watchedList = new HashMap<>();
+        }
+
+        return watchedList;
+    }
+
+    public static boolean isEpisodeWatched(long showId, EpisodeDto episodeDto) {
+        Map<Long, Map<Long, EpisodeDto>> watchedList = TvSeriesTrackerApp.watchedList;
+        if(episodeDto != null && watchedList != null) {
+            long episodeId = episodeDto.getId();
+            Map<Long, EpisodeDto> show = watchedList.get(showId);
+            if(show != null) {
+                EpisodeDto episode = show.get(episodeId);
+                if(episode != null) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void updateWatchedList(Context context, Map<Long, Map<Long, EpisodeDto>> watchedList) {
+        SharedPreferences prefs = context.getSharedPreferences(TV_SERIES_TRACKER_SHARED_PREFS, 0);
+        try {
+            Type type = new TypeToken<Map<Long, Map<Long, EpisodeDto>>>(){}.getType();
+            prefs.edit().putString(WATCHED_LIST, new Gson().toJson(watchedList, type)).commit();
+        } catch (Exception e) {
+
+        }
+    }
+
+    public static void saveToWatchedList(Context context, long showId, EpisodeDto episodeDto) {
+        long episodeId = episodeDto.getId();
+        Map<Long, Map<Long, EpisodeDto>> watchedList = TvSeriesTrackerApp.watchedList;
+
+        Map<Long, EpisodeDto> show = watchedList.get(showId);
+        if(show == null) {
+            Map<Long, EpisodeDto> watchedEpisodesList = new HashMap<>();
+            watchedEpisodesList.put(episodeDto.getId(), episodeDto);
+            watchedList.put(showId, watchedEpisodesList);
+        } else {
+            EpisodeDto episode = show.get(episodeId);
+            if(episode == null) {
+                show.put(episodeDto.getId(), episodeDto);
+            }
+        }
+        updateWatchedList(context, watchedList);
+    }
+
+    public static void removeFromWatchedList(Context context, long showId, EpisodeDto episodeDto) {
+        long episodeId = episodeDto.getId();
+        Map<Long, Map<Long, EpisodeDto>> watchedList = TvSeriesTrackerApp.watchedList;
+        Map<Long, EpisodeDto> show = watchedList.get(showId);
+        if(show != null) {
+            EpisodeDto episode = show.get(episodeId);
+            if(episode != null) {
+                show.remove(episodeId);
+                if(show.size() == 0) {
+                    watchedList.remove(showId);
+                }
+            }
+            updateWatchedList(context, watchedList);
+        }
     }
 }

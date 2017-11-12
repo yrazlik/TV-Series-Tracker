@@ -2,10 +2,12 @@ package com.yrazlik.tvseriestracker.adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import com.yrazlik.tvseriestracker.R;
@@ -25,12 +27,14 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
     private Context mContext;
     private List<Long> seasons;
     private Map<Long, List<EpisodeDto>> episodes;
+    private long showId;
 
     public SeasonsListAdapter(Context context, List<Long> seasons,
-                                 Map<Long, List<EpisodeDto>> episodes) {
+                                 Map<Long, List<EpisodeDto>> episodes, long showId) {
         this.mContext = context;
         this.seasons = seasons;
         this.episodes = episodes;
+        this.showId = showId;
     }
 
     @Override
@@ -109,6 +113,7 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
             holder.episodeTitleTV = convertView.findViewById(R.id.episodeTitleTV);
             holder.episodeCountTV = convertView.findViewById(R.id.episodeCountTV);
             holder.episodeDateTV = convertView.findViewById(R.id.episodeDateTV);
+            holder.episodeWatchedCB = convertView.findViewById(R.id.episodeWatchedCB);
             convertView.setTag(holder);
         } else {
             holder = (EpisodeHolder) convertView.getTag();
@@ -117,6 +122,23 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
         holder.episodeTitleTV.setText(episodeDto.getName());
         holder.episodeCountTV.setText(Utils.getEpisodesText(episodeDto.getSeason(), episodeDto.getNumber()));
         holder.episodeDateTV.setText(episodeDto.getAirStamp());
+
+        holder.episodeWatchedCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked) {
+                    Utils.saveToWatchedList(mContext, showId, episodeDto);
+                } else {
+                    Utils.removeFromWatchedList(mContext, showId, episodeDto);
+                }
+            }
+        });
+
+        if(Utils.isEpisodeWatched(showId, episodeDto)) {
+            holder.episodeWatchedCB.setChecked(true);
+        } else {
+            holder.episodeWatchedCB.setChecked(false);
+        }
 
         return convertView;
     }
@@ -135,5 +157,6 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
         public RobotoTextView episodeTitleTV;
         public RobotoTextView episodeCountTV;
         public RobotoTextView episodeDateTV;
+        public AppCompatCheckBox episodeWatchedCB;
     }
 }

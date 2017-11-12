@@ -16,6 +16,8 @@
         android:id="@+id/episodeDetailsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/episodeWatchedCB"
+        android:layout_marginRight="5dp"
         android:layout_below="@+id/episodeTitleTV"
         android:layout_marginTop="5dp">
 
@@ -38,5 +40,13 @@
             android:maxLines="1" />
 
     </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/episodeWatchedCB"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:padding="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
