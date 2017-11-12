@@ -8,6 +8,8 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorPrimaryLight">#B2DFDB</color>
     <color name="white">#ffffff</color>
+    <color name="light_gray">#e8e8e8</color>
+    <color name="selector_touch_gray">#F7F7F7</color>
 
 
 </resources>

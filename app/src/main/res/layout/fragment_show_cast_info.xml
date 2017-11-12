@@ -2,6 +2,8 @@
 <android.support.v7.widget.ListViewCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/castLV"
     android:layout_width="match_parent"
+    android:divider="@drawable/list_divider_gray_with_margin"
+    android:dividerHeight="0.5dp"
     android:layout_height="match_parent">
 
 
