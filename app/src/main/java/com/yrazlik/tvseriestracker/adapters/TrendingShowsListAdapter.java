@@ -34,7 +34,7 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        final ViewHolder holder;
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
             convertView = inflater.inflate(R.layout.list_row_trending_shows, parent, false);
@@ -57,9 +57,10 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
         holder.showGenres.setText(show.getGenresText());
         holder.showRating.setText((show.getRating() != null && show.getRating().getAverage() > 0) ? show.getRating().getAverage() + "" : "-");
 
-        holder.favoriteCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.favoriteCB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            public void onClick(View arg0) {
+                final boolean isChecked = holder.favoriteCB.isChecked();
                 if(isChecked) {
                     Utils.saveToFavoritesList(mContext, show);
                 } else {

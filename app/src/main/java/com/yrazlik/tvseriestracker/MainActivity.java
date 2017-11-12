@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     if (favoritesFragment == null) {
                         favoritesFragment = new FavoritesFragment();
                     }
-                    attachTab(favoritesFragment, FragmentTags.FRAGMENT_NULL);
+                    attachTab(favoritesFragment, FragmentTags.FRAGMENT_FAVORITES);
                     break;
                 case R.id.navigation_trending:
                     Fragment trendingShowsFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_TRENDING_SHOWS);
@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setSelectedItemId(R.id.navigation_home);
 
       //  ApiHelper.getInstance(this).searchShows("hello", this);
       //  ApiHelper.getInstance(this).searchShow("friends", this);

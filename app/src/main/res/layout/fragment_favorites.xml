@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/favoritesList"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</ListView>
+    <ListView
+        android:id="@+id/favoritesList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    </ListView>
+
+    <com.yrazlik.tvseriestracker.view.RobotoTextView
+        android:id="@+id/noFavoriteTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/colorSecondaryText"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="@string/no_favorite_show">
+
+    </com.yrazlik.tvseriestracker.view.RobotoTextView>
+
+</RelativeLayout>

@@ -104,7 +104,7 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean b, View convertView, ViewGroup viewGroup) {
 
-        EpisodeHolder holder;
+        final EpisodeHolder holder;
         final EpisodeDto episodeDto = (EpisodeDto) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
@@ -124,9 +124,10 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
         holder.episodeCountTV.setText(Utils.getEpisodesText(episodeDto.getSeason(), episodeDto.getNumber()));
         holder.episodeDateTV.setText(episodeDto.getAirStamp());
 
-        holder.episodeWatchedCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.episodeWatchedCB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            public void onClick(View arg0) {
+                final boolean isChecked = holder.episodeWatchedCB.isChecked();
                 if(isChecked) {
                     Utils.saveToWatchedList(mContext, showId, episodeDto);
                 } else {

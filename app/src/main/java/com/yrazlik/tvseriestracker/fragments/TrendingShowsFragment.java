@@ -50,6 +50,8 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
         if(trendingShowsListAdapter == null) {
             showProgressWithWhiteBG();
             requestTrendingShows();
+        } else {
+            trendingShowsListAdapter.notifyDataSetChanged();
         }
     }
 
