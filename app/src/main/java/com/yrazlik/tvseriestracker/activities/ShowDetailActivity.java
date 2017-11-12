@@ -39,7 +39,9 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_detail);
+        enterAnim = R.anim.fadein;
+        exitAnim =  R.anim.slide_top_out;
+        showProgressWithWhiteBG();
         getExtras();
         initUI();
         requestShowDetail();
@@ -84,13 +86,24 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
     }
 
     @Override
+    protected void retry() {
+        requestShowDetail();
+    }
+
+    @Override
     public void onResponse(Object response) {
         this.showData = (ShowDto) response;
         populatePage();
+        dismissProgress();
     }
 
     @Override
     public void onFail(TVSeriesApiError apiError) {
+        showRetryView();
+    }
 
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_show_detail;
     }
 }

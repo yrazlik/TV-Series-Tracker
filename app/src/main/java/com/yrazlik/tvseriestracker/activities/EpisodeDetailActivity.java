@@ -32,9 +32,12 @@ public class EpisodeDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_episode_detail);
+        enterAnim = R.anim.fadein;
+        exitAnim =  R.anim.slide_right_out;
+        showProgressWithWhiteBG();
         getExtras();
         initUI();
+        dismissProgress();
     }
 
     private void initUI() {
@@ -63,5 +66,15 @@ public class EpisodeDetailActivity extends BaseActivity {
         date = extras.getString(EXTRA_EPISODE_DATE);
         summary = extras.getString(EXTRA_EPISODE_SUMMARY);
         imageUrl = extras.getString(EXTRA_EPISODE_IMAGE);
+    }
+
+    @Override
+    protected void retry() {
+
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_episode_detail;
     }
 }

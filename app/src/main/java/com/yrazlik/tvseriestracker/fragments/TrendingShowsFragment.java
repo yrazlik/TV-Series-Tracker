@@ -65,6 +65,7 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
         Intent intent = new Intent(getContext(), ShowDetailActivity.class);
         intent.putExtra(EXTRA_SHOW_ID, show.getId());
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_bottom_in, R.anim.fadeout);
     }
 
     @Override

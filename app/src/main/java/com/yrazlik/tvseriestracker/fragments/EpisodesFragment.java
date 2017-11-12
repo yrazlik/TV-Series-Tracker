@@ -114,6 +114,7 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
         i.putExtra(EXTRA_EPISODE_IMAGE, episodeDto.getImage() != null ? episodeDto.getImage().getOriginal() : "");
 
         startActivity(i);
+        getActivity().overridePendingTransition(R.anim.slide_left_in, R.anim.fadeout);
 
         return true;
     }
