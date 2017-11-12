@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.util.PicassoImageLoader;
+import com.yrazlik.tvseriestracker.util.Utils;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 import java.util.List;
 
@@ -42,16 +45,34 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
             holder.showTitle = convertView.findViewById(R.id.showTitle);
             holder.showGenres = convertView.findViewById(R.id.showGenres);
             holder.showRating = convertView.findViewById(R.id.showRating);
+            holder.favoriteCB = convertView.findViewById(R.id.favoriteCB);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        ShowDto show = getItem(position);
+        final ShowDto show = getItem(position);
         PicassoImageLoader.getInstance(mContext).loadImage(show.getImage() != null ? show.getImage().getMedium() : "", holder.showImage);
         holder.showTitle.setText((position + 1) + ". " + show.getName());
         holder.showGenres.setText(show.getGenresText());
         holder.showRating.setText((show.getRating() != null && show.getRating().getAverage() > 0) ? show.getRating().getAverage() + "" : "-");
+
+        holder.favoriteCB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked) {
+                    Utils.saveToFavoritesList(mContext, show);
+                } else {
+                    Utils.removeFromFavoritesList(mContext, show);
+                }
+            }
+        });
+
+        if(Utils.isFavoriteShow(show.getId())) {
+            holder.favoriteCB.setChecked(true);
+        } else {
+            holder.favoriteCB.setChecked(false);
+        }
 
         return convertView;
     }
@@ -62,5 +83,6 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
         public RobotoTextView showTitle;
         public RobotoTextView showGenres;
         public RobotoTextView showRating;
+        public CheckBox favoriteCB;
     }
 }

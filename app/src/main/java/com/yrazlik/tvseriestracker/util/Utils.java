@@ -24,6 +24,7 @@ public class Utils {
 
     public static final String TV_SERIES_TRACKER_SHARED_PREFS = "TV_SERIES_TRACKER_SHARED_PREFS";
     public static final String WATCHED_LIST = "com.yrazlik.tvseriestracker.watchedlist";
+    public static final String FAVORITES_LIST = "com.yrazlik.tvseriestracker.favoriteslist";
 
     public static boolean isNullOrEmpty(String s) {
         return s == null || s.equals("");
@@ -74,6 +75,75 @@ public class Utils {
         }
 
         return watchedList;
+    }
+
+    public static Map<Long, ShowDto> getFavoritesList(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(TV_SERIES_TRACKER_SHARED_PREFS, 0);
+        String watchedEpisodes = prefs.getString(FAVORITES_LIST, null);
+        Map<Long, ShowDto> favoritesList = null;
+        try {
+            Type type = new TypeToken<Map<Long, ShowDto>>(){}.getType();
+            favoritesList = new Gson().fromJson(watchedEpisodes, type);
+        } catch (Exception e) {
+            favoritesList = null;
+        }
+
+        if(favoritesList == null) {
+            favoritesList = new HashMap<>();
+        }
+
+        return favoritesList;
+    }
+
+    public static void saveToFavoritesList(Context context, ShowDto showDto) {
+        long showId = showDto.getId();
+        Map<Long, ShowDto> favoritesList = TvSeriesTrackerApp.favoritesList;
+
+        if(favoritesList == null) {
+            favoritesList = new HashMap<>();
+        }
+
+        ShowDto show = favoritesList.get(showId);
+
+        if(show == null) {
+            favoritesList.put(showId, showDto);
+        }
+
+        updateFavoritesList(context, favoritesList);
+    }
+
+    public static void updateFavoritesList(Context context, Map<Long, ShowDto> favoritesList) {
+        SharedPreferences prefs = context.getSharedPreferences(TV_SERIES_TRACKER_SHARED_PREFS, 0);
+        try {
+            Type type = new TypeToken<Map<Long, ShowDto>>(){}.getType();
+            prefs.edit().putString(FAVORITES_LIST, new Gson().toJson(favoritesList, type)).commit();
+        } catch (Exception e) {
+
+        }
+    }
+
+    public static void removeFromFavoritesList(Context context, ShowDto showDto) {
+        long showId = showDto.getId();
+        Map<Long, ShowDto> favoritesList = TvSeriesTrackerApp.favoritesList;
+        ShowDto show = favoritesList.get(showId);
+
+        if(show != null) {
+            favoritesList.remove(showId);
+            updateFavoritesList(context, favoritesList);
+        }
+    }
+
+    public static boolean isFavoriteShow(long showId) {
+        Map<Long, ShowDto> favoritesList = TvSeriesTrackerApp.favoritesList;
+
+        if(favoritesList != null) {
+            ShowDto show = favoritesList.get(showId);
+
+            if(show != null) {
+               return true;
+            }
+        }
+        return false;
     }
 
     public static boolean isEpisodeWatched(long showId, EpisodeDto episodeDto) {

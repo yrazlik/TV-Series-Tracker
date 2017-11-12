@@ -6,6 +6,7 @@ package com.yrazlik.tvseriestracker.fragments;
 
 public class FragmentTags {
 
+    public static String FRAGMENT_FAVORITES = "FRAGMENT_FAVORITES";
     public static String FRAGMENT_TRENDING_SHOWS = "FRAGMENT_TRENDING_SHOWS";
     public static String FRAGMENT_NULL = "FRAGMENT_NULL";
 

@@ -4,30 +4,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.yrazlik.tvseriestracker.adapters.TrendingShowsListAdapter;
-import com.yrazlik.tvseriestracker.data.SearchResultDto;
-import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.fragments.FavoritesFragment;
 import com.yrazlik.tvseriestracker.fragments.FragmentTags;
-import com.yrazlik.tvseriestracker.fragments.NullFragment;
 import com.yrazlik.tvseriestracker.fragments.TrendingShowsFragment;
-import com.yrazlik.tvseriestracker.restclient.ApiHelper;
-import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
-import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
-import com.yrazlik.tvseriestracker.util.Utils;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private int currentTabId;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -37,11 +24,14 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     switchToTab(R.id.navigation_home);
+                    currentTabId = item.getItemId();
                     return true;
                 case R.id.navigation_trending:
                     switchToTab(R.id.navigation_trending);
+                    currentTabId = item.getItemId();
                     return true;
                 case R.id.navigation_notifications:
+                    currentTabId = item.getItemId();
                     return true;
             }
             return false;
@@ -50,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void switchToTab(int tabId) {
-        detachCurrentTabFragment();
-        attachTabFragment(tabId);
+        if(tabId != currentTabId) {
+            detachCurrentTabFragment();
+            attachTabFragment(tabId);
+        }
     }
 
     private void detachCurrentTabFragment() {
@@ -69,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
         try {
             switch (tabId) {
                 case R.id.navigation_home:
-                    Fragment nullFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_NULL);
-                    if (nullFragment == null) {
-                        nullFragment = new NullFragment();
+                    Fragment favoritesFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_FAVORITES);
+                    if (favoritesFragment == null) {
+                        favoritesFragment = new FavoritesFragment();
                     }
-                    attachTab(nullFragment, FragmentTags.FRAGMENT_NULL);
+                    attachTab(favoritesFragment, FragmentTags.FRAGMENT_NULL);
                     break;
                 case R.id.navigation_trending:
                     Fragment trendingShowsFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_TRENDING_SHOWS);
