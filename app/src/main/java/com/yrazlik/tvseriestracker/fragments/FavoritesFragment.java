@@ -1,14 +1,17 @@
 package com.yrazlik.tvseriestracker.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
+import com.yrazlik.tvseriestracker.activities.ShowDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.FavoritesListAdapter;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
@@ -17,11 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_ID;
+
 /**
  * Created by yrazlik on 12.11.2017.
  */
 
-public class FavoritesFragment extends BaseFragment {
+public class FavoritesFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     private ListView favoritesList;
     private FavoritesListAdapter favoritesListAdapter;
@@ -39,6 +44,7 @@ public class FavoritesFragment extends BaseFragment {
     private void initUI() {
         favoritesList = rootView.findViewById(R.id.favoritesList);
         noFavoriteTV = rootView.findViewById(R.id.noFavoriteTV);
+        favoritesList.setOnItemClickListener(this);
     }
 
     @Override
@@ -80,6 +86,15 @@ public class FavoritesFragment extends BaseFragment {
             favoritesList.setVisibility(View.VISIBLE);
             noFavoriteTV.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        ShowDto show = favoritesListAdapter.getItem(i);
+        Intent intent = new Intent(getContext(), ShowDetailActivity.class);
+        intent.putExtra(EXTRA_SHOW_ID, show.getId());
+        startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_bottom_in, R.anim.fadeout);
     }
 
     @Override
