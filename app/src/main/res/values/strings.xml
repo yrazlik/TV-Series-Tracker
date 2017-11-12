@@ -22,4 +22,6 @@
     <string name="are_you_sure_t_remove_from_favorites">Are you sure you want to remove %1$s from favorites?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="toolbar_title_episode_detail">Episode Detail</string>
+    <string name="toolbar_title_show_detail">Show Detail</string>
 </resources>

@@ -21,6 +21,7 @@ import com.yrazlik.tvseriestracker.util.Utils;
 import java.util.List;
 
 import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_ID;
+import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_NAME;
 
 /**
  * Created by yrazlik on 29.10.2017.
@@ -64,6 +65,7 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
         ShowDto show = trendingShowsListAdapter.getItem(i);
         Intent intent = new Intent(getContext(), ShowDetailActivity.class);
         intent.putExtra(EXTRA_SHOW_ID, show.getId());
+        intent.putExtra(EXTRA_SHOW_NAME, show.getName());
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_bottom_in, R.anim.fadeout);
     }

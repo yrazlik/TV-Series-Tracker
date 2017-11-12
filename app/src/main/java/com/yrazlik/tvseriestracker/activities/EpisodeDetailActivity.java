@@ -31,11 +31,11 @@ public class EpisodeDetailActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        getExtras();
         super.onCreate(savedInstanceState);
         enterAnim = R.anim.fadein;
         exitAnim =  R.anim.slide_right_out;
         showProgressWithWhiteBG();
-        getExtras();
         initUI();
         dismissProgress();
     }
@@ -76,5 +76,10 @@ public class EpisodeDetailActivity extends BaseActivity {
     @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_episode_detail;
+    }
+
+    @Override
+    protected String getToobarTitle() {
+        return getResources().getString(R.string.toolbar_title_episode_detail);
     }
 }

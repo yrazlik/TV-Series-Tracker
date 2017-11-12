@@ -26,6 +26,7 @@ import com.yrazlik.tvseriestracker.view.PagerSlidingTabStrip;
 public class ShowDetailActivity extends BaseActivity implements ApiResponseListener{
 
     public static final String EXTRA_SHOW_ID = "extraShowId";
+    public static final String EXTRA_SHOW_NAME = "extraShowName";
 
     private ViewPager showDetailPager;
     private ShowDetailPagerAdapter showDetailPagerAdapter;
@@ -33,16 +34,17 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
     private TabLayout tabs;
 
     private long showId;
+    private String showName;
     private ShowDto showData;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        getExtras();
         super.onCreate(savedInstanceState);
         enterAnim = R.anim.fadein;
         exitAnim =  R.anim.slide_top_out;
         showProgressWithWhiteBG();
-        getExtras();
         initUI();
         requestShowDetail();
     }
@@ -50,6 +52,7 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
     private void getExtras() {
         Bundle extras = getIntent().getExtras();
         showId = extras.getLong(EXTRA_SHOW_ID);
+        showName = extras.getString(EXTRA_SHOW_NAME);
     }
 
     private void initUI() {
@@ -105,5 +108,11 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
     @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_show_detail;
+    }
+
+    @Override
+    protected String getToobarTitle() {
+        return showName == null || showName.length() == 0 ? getResources().getString(R.string.toolbar_title_show_detail)
+                : showName;
     }
 }

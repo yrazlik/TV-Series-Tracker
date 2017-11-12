@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_ID;
+import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_NAME;
 
 /**
  * Created by yrazlik on 12.11.2017.
@@ -93,6 +94,7 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
         ShowDto show = favoritesListAdapter.getItem(i);
         Intent intent = new Intent(getContext(), ShowDetailActivity.class);
         intent.putExtra(EXTRA_SHOW_ID, show.getId());
+        intent.putExtra(EXTRA_SHOW_NAME, show.getName());
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.slide_bottom_in, R.anim.fadeout);
     }
