@@ -3,51 +3,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/selector_listview_material"
-    android:padding="5dp">
-
-    <com.yrazlik.tvseriestracker.view.RobotoTextView
-        android:id="@+id/episodeTitleTV"
-        style="@style/EpisodeNameTextStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1" />
+    android:minHeight="45dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="10dp">
 
     <RelativeLayout
-        android:id="@+id/episodeDetailsContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/episodeWatchedCB"
+        android:layout_centerVertical="true"
         android:layout_marginRight="5dp"
-        android:layout_below="@+id/episodeTitleTV"
-        android:layout_marginTop="5dp">
+        android:layout_toLeftOf="@+id/episodeWatchedCB">
 
         <com.yrazlik.tvseriestracker.view.RobotoTextView
-            android:id="@+id/episodeCountTV"
-            style="@style/EpisodeCountTextStyle"
+            android:id="@+id/episodeTitleTV"
+            style="@style/EpisodeNameTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1" />
 
-        <com.yrazlik.tvseriestracker.view.RobotoTextView
-            android:id="@+id/episodeDateTV"
-            style="@style/EpisodeDateTextStyle"
+        <RelativeLayout
+            android:id="@+id/episodeDetailsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/episodeCountTV"
-            android:ellipsize="end"
-            android:maxLines="1" />
+            android:layout_below="@+id/episodeTitleTV"
+            android:layout_marginTop="5dp">
 
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/episodeCountTV"
+                style="@style/EpisodeCountTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/episodeDateTV"
+                style="@style/EpisodeDateTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/episodeCountTV"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+        </RelativeLayout>
     </RelativeLayout>
 
-    <android.support.v7.widget.AppCompatCheckBox
+    <CheckBox
         android:id="@+id/episodeWatchedCB"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:button="@null"
+        android:focusable="false"
         android:padding="5dp"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_cb"/>
 
 </RelativeLayout>

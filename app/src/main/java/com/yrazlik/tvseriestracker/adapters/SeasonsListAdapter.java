@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 
@@ -157,6 +158,6 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
         public RobotoTextView episodeTitleTV;
         public RobotoTextView episodeCountTV;
         public RobotoTextView episodeDateTV;
-        public AppCompatCheckBox episodeWatchedCB;
+        public CheckBox episodeWatchedCB;
     }
 }
