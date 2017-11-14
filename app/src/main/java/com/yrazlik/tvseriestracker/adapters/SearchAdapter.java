@@ -5,10 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.activities.MainActivity;
 import com.yrazlik.tvseriestracker.data.ImageDto;
 import com.yrazlik.tvseriestracker.data.NetworkDto;
 import com.yrazlik.tvseriestracker.data.RatingDto;
@@ -16,6 +16,8 @@ import com.yrazlik.tvseriestracker.data.SearchResultDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.data.WebChannelDto;
 import com.yrazlik.tvseriestracker.util.PicassoImageLoader;
+import com.yrazlik.tvseriestracker.util.Utils;
+import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
 import java.util.List;
 
@@ -28,25 +30,27 @@ public class SearchAdapter extends ArrayAdapter<SearchResultDto> {
     private List<SearchResultDto> items;
     private Context mContext;
     private int layoutResourceId;
+    private MainActivity.OnFavoritesChangedListener favoritesChangedListener;
 
-    public SearchAdapter(Context context, int resource, List<SearchResultDto> objects) {
+    public SearchAdapter(Context context, int resource, List<SearchResultDto> objects, MainActivity.OnFavoritesChangedListener favoritesChangedListener) {
         super(context, resource, objects);
         this.mContext = context;
         this.items = objects;
         this.layoutResourceId = resource;
+        this.favoritesChangedListener = favoritesChangedListener;
     }
 
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        final ViewHolder holder;
         if(convertView == null){
             convertView = ((AppCompatActivity)mContext).getLayoutInflater().inflate(layoutResourceId, parent, false);
             holder = new ViewHolder();
             holder.title = convertView.findViewById(R.id.title);
             holder.image = convertView.findViewById(R.id.image);
             holder.channel = convertView.findViewById(R.id.channel);
-            holder.rating = convertView.findViewById(R.id.rating);
+            holder.favoriteCB = convertView.findViewById(R.id.favoriteCB);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();
@@ -55,7 +59,7 @@ public class SearchAdapter extends ArrayAdapter<SearchResultDto> {
         SearchResultDto item = getItem(position);
 
         if(item != null){
-            ShowDto show = item.getShow();
+            final ShowDto show = item.getShow();
             if(show != null){
                 RatingDto showRating = show.getRating();
                 String name = show.getName();
@@ -95,22 +99,25 @@ public class SearchAdapter extends ArrayAdapter<SearchResultDto> {
                     }
                 }
 
-                if(showRating != null){
-                    Double avgRating = showRating.getAverage();
-                    if(avgRating != null){
-                        String averageRating = avgRating + "";
-                        if(averageRating != null && averageRating.length() > 0){
-                            holder.rating.setVisibility(View.VISIBLE);
-                            holder.rating.setText(averageRating);
-                        }else{
-                            holder.rating.setVisibility(View.GONE);
+                holder.favoriteCB.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View arg0) {
+                        final boolean isChecked = holder.favoriteCB.isChecked();
+                        if(isChecked) {
+                            Utils.saveToFavoritesList(mContext, show);
+                        } else {
+                            Utils.removeFromFavoritesList(mContext, show);
                         }
-                    }else {
-                        holder.rating.setVisibility(View.GONE);
+                        if(favoritesChangedListener != null) {
+                            favoritesChangedListener.onFavoritesChanged(show);
+                        }
                     }
+                });
 
-                }else{
-                    holder.rating.setVisibility(View.GONE);
+                if(Utils.isFavoriteShow(show.getId())) {
+                    holder.favoriteCB.setChecked(true);
+                } else {
+                    holder.favoriteCB.setChecked(false);
                 }
 
 
@@ -124,8 +131,8 @@ public class SearchAdapter extends ArrayAdapter<SearchResultDto> {
 
     static class ViewHolder{
         public ImageView image;
-        public TextView title;
-        public TextView channel;
-        public TextView rating;
+        public RobotoTextView title;
+        public RobotoTextView channel;
+        public CheckBox favoriteCB;
     }
 }

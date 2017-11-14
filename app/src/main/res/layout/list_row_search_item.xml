@@ -17,10 +17,10 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/image"
         android:layout_marginLeft="15dp"
-        android:layout_toLeftOf="@+id/rating"
+        android:layout_toLeftOf="@+id/favoriteCB"
         android:layout_marginRight="10dp"
         android:gravity="center_vertical">
-        <TextView
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             android:textColor="@android:color/holo_blue_light"
             />
 
-        <TextView
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
             android:id="@+id/channel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,16 +41,16 @@
             />
     </RelativeLayout>
 
-    <TextView android:id="@+id/rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <CheckBox
+        android:id="@+id/favoriteCB"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_centerVertical="true"
-        style="@style/SmallTextStyle"
-        android:textColor="@android:color/holo_blue_light"
-        android:text="9.2"
-        />
+        android:padding="15dp"
+        android:button="@null"
+        android:focusable="false"
+        android:background="@drawable/selector_favorite"
+        android:layout_centerVertical="true"/>
 
 
 </RelativeLayout>

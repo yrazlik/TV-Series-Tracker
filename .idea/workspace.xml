@@ -11,10 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21427f26-83a0-4f40-b767-dd609a7595d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/SearchAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/view/ClearableAutoCompleteTextView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/actionbar_search.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_row_search_item.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
@@ -23,10 +19,12 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/ApiHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/ApiHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesApiClient.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesApiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/SearchAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/SearchAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_row_search_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_row_search_item.xml" />
     </list>
     <ignored path="TV Series Tracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,37 +59,16 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="88" column="73" selection-start-line="88" selection-start-column="73" selection-end-line="88" selection-end-column="73" />
+            <state relative-caret-position="138">
+              <caret line="92" column="85" selection-start-line="92" selection-start-column="85" selection-end-line="92" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1963#1980#0" expanded="true" />
-                <element signature="e#2999#3000#0" expanded="true" />
-                <element signature="e#3045#3046#0" expanded="true" />
+                <element signature="e#2158#2175#0" expanded="true" />
+                <element signature="e#3242#3243#0" expanded="true" />
+                <element signature="e#3288#3289#0" expanded="true" />
+                <element signature="e#10018#10789#0" expanded="true" />
+                <element signature="e#10788#10789#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiHelper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/ApiHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
-              <folding>
-                <element signature="e#9624#9625#0" expanded="true" />
-                <element signature="e#9677#9678#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TvSeriesTrackerResponseHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesTrackerResponseHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -99,8 +76,44 @@
       <file leaf-file-name="TvSeriesApiClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
+            <state relative-caret-position="383">
+              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrendingShowsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FavoritesFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+              <folding>
+                <element signature="e#3206#3207#0" expanded="true" />
+                <element signature="e#3243#3244#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -109,8 +122,8 @@
       <file leaf-file-name="SearchAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/SearchAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
+            <state relative-caret-position="45">
+              <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,8 +137,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+            <state relative-caret-position="-98">
+              <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -2043,9 +2056,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/EpisodesFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/navigation.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_home_black_24dp.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/BaseActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/ShowDetailActivity.java" />
@@ -2054,11 +2064,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_row_saved_shows.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actionbar_search.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesApiClient.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/ApiHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_row_search_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/SearchAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesApiClient.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/ApiHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -2274,7 +2287,7 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../gittigidiyor-android" />
-    <property name="SearchEverywhereHistoryKey" value="responsehandler&#9;PSI&#9;JAVA://com.yrazlik.tvseriestracker.restclient.TvSeriesTrackerResponseHandler&#10;maina&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java&#10;stri&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/values/strings.xml&#10;baseac&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/activities/BaseActivity.java&#10;basefra&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/fragments/BaseFragment.java&#10;string&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/values/strings.xml&#10;tre&#9;PSI&#9;JAVA://com.yrazlik.tvseriestracker.fragments.TrendingShowsFragment&#10;fav&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java&#10;utils&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/util/Utils.java&#10;colo&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/values/colors.xml&#10;fragment_show&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/layout/fragment_show_summary_info.xml&#10;styles&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/values/styles.xml&#10;activity_e&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/layout/activity_episode_detail.xml&#10;summary&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/fragments/ShowSummaryInfoFragment.java&#10;activity&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/layout/activity_episode_detail.xml&#10;episodedetailac&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/activities/EpisodeDetailActivity.java&#10;Utils&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/util/Utils.java&#10;picass&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/util/PicassoImageLoader.java" />
+    <property name="SearchEverywhereHistoryKey" value="autocomp&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/view/ClearableAutoCompleteTextView.java&#10;trendings&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java&#10;favoritesfra&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java&#10;responsehandler&#9;PSI&#9;JAVA://com.yrazlik.tvseriestracker.restclient.TvSeriesTrackerResponseHandler&#10;maina&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java&#10;stri&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/values/strings.xml&#10;baseac&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/activities/BaseActivity.java&#10;basefra&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/fragments/BaseFragment.java&#10;string&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/values/strings.xml&#10;tre&#9;PSI&#9;JAVA://com.yrazlik.tvseriestracker.fragments.TrendingShowsFragment&#10;fav&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java&#10;utils&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/util/Utils.java&#10;colo&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/values/colors.xml&#10;fragment_show&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/layout/fragment_show_summary_info.xml&#10;styles&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/values/styles.xml&#10;activity_e&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/layout/activity_episode_detail.xml&#10;summary&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/fragments/ShowSummaryInfoFragment.java&#10;activity&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/res/layout/activity_episode_detail.xml&#10;episodedetailac&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/activities/EpisodeDetailActivity.java&#10;Utils&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/util/Utils.java&#10;picass&#9;FILE&#9;file:///Users/yrazlik/Projects/android/TVSeriesTracker/app/src/main/java/com/yrazlik/tvseriestracker/util/PicassoImageLoader.java" />
     <property name="VectorAssetImportPath" value="$USER_HOME$/Downloads" />
   </component>
   <component name="RecentsManager">
@@ -2631,7 +2644,7 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43101183" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43101183" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -2645,7 +2658,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39947438" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39947438" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2724,12 +2737,6 @@
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java</url>
-          <line>66</line>
-          <properties />
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java</url>
           <line>50</line>
           <properties />
@@ -2761,27 +2768,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/SearchAdapter.java</url>
-          <line>41</line>
+          <line>45</line>
           <properties />
           <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesApiClient.java</url>
-          <line>51</line>
-          <properties />
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java</url>
-          <line>95</line>
-          <properties />
-          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="82" />
+      <option name="time" value="85" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="app">
@@ -2793,6 +2788,7 @@
         <watch expression="getSupportFragmentManager().getBackStackEntryCount()" language="JAVA" />
         <watch expression="getSupportFragmentManager().findFragmentById(R.id.content)" language="JAVA" custom="com.yrazlik.tvseriestracker.R" />
         <watch expression="getSupportFragmentManager().getFragments()" language="JAVA" />
+        <watch expression="searchBox.isPerformingCompletion()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -2855,17 +2851,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_favorites.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="-614">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/selector_cb.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -2886,17 +2871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="59" column="33" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_trending_shows.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -2936,17 +2910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/TrendingShowsListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="48" column="26" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="26" />
-          <folding>
-            <element signature="e#2494#2891#0" expanded="false" />
-            <element signature="e#2890#2891#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3063,17 +3026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/navigation.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -3087,31 +3039,11 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
           <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="96" column="8" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3160,25 +3092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/view/ClearableAutoCompleteTextView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-855">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#2819#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#525#726#0" expanded="true" />
-            <element signature="e#725#726#0" expanded="true" />
-            <element signature="e#1673#2334#0" expanded="true" />
-            <element signature="e#2333#2334#0" expanded="true" />
-            <element signature="e#2403#2404#0" expanded="true" />
-            <element signature="e#2455#2456#0" expanded="true" />
-            <element signature="e#2619#2620#0" expanded="true" />
-            <element signature="e#2684#2685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar_search.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3194,48 +3107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_search_item.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="88" column="73" selection-start-line="88" selection-start-column="73" selection-end-line="88" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1963#1980#0" expanded="true" />
-            <element signature="e#2999#3000#0" expanded="true" />
-            <element signature="e#3045#3046#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/SearchAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="122" column="5" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
           <folding />
         </state>
       </provider>
@@ -3256,14 +3127,129 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_favorites.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-638">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_trending_shows.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="82" column="46" selection-start-line="73" selection-start-column="4" selection-end-line="82" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/TrendingShowsListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="75" column="9" selection-start-line="59" selection-start-column="8" selection-end-line="75" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/ApiHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+        <state relative-caret-position="232">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
             <element signature="e#9624#9625#0" expanded="true" />
             <element signature="e#9677#9678#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/list_row_search_item.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98">
+          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/view/ClearableAutoCompleteTextView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#2819#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/restclient/TvSeriesApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="92" column="85" selection-start-line="92" selection-start-column="85" selection-end-line="92" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2158#2175#0" expanded="true" />
+            <element signature="e#3242#3243#0" expanded="true" />
+            <element signature="e#3288#3289#0" expanded="true" />
+            <element signature="e#10018#10789#0" expanded="true" />
+            <element signature="e#10788#10789#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/SearchAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+          <folding>
+            <element signature="e#3206#3207#0" expanded="true" />
+            <element signature="e#3243#3244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>

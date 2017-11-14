@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
+import com.yrazlik.tvseriestracker.activities.MainActivity;
 import com.yrazlik.tvseriestracker.activities.ShowDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.FavoritesListAdapter;
 import com.yrazlik.tvseriestracker.data.ShowDto;
@@ -34,6 +35,11 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     private RobotoTextView noFavoriteTV;
     private List<ShowDto> favoriteShowsList;
 
+    public static FavoritesFragment newInstance() {
+        FavoritesFragment favoritesFragment = new FavoritesFragment();
+        return favoritesFragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,7 +59,10 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
         super.onActivityCreated(savedInstanceState);
 
         setNoFavoritesTextVisibility();
+        setFavoritesAdapter();
+    }
 
+    private void setFavoritesAdapter() {
         if(favoriteShowsList == null) {
             favoriteShowsList = new ArrayList<>();
         }
@@ -77,6 +86,10 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
         } else {
             favoritesListAdapter.notifyDataSetChanged();
         }
+    }
+
+    public void notifyDataSetChanged() {
+        setFavoritesAdapter();
     }
 
     private void setNoFavoritesTextVisibility() {

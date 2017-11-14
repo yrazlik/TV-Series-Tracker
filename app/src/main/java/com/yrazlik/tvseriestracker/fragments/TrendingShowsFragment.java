@@ -56,6 +56,12 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
         }
     }
 
+    public void notifyDataSetChanged() {
+        if(trendingShowsListAdapter != null) {
+            trendingShowsListAdapter.notifyDataSetChanged();
+        }
+    }
+
     private void requestTrendingShows() {
         ApiHelper.getInstance(getContext()).getShows(0, this);
     }

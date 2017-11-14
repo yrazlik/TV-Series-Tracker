@@ -15,11 +15,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.adapters.SearchAdapter;
 import com.yrazlik.tvseriestracker.data.SearchResultDto;
+import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.fragments.FavoritesFragment;
 import com.yrazlik.tvseriestracker.fragments.FragmentTags;
 import com.yrazlik.tvseriestracker.fragments.TrendingShowsFragment;
@@ -28,12 +30,14 @@ import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
 import com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ClearableAutoCompleteTextView.OnClearListener, ApiResponseListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ClearableAutoCompleteTextView.OnClearListener, ApiResponseListener, AdapterView.OnItemClickListener{
+
+    public interface OnFavoritesChangedListener {
+        void onFavoritesChanged(ShowDto show);
+    }
 
     private int currentTabId;
 
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         searchBox.setVisibility(View.GONE);
         searchBox.setThreshold(1);
 
+        searchBox.setOnItemClickListener(this);
         searchIcon.setOnClickListener(this);
         searchBox.setOnClearListener(this);
         searchBox.addTextChangedListener(searchBoxTextChangedListener);
@@ -130,6 +135,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if(searchBox.getText() != null) {
+            searchBox.setText("");
+        }
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -177,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.navigation_home:
                     Fragment favoritesFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_FAVORITES);
                     if (favoritesFragment == null) {
-                        favoritesFragment = new FavoritesFragment();
+                        favoritesFragment = FavoritesFragment.newInstance();
                     }
                     attachTab(favoritesFragment, FragmentTags.FRAGMENT_FAVORITES);
                     break;
@@ -232,13 +244,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    OnFavoritesChangedListener favoritesChangedListener = new OnFavoritesChangedListener() {
+        @Override
+        public void onFavoritesChanged(ShowDto show) {
+            Fragment favoritesFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_FAVORITES);
+            if (favoritesFragment != null && favoritesFragment instanceof FavoritesFragment) {
+                ((FavoritesFragment)favoritesFragment).notifyDataSetChanged();
+            }
+
+            Fragment trendingShowsFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_TRENDING_SHOWS);
+            if (trendingShowsFragment != null && trendingShowsFragment instanceof TrendingShowsFragment) {
+                ((TrendingShowsFragment)trendingShowsFragment).notifyDataSetChanged();
+            }
+        }
+    };
+
     @Override
     public void onResponse(Object response) {
         searchResults = (List<SearchResultDto>) response;
         Log.d("DISMISS", "Received response");
         if(searchResults.size() > 0) {
             Log.d("DISMISS", "results.size > 0");
-            searchAdapter = new SearchAdapter(MainActivity.this, R.layout.list_row_search_item, searchResults);
+            searchAdapter = new SearchAdapter(MainActivity.this, R.layout.list_row_search_item, searchResults, favoritesChangedListener);
             searchAdapter.setNotifyOnChange(true);
             searchBox.setAdapter(searchAdapter);
             searchBox.showDropDown();
