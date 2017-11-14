@@ -74,4 +74,19 @@
         <item name="android:maxHeight">37dip</item>
     </style>
 
+    <style name="AutoCompleteDropdownStyle" parent="@android:style/Widget.ListView">
+        <item name="android:divider">@color/colorDivider</item>
+        <item name="android:dividerHeight">1px</item>
+    </style>
+
+    <style name="NormalTextStyle" >
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="SmallTextStyle" >
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>

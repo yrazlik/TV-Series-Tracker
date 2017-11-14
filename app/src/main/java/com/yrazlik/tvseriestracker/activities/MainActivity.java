@@ -1,22 +1,134 @@
 package com.yrazlik.tvseriestracker.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.adapters.SearchAdapter;
+import com.yrazlik.tvseriestracker.data.SearchResultDto;
 import com.yrazlik.tvseriestracker.fragments.FavoritesFragment;
 import com.yrazlik.tvseriestracker.fragments.FragmentTags;
 import com.yrazlik.tvseriestracker.fragments.TrendingShowsFragment;
+import com.yrazlik.tvseriestracker.restclient.ApiHelper;
+import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
+import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
+import com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView;
+import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ClearableAutoCompleteTextView.OnClearListener, ApiResponseListener{
 
     private int currentTabId;
+
+    private List<SearchResultDto> searchResults = new ArrayList<>();
+    private ClearableAutoCompleteTextView searchBox;
+    private SearchAdapter searchAdapter;
+    private View search_bar;
+    private ImageView searchIcon;
+    private RobotoTextView titleTV;
+
+    private void initSearchBar() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(R.string.app_name);
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_HOME);
+
+        LayoutInflater inf = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        search_bar = inf.inflate(R.layout.actionbar_search, null);
+        titleTV = search_bar.findViewById(R.id.titleTV);
+        searchIcon = search_bar.findViewById(R.id.search_icon);
+        searchBox = search_bar.findViewById(R.id.search_box);
+        searchBox.setVisibility(View.GONE);
+        searchBox.setThreshold(1);
+
+        searchIcon.setOnClickListener(this);
+        searchBox.setOnClearListener(this);
+        searchBox.addTextChangedListener(searchBoxTextChangedListener);
+        actionBar.setCustomView(search_bar);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.search_icon:
+                toggleSearch(search_bar, false);
+                break;
+        }
+    }
+
+    @Override
+    public void onClear() {
+        toggleSearch(search_bar, true);
+    }
+
+    private TextWatcher searchBoxTextChangedListener = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            ApiHelper.getInstance(MainActivity.this).cancelAllRequests();
+            if (s != null && s.length() >= 2) {
+                ApiHelper.getInstance(MainActivity.this).searchShows(s.toString(), MainActivity.this);
+             //   ServiceRequest.getInstance(getApplicationContext()).cancelPendingRequests(ServiceRequest.TAG_SEARCH_REQUEST);
+              //  ServiceRequest.getInstance(getApplicationContext()).makeSearchRequest(s.toString(), SearchActivity.this);
+            } else {
+                Log.d("DISMISS", "Dismissing");
+                searchBox.dismissDropDown();
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
+    protected void toggleSearch(View v, boolean reset) {
+        if (reset) {
+            searchBox.setText("");
+            searchBox.setVisibility(View.GONE);
+            titleTV.setVisibility(View.VISIBLE);
+            searchIcon.setVisibility(View.VISIBLE);
+            // hide the keyboard
+            try{
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(searchBox.getWindowToken(), 0);
+            }catch (Exception ignored){}
+        } else {
+            // hide search icon and show search box
+            searchIcon.setVisibility(View.GONE);
+
+            titleTV.setVisibility(View.GONE);
+            searchBox.setVisibility(View.VISIBLE);
+            searchBox.requestFocus();
+            // show the keyboard
+            try {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(searchBox, InputMethodManager.SHOW_IMPLICIT);
+            }catch (Exception ignored){}
+        }
+
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -102,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        initSearchBar();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -120,5 +232,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResponse(Object response) {
+        searchResults = (List<SearchResultDto>) response;
+        Log.d("DISMISS", "Received response");
+        if(searchResults.size() > 0) {
+            Log.d("DISMISS", "results.size > 0");
+            searchAdapter = new SearchAdapter(MainActivity.this, R.layout.list_row_search_item, searchResults);
+            searchAdapter.setNotifyOnChange(true);
+            searchBox.setAdapter(searchAdapter);
+            searchBox.showDropDown();
+        }
+    }
 
+    @Override
+    public void onFail(TVSeriesApiError apiError) {
+
+    }
 }

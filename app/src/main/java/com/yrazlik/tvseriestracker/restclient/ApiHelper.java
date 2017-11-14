@@ -99,12 +99,18 @@ public class ApiHelper {
             call.enqueue(new Callback<List<SearchResultDto>>() {
                 @Override
                 public void onResponse(Call<List<SearchResultDto>> call, Response<List<SearchResultDto>> response) {
-                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                    if(!call.isCanceled()) {
+                        onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                    } else {
+                        onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), null);
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<List<SearchResultDto>> call, Throwable t) {
-                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                    if(!call.isCanceled()) {
+                        onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                    }
                 }
             });
         }
@@ -234,5 +240,9 @@ public class ApiHelper {
                 }
             });
         }
+    }
+
+    public void cancelAllRequests() {
+        TvSeriesApiClient.cancelAllRequests();
     }
 }

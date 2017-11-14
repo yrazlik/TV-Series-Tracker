@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_horizontal"
+    android:focusable="true"
+    android:gravity="center_vertical">
+
+    <com.yrazlik.tvseriestracker.view.RobotoTextView
+        android:id="@+id/titleTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/search_icon"
+        android:singleLine="true"
+        android:text="Saved TV Shows"
+        android:visibility="visible"
+        />
+
+    <com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView
+        android:id="@+id/search_box"
+        style="@style/AutoCompleteDropdownStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_toLeftOf="@+id/search_icon"
+        android:dropDownWidth="wrap_content"
+        android:hint="Search TV Shows..."
+        android:inputType="textAutoComplete|textAutoCorrect"
+        android:popupBackground="@android:color/white"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF">
+    </com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView>
+
+    <ImageView android:id="@+id/search_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@android:drawable/ic_menu_search"/>
+
+</RelativeLayout>

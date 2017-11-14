@@ -45,6 +45,12 @@ public class TvSeriesApiClient {
         return mApiInterface;
     }
 
+    public static void cancelAllRequests() {
+        if(mApiInterface == null) {
+            mApiInterface = getClient().create(TvSeriesApiInterface.class);
+        }
+        httpClient.dispatcher().cancelAll();
+    }
 
 
 }
