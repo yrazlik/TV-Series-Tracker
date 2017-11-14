@@ -5,6 +5,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.view.CircleTransform;
 
 /**
  * Created by yrazlik on 29/10/17.
@@ -46,5 +47,10 @@ public class PicassoImageLoader implements IImageLoader{
     @Override
     public void loadImage(String url, ImageView iv) {
         Picasso.with(mContext).load(url).placeholder(placeholderResId).error(errorResId).into(iv);
+    }
+
+    @Override
+    public void loadCircleImage(String url, ImageView iv) {
+        Picasso.with(mContext).load(url).placeholder(placeholderResId).error(errorResId).transform(new CircleTransform()).into(iv);
     }
 }

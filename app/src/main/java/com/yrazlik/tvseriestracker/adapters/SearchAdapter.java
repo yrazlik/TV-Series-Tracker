@@ -74,7 +74,7 @@ public class SearchAdapter extends ArrayAdapter<SearchResultDto> {
                     holder.title.setText(name);
                 }
 
-                PicassoImageLoader.getInstance(mContext).loadImage(medium, holder.image);
+                PicassoImageLoader.getInstance(mContext).loadCircleImage(medium, holder.image);
 
                 if(network != null){
                     String channelName = network.getName();
