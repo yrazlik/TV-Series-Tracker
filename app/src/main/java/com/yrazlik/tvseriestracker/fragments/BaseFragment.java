@@ -39,7 +39,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected void showProgressWithWhiteBG() {
         if(rootView != null) {
-            CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
+            CardView loadingView = rootView.findViewById(R.id.loadingView);
             if (loadingView != null) {
                 loadingView.findViewById(R.id.retryContainer).setOnClickListener(null);
                 loadingView.findViewById(R.id.imgRetry).setVisibility(View.GONE);

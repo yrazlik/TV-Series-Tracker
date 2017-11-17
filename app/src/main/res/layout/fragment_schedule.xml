@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scheduleList"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ListView
+        android:id="@+id/scheduleList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/list_divider_gray_with_margin"
+        android:dividerHeight="0.5dp">
 
+    </ListView>
 
-</ListView>
+    <include
+        android:id="@+id/loadingView"
+        layout="@layout/loading_view_fullscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+    </include>
+
+</RelativeLayout>

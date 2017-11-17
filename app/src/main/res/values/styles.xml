@@ -20,6 +20,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="DateShowsSubtitle">
+        <item name="android:textColor">#1c7c23</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="ShowDetailMainTitleStyle">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">18sp</item>

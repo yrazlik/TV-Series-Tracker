@@ -14,4 +14,45 @@
         android:layout_height="88dp"
         android:layout_centerVertical="true" />
 
+    <RelativeLayout
+        android:id="@+id/showtextContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/favoriteCB"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/showImage">
+
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
+            android:id="@+id/showTitle"
+            style="@style/TrendingShowsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
+            android:id="@+id/episodeTV"
+            style="@style/TrendingShowsSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showTitle"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
+            android:id="@+id/episodeDateTV"
+            style="@style/DateShowsSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/episodeTV"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+
+    </RelativeLayout>
+
 </RelativeLayout>
