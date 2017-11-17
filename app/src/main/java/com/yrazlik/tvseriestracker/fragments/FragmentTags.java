@@ -8,6 +8,6 @@ public class FragmentTags {
 
     public static String FRAGMENT_FAVORITES = "FRAGMENT_FAVORITES";
     public static String FRAGMENT_TRENDING_SHOWS = "FRAGMENT_TRENDING_SHOWS";
-    public static String FRAGMENT_NULL = "FRAGMENT_NULL";
+    public static String FRAGMENT_SCHEDULE = "FRAGMENT_SCHEDULE";
 
 }

@@ -8,6 +8,8 @@ import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.util.Utils;
 
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by yrazlik on 29.10.2017.
@@ -15,6 +17,7 @@ import java.util.Map;
 
 public class TvSeriesTrackerApp extends Application {
 
+    public static ExecutorService executorService = Executors.newFixedThreadPool(10);
     private static Context mAppContext;
     public static Map<Long, Map<Long, EpisodeDto>> watchedList; //long showId, long episodeId
     public static Map<Long, ShowDto> favoritesList;

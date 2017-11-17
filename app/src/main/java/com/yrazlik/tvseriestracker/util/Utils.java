@@ -10,6 +10,7 @@ import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 
 import java.lang.reflect.Type;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -203,5 +204,60 @@ public class Utils {
             }
             updateWatchedList(context, watchedList);
         }
+    }
+
+    public static boolean episodeAirsInUpcomingWeek(EpisodeDto episode){
+        String airDate = episode.getAirDate();
+        Calendar yesterday = Calendar.getInstance();
+        yesterday.add(Calendar.DATE, -1);
+        Calendar nextWeekToday = Calendar.getInstance();
+        nextWeekToday.add(Calendar.DATE, 7);
+        try {
+            if(airDate != null) {
+                String splitted[] = airDate.split("-");
+                if (splitted != null && splitted.length >= 2) {
+                    int year = Integer.parseInt(splitted[0]);
+                    int month = Integer.parseInt(splitted[1]);
+                    int day = Integer.parseInt(splitted[2]);
+
+                    Calendar episodeDay = Calendar.getInstance();
+                    episodeDay.set(year, month - 1, day);
+
+                    if (episodeDay.after(yesterday) && episodeDay.before(nextWeekToday)) {
+                        return true;
+                    }
+                }
+            }
+        }catch (Exception e){
+            return false;
+        }
+
+        return false;
+    }
+
+    public static boolean episodePassed(EpisodeDto episode){
+        String airDate = episode.getAirDate();
+        Calendar today = Calendar.getInstance();
+        try {
+            if(airDate != null) {
+                String splitted[] = airDate.split("-");
+                if (splitted != null && splitted.length >= 2) {
+                    int year = Integer.parseInt(splitted[0]);
+                    int month = Integer.parseInt(splitted[1]);
+                    int day = Integer.parseInt(splitted[2]);
+
+                    Calendar episodeDay = Calendar.getInstance();
+                    episodeDay.set(year, month - 1, day);
+
+                    if (episodeDay.before(today)) {
+                        return true;
+                    }
+                }
+            }
+        }catch (Exception e){
+            return true;
+        }
+
+        return false;
     }
 }

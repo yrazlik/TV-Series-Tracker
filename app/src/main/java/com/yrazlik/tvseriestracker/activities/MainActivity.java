@@ -24,6 +24,7 @@ import com.yrazlik.tvseriestracker.data.SearchResultDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.fragments.FavoritesFragment;
 import com.yrazlik.tvseriestracker.fragments.FragmentTags;
+import com.yrazlik.tvseriestracker.fragments.ScheduleFragment;
 import com.yrazlik.tvseriestracker.fragments.TrendingShowsFragment;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
@@ -156,7 +157,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     switchToTab(R.id.navigation_trending);
                     currentTabId = item.getItemId();
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_schedule:
+                    switchToTab(R.id.navigation_schedule);
                     currentTabId = item.getItemId();
                     return true;
             }
@@ -200,8 +202,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     attachTab(trendingShowsFragment, FragmentTags.FRAGMENT_TRENDING_SHOWS);
                     break;
-                case R.id.navigation_notifications:
-
+                case R.id.navigation_schedule:
+                    Fragment scheduleFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_SCHEDULE);
+                    if (scheduleFragment == null) {
+                        scheduleFragment = new ScheduleFragment();
+                    }
+                    attachTab(scheduleFragment, FragmentTags.FRAGMENT_SCHEDULE);
                     break;
             }
         } catch (IllegalStateException e) {

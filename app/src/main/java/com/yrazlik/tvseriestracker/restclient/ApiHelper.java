@@ -242,6 +242,19 @@ public class ApiHelper {
         }
     }
 
+    public List<EpisodeDto> getAllEpisodesSynchronously(final long id) {
+
+        if(id > 0) {
+            Call<List<EpisodeDto>> call = TvSeriesApiClient.getApiInterface().getAllEpisodes(id);
+            try {
+                return call.execute().body();
+            } catch (IOException e) {
+                return null;
+            }
+        }
+        return null;
+    }
+
     public void cancelAllRequests() {
         TvSeriesApiClient.cancelAllRequests();
     }
