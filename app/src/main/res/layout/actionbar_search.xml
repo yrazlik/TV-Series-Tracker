@@ -8,15 +8,18 @@
 
     <com.yrazlik.tvseriestracker.view.RobotoTextView
         android:id="@+id/titleTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        style="@style/ActionBarTitleStyle"
         android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_marginRight="5dp"
         android:layout_toLeftOf="@+id/search_icon"
-        android:singleLine="true"
-        android:text="Saved TV Shows"
-        android:visibility="visible"
-        />
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:visibility="visible" />
 
     <com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView
         android:id="@+id/search_box"
@@ -31,14 +34,14 @@
         android:inputType="textAutoComplete|textAutoCorrect"
         android:popupBackground="@android:color/white"
         android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF">
-    </com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView>
+        android:textColorHint="#FFFFFF"></com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView>
 
-    <ImageView android:id="@+id/search_icon"
+    <ImageView
+        android:id="@+id/search_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@android:drawable/ic_menu_search"/>
+        android:background="@android:drawable/ic_menu_search" />
 
 </RelativeLayout>

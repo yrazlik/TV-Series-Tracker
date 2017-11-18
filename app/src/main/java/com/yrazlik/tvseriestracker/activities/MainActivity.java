@@ -49,14 +49,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView searchIcon;
     private RobotoTextView titleTV;
 
-    private void initSearchBar() {
+    public void initSearchBar(String title) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(R.string.app_name);
+        actionBar.setTitle((title != null && title.length() > 0) ? title : getResources().getString(R.string.app_name));
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_HOME);
 
         LayoutInflater inf = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         search_bar = inf.inflate(R.layout.actionbar_search, null);
         titleTV = search_bar.findViewById(R.id.titleTV);
+        titleTV.setText((title != null && title.length() > 0) ? title : getResources().getString(R.string.app_name));
         searchIcon = search_bar.findViewById(R.id.search_icon);
         searchBox = search_bar.findViewById(R.id.search_box);
         searchBox.setVisibility(View.GONE);
@@ -232,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initSearchBar();
+        initSearchBar(getResources().getString(R.string.app_name));
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

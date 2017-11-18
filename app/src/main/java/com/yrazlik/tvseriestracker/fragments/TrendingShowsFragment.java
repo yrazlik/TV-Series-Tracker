@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.activities.MainActivity;
 import com.yrazlik.tvseriestracker.activities.ShowDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.TrendingShowsListAdapter;
 import com.yrazlik.tvseriestracker.data.ShowDto;
@@ -87,6 +88,11 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
     }
 
     @Override
+    protected int getFragmentTitle() {
+        return R.string.title_trending;
+    }
+
+    @Override
     public void onResponse(Object response) {
         dismissProgress();
         List<ShowDto> trendingShows = (List<ShowDto>) response;
@@ -101,5 +107,10 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
             Toast.makeText(getContext(), apiError.getErrorMessage(), Toast.LENGTH_SHORT).show();
         }
         showRetryView();
+    }
+
+    @Override
+    public void setActionBar() {
+        ((MainActivity) getActivity()).initSearchBar(getResources().getString(getFragmentTitle()));
     }
 }

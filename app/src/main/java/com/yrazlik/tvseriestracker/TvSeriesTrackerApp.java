@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 
 public class TvSeriesTrackerApp extends Application {
 
-    public static ExecutorService executorService = Executors.newFixedThreadPool(10);
+    public static ExecutorService executorService = Executors.newFixedThreadPool(5);
     private static Context mAppContext;
     public static Map<Long, Map<Long, EpisodeDto>> watchedList; //long showId, long episodeId
     public static Map<Long, ShowDto> favoritesList;

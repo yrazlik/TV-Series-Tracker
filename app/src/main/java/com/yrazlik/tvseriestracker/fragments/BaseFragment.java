@@ -1,15 +1,16 @@
 package com.yrazlik.tvseriestracker.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.RelativeLayout;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
@@ -20,8 +21,7 @@ import com.yrazlik.tvseriestracker.view.RobotoTextView;
 public abstract class BaseFragment extends Fragment {
 
     protected View rootView;
-
-    private int fragmentStartTransaction = -1;
+    protected boolean setActionBar = true;
 
     @Nullable
     @Override
@@ -33,8 +33,12 @@ public abstract class BaseFragment extends Fragment {
         return rootView;
     }
 
-    public void setFragmentStartTransaction(int fragmentStartTransaction) {
-        this.fragmentStartTransaction = fragmentStartTransaction;
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(setActionBar) {
+            setActionBar();
+        }
     }
 
     protected void showProgressWithWhiteBG() {
@@ -71,7 +75,7 @@ public abstract class BaseFragment extends Fragment {
     protected void showRetryView() {
         if(rootView != null) {
             try {
-                CardView loadingView = (CardView) rootView.findViewById(R.id.loadingView);
+                CardView loadingView = rootView.findViewById(R.id.loadingView);
                 if (loadingView != null) {
                     loadingView.findViewById(R.id.imgRetry).setVisibility(View.VISIBLE);
                     loadingView.findViewById(R.id.progress).setVisibility(View.GONE);
@@ -90,7 +94,23 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    protected void setDefaultActionBar(String title, String subtitle) {
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar.setTitle(getFragmentTitle());
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_USE_LOGO | ActionBar.DISPLAY_SHOW_HOME);
+        LayoutInflater inf = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        RelativeLayout searchBar = (RelativeLayout) inf.inflate(R.layout.actionbar_default, null);
+        RobotoTextView actionBarTitle = searchBar.findViewById(R.id.action_bar_title);
+        RobotoTextView actionBarSubTitle = searchBar.findViewById(R.id.action_bar_subtitle);
+        actionBarTitle.setText(title == null ? "" : title);
+        actionBarSubTitle.setText(subtitle == null ? "" : subtitle);
+        actionBarSubTitle.setVisibility(subtitle == null || subtitle.length() == 0 ? View.GONE : View.VISIBLE);
+        actionBar.setCustomView(searchBar);
+    }
+
     protected abstract void retry();
     protected abstract int getLayoutResourceId();
+    protected abstract int getFragmentTitle();
+    public abstract void setActionBar();
 
 }

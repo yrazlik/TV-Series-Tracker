@@ -44,6 +44,7 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
 
     public static EpisodesFragment newInstance(ShowDto showDto) {
         EpisodesFragment episodesFragment = new EpisodesFragment();
+        episodesFragment.setActionBar = false;
         episodesFragment.showDto = showDto;
         return episodesFragment;
     }
@@ -129,6 +130,11 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
         return R.layout.fragment_episodes;
     }
 
+    @Override
+    protected int getFragmentTitle() {
+        return R.string.episode_detail;
+    }
+
     public int getTitle() {
         return R.string.fragment_title_episodes;
     }
@@ -142,5 +148,10 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
     @Override
     public void onFail(TVSeriesApiError apiError) {
 
+    }
+
+    @Override
+    public void setActionBar() {
+        setDefaultActionBar(showDto.getName(), getResources().getString(R.string.episodes));
     }
 }

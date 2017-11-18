@@ -2,6 +2,7 @@ package com.yrazlik.tvseriestracker.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,8 +64,13 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        requestSchedule();
         scheduleList.setOnItemClickListener(this);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                requestSchedule();
+            }
+        }, 100);
     }
 
     @Override
@@ -208,5 +214,15 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
     @Override
     protected int getLayoutResourceId() {
         return R.layout.fragment_schedule;
+    }
+
+    @Override
+    protected int getFragmentTitle() {
+        return R.string.title_schedule;
+    }
+
+    @Override
+    public void setActionBar() {
+        setDefaultActionBar(getResources().getString(getFragmentTitle()), null);
     }
 }

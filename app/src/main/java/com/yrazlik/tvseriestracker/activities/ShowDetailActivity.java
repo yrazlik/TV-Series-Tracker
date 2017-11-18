@@ -10,6 +10,7 @@ import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.adapters.ShowDetailPagerAdapter;
 import com.yrazlik.tvseriestracker.data.ImageDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.fragments.BaseFragment;
 import com.yrazlik.tvseriestracker.fragments.EpisodesFragment;
 import com.yrazlik.tvseriestracker.fragments.ShowCastInfoFragment;
 import com.yrazlik.tvseriestracker.fragments.ShowSummaryInfoFragment;
@@ -59,6 +60,22 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
         showDetailPager = (ViewPager) findViewById(R.id.showDetailPager);
         showDetailPager.setOffscreenPageLimit(3);
         showIV = (ImageView) findViewById(R.id.showIV);
+        showDetailPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                BaseFragment fragment = (BaseFragment) showDetailPagerAdapter.getItem(position);
+                fragment.setActionBar();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void setupShowsPager() {
@@ -72,6 +89,7 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
         showDetailPagerAdapter.addFragment(showCastInfoFragment, getResources().getString(showCastInfoFragment.getTitle()));
         showDetailPager.setAdapter(showDetailPagerAdapter);
         tabs.setupWithViewPager(showDetailPager);
+
     }
 
     private void requestShowDetail() {
@@ -98,6 +116,7 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
         this.showData = (ShowDto) response;
         populatePage();
         dismissProgress();
+        showDetailPager.setCurrentItem(0);
     }
 
     @Override

@@ -121,4 +121,14 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     protected int getLayoutResourceId() {
         return R.layout.fragment_favorites;
     }
+
+    @Override
+    protected int getFragmentTitle() {
+        return R.string.title_favorites;
+    }
+
+    @Override
+    public void setActionBar() {
+        ((MainActivity) getActivity()).initSearchBar(getResources().getString(getFragmentTitle()));
+    }
 }

@@ -24,6 +24,7 @@ public class ShowCastInfoFragment extends BaseFragment{
 
     public static ShowCastInfoFragment newInstance(ShowDto showDto) {
         ShowCastInfoFragment showCastInfoFragment = new ShowCastInfoFragment();
+        showCastInfoFragment.setActionBar = false;
         showCastInfoFragment.showDto = showDto;
         return showCastInfoFragment;
     }
@@ -59,7 +60,17 @@ public class ShowCastInfoFragment extends BaseFragment{
         return R.layout.fragment_show_cast_info;
     }
 
+    @Override
+    protected int getFragmentTitle() {
+        return R.string.fragment_title_show_cast_info;
+    }
+
     public int getTitle() {
         return R.string.fragment_title_show_cast_info;
+    }
+
+    @Override
+    public void setActionBar() {
+        setDefaultActionBar(showDto.getName(), getResources().getString(getFragmentTitle()));
     }
 }

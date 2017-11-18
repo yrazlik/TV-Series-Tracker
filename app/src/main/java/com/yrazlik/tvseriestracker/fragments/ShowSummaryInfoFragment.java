@@ -94,7 +94,17 @@ public class ShowSummaryInfoFragment extends BaseFragment {
         return R.layout.fragment_show_summary_info;
     }
 
+    @Override
+    protected int getFragmentTitle() {
+        return R.string.fragment_title_show_summary_info;
+    }
+
     public int getTitle() {
         return R.string.fragment_title_show_summary_info;
+    }
+
+    @Override
+    public void setActionBar() {
+        setDefaultActionBar(showDto.getName(), getResources().getString(getFragmentTitle()));
     }
 }
