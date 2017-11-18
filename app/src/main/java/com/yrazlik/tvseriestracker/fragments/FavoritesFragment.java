@@ -57,24 +57,22 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         setNoFavoritesTextVisibility();
         setFavoritesAdapter();
     }
 
     private void setFavoritesAdapter() {
-        if(favoriteShowsList == null) {
+        if (favoriteShowsList == null) {
             favoriteShowsList = new ArrayList<>();
         }
         favoriteShowsList.clear();
 
-        for (Map.Entry<Long, ShowDto> entry : TvSeriesTrackerApp.favoritesList.entrySet())
-        {
+        for (Map.Entry<Long, ShowDto> entry : TvSeriesTrackerApp.favoritesList.entrySet()) {
             favoriteShowsList.add(entry.getValue());
         }
 
-        if(favoritesListAdapter == null) {
-            if(TvSeriesTrackerApp.favoritesList != null || TvSeriesTrackerApp.favoritesList.size() > 0) {
+        if (favoritesListAdapter == null) {
+            if (TvSeriesTrackerApp.favoritesList != null || TvSeriesTrackerApp.favoritesList.size() > 0) {
                 favoritesListAdapter = new FavoritesListAdapter(getContext(), R.layout.list_row_favorites, favoriteShowsList, new FavoritesListAdapter.FavoritesEmptyListener() {
                     @Override
                     public void onFavoritesEmpty() {
@@ -90,10 +88,11 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
 
     public void notifyDataSetChanged() {
         setFavoritesAdapter();
+        setNoFavoritesTextVisibility();
     }
 
     private void setNoFavoritesTextVisibility() {
-        if(TvSeriesTrackerApp.favoritesList == null || TvSeriesTrackerApp.favoritesList.size() == 0) {
+        if (TvSeriesTrackerApp.favoritesList == null || TvSeriesTrackerApp.favoritesList.size() == 0) {
             favoritesList.setVisibility(View.GONE);
             noFavoriteTV.setVisibility(View.VISIBLE);
         } else {
