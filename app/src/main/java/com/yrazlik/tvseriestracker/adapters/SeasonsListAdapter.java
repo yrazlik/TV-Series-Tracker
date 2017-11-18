@@ -10,6 +10,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
@@ -127,13 +128,8 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
 
         holder.episodeWatchedCB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
-                final boolean isChecked = holder.episodeWatchedCB.isChecked();
-                if(isChecked) {
-                    Utils.saveToWatchedList(mContext, showId, episodeDto);
-                } else {
-                    Utils.removeFromWatchedList(mContext, showId, episodeDto);
-                }
+            public void onClick(View view) {
+                handleCheckboxClick(holder, episodeDto);
             }
         });
 
@@ -144,6 +140,16 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
         }
 
         return convertView;
+    }
+
+    private void handleCheckboxClick(EpisodeHolder holder, EpisodeDto episodeDto) {
+        final boolean isChecked = holder.episodeWatchedCB.isChecked();
+        if(isChecked) {
+            Utils.saveToWatchedList(mContext, showId, episodeDto);
+        } else {
+            Utils.removeFromWatchedList(mContext, showId, episodeDto);
+        }
+        holder.episodeWatchedCB.setChecked(isChecked);
     }
 
     @Override
