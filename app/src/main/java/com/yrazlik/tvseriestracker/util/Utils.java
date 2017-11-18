@@ -15,11 +15,16 @@ import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
 import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -62,7 +67,7 @@ public class Utils {
     }
 
     public static String getEpisodesText(long season, long number) {
-        return "S" + makeTwoDigits(season) + " E" + makeTwoDigits(number);
+        return "Season " + season + ", Episode " + number;
     }
 
     public static  Map<Long, Map<Long, EpisodeDto>> getWatchedList(Context context) {
@@ -272,6 +277,21 @@ public class Utils {
             SpannableString spanString = new SpannableString(text);
             spanString.setSpan(new UnderlineSpan(), 0, spanString.length(), 0);
             tv.setText(spanString);
+        }
+    }
+
+    public static String getEpisodeDateText(String airDate) {
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = dateFormat.parse(airDate);
+            Calendar c = new GregorianCalendar();
+            c.setTime(date);
+            String monthName = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH);
+            int year = c.get(Calendar.YEAR);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            return monthName + " " + day + ", " + year;
+        } catch (Exception e) {
+            return "-";
         }
     }
 }

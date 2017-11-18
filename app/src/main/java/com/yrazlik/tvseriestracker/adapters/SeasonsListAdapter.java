@@ -122,7 +122,8 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
 
         holder.episodeTitleTV.setText(episodeDto.getName());
         holder.episodeCountTV.setText(Utils.getEpisodesText(episodeDto.getSeason(), episodeDto.getNumber()));
-        holder.episodeDateTV.setText(episodeDto.getAirStamp());
+
+        holder.episodeDateTV.setText(Utils.getEpisodeDateText(episodeDto.getAirDate()));
 
         holder.episodeWatchedCB.setOnClickListener(new View.OnClickListener() {
             @Override

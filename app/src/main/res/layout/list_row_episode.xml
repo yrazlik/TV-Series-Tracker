@@ -39,28 +39,28 @@
                 android:ellipsize="end"
                 android:maxLines="1" />
 
-            <com.yrazlik.tvseriestracker.view.RobotoTextView
-                android:id="@+id/episodeDateTV"
-                style="@style/EpisodeDateTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/episodeCountTV"
-                android:ellipsize="end"
-                android:maxLines="1" />
-
         </RelativeLayout>
+
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
+            android:id="@+id/episodeDateTV"
+            style="@style/EpisodeDateTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/episodeDetailsContainer"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="1" />
     </RelativeLayout>
 
     <CheckBox
         android:id="@+id/episodeWatchedCB"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:button="@null"
-        android:focusable="false"
-        android:padding="5dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/selector_cb"/>
+        android:background="@drawable/selector_cb"
+        android:button="@null"
+        android:focusable="false"
+        android:padding="10dp" />
 
 </RelativeLayout>

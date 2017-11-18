@@ -61,8 +61,9 @@
     </style>
 
     <style name="EpisodeDateTextStyle">
-        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">italic</item>
     </style>
 
     <style name="ProgressBarGray">
