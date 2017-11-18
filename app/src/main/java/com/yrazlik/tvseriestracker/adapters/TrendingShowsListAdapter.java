@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.yrazlik.tvseriestracker.R;
@@ -24,12 +23,10 @@ import java.util.List;
 public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
 
     private Context mContext;
-    private List<ShowDto> shows;
 
     public TrendingShowsListAdapter(Context context, int resource, List<ShowDto> shows) {
         super(context, resource, shows);
         this.mContext = context;
-        this.shows = shows;
     }
 
     @Override

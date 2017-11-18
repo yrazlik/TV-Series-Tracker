@@ -18,7 +18,6 @@ import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
 import com.yrazlik.tvseriestracker.util.Utils;
-
 import java.util.List;
 
 import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_ID;
@@ -78,21 +77,6 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
     }
 
     @Override
-    protected void retry() {
-        requestTrendingShows();
-    }
-
-    @Override
-    protected int getLayoutResourceId() {
-        return R.layout.fragment_trending_shows;
-    }
-
-    @Override
-    protected int getFragmentTitle() {
-        return R.string.title_trending;
-    }
-
-    @Override
     public void onResponse(Object response) {
         dismissProgress();
         List<ShowDto> trendingShows = (List<ShowDto>) response;
@@ -107,6 +91,21 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
             Toast.makeText(getContext(), apiError.getErrorMessage(), Toast.LENGTH_SHORT).show();
         }
         showRetryView();
+    }
+
+    @Override
+    protected void retry() {
+        requestTrendingShows();
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.fragment_trending_shows;
+    }
+
+    @Override
+    protected int getFragmentTitle() {
+        return R.string.title_trending;
     }
 
     @Override
