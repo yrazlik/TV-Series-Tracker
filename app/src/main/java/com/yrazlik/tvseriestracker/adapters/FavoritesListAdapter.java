@@ -3,26 +3,20 @@ package com.yrazlik.tvseriestracker.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.util.PicassoImageLoader;
 import com.yrazlik.tvseriestracker.util.Utils;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
-
 import java.util.List;
-
-import okhttp3.internal.Util;
 
 /**
  * Created by yrazlik on 12.11.2017.

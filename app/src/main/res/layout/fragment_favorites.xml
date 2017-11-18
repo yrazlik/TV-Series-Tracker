@@ -13,18 +13,36 @@
 
     </ListView>
 
-    <com.yrazlik.tvseriestracker.view.RobotoTextView
-        android:id="@+id/noFavoriteTV"
+    <RelativeLayout
+        android:id="@+id/noShowsRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:gravity="center"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/no_favorite_show"
-        android:textColor="@color/colorSecondaryText"
-        android:textSize="18sp">
+        android:visibility="visible">
 
-    </com.yrazlik.tvseriestracker.view.RobotoTextView>
+        <ImageView
+            android:id="@+id/tvIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_tv" />
+
+        <com.yrazlik.tvseriestracker.view.RobotoTextView
+            android:id="@+id/noFavoriteTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvIV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/no_favorite_show"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="18sp">
+
+        </com.yrazlik.tvseriestracker.view.RobotoTextView>
+
+    </RelativeLayout>
 
 </RelativeLayout>

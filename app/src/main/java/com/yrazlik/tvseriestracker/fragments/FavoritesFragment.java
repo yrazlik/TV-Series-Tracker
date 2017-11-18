@@ -8,15 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
+import android.widget.RelativeLayout;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
 import com.yrazlik.tvseriestracker.activities.MainActivity;
 import com.yrazlik.tvseriestracker.activities.ShowDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.FavoritesListAdapter;
 import com.yrazlik.tvseriestracker.data.ShowDto;
-import com.yrazlik.tvseriestracker.view.RobotoTextView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +28,10 @@ import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SH
 
 public class FavoritesFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
+    private RelativeLayout noShowsRL;
     private ListView favoritesList;
     private FavoritesListAdapter favoritesListAdapter;
-    private RobotoTextView noFavoriteTV;
-    private List<ShowDto> favoriteShowsList;
+    private List<ShowDto> favoriteShowsList = new ArrayList<>();
 
     public static FavoritesFragment newInstance() {
         FavoritesFragment favoritesFragment = new FavoritesFragment();
@@ -49,8 +47,8 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     }
 
     private void initUI() {
+        noShowsRL = rootView.findViewById(R.id.noShowsRL);
         favoritesList = rootView.findViewById(R.id.favoritesList);
-        noFavoriteTV = rootView.findViewById(R.id.noFavoriteTV);
         favoritesList.setOnItemClickListener(this);
     }
 
@@ -62,9 +60,6 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     }
 
     private void setFavoritesAdapter() {
-        if (favoriteShowsList == null) {
-            favoriteShowsList = new ArrayList<>();
-        }
         favoriteShowsList.clear();
 
         for (Map.Entry<Long, ShowDto> entry : TvSeriesTrackerApp.favoritesList.entrySet()) {
@@ -94,10 +89,10 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     private void setNoFavoritesTextVisibility() {
         if (TvSeriesTrackerApp.favoritesList == null || TvSeriesTrackerApp.favoritesList.size() == 0) {
             favoritesList.setVisibility(View.GONE);
-            noFavoriteTV.setVisibility(View.VISIBLE);
+            noShowsRL.setVisibility(View.VISIBLE);
         } else {
             favoritesList.setVisibility(View.VISIBLE);
-            noFavoriteTV.setVisibility(View.GONE);
+            noShowsRL.setVisibility(View.GONE);
         }
     }
 
