@@ -26,4 +26,5 @@
     <string name="toolbar_title_episode_detail">Episode Detail</string>
     <string name="toolbar_title_show_detail">Show Detail</string>
     <string name="imdb_title_url">http://www.imdb.com/title/</string>
+    <string name="no_upcoming_episodes">There seems to be no new episodes in the upcoming week for the shows in your favorites list.</string>
 </resources>

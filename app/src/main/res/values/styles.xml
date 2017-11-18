@@ -66,6 +66,11 @@
         <item name="android:textStyle">italic</item>
     </style>
 
+    <style name="NoEpisodesTextStyle">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="ProgressBarGray">
         <item name="android:indeterminateOnly">true</item>
         <item name="android:indeterminateDrawable">@drawable/loading_progress_gray</item>

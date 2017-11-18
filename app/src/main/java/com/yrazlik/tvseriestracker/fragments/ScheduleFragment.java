@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
@@ -19,6 +20,7 @@ import com.yrazlik.tvseriestracker.data.ScheduleTask;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.data.ShowSchedule;
 import com.yrazlik.tvseriestracker.util.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -41,12 +43,13 @@ import static com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity.EXTRA
  * Created by yrazlik on 17.11.2017.
  */
 
-public class ScheduleFragment extends BaseFragment implements AdapterView.OnItemClickListener{
+public class ScheduleFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
     private List<ShowSchedule> schedule = new ArrayList<>();
     private ScheduleListAdapter scheduleListAdapter;
 
     private ListView scheduleList;
+    private RelativeLayout noScheduleRL;
 
     @Nullable
     @Override
@@ -59,6 +62,7 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
     private void initUI() {
         showProgressWithWhiteBG();
         scheduleList = rootView.findViewById(R.id.scheduleList);
+        noScheduleRL = rootView.findViewById(R.id.noScheduleRL);
     }
 
     @Override
@@ -93,19 +97,17 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
 
     private void requestSchedule() {
         schedule = new ArrayList<>();
-     //   notifyDataSetChanged();
         showProgressWithWhiteBG();
         ExecutorService executorService = TvSeriesTrackerApp.executorService;
         List<ScheduleTask> taskList = new ArrayList<>();
         List<Future<List<EpisodeDto>>> invokedList = new ArrayList<>();
         List<List<EpisodeDto>> showScheduleList = new ArrayList<>();
 
-        for (Map.Entry<Long, ShowDto> show : TvSeriesTrackerApp.favoritesList.entrySet())
-        {
+        for (Map.Entry<Long, ShowDto> show : TvSeriesTrackerApp.favoritesList.entrySet()) {
             taskList.add(new ScheduleTask(show.getKey(), getContext()));
         }
 
-        if(taskList != null && taskList.size() > 0) {
+        if (taskList != null && taskList.size() > 0) {
             try {
                 invokedList = executorService.invokeAll(taskList, 3000, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
@@ -115,8 +117,8 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
             }
         }
 
-        if(invokedList != null && invokedList.size() > 0) {
-            for(int i = 0; i < invokedList.size(); i++) {
+        if (invokedList != null && invokedList.size() > 0) {
+            for (int i = 0; i < invokedList.size(); i++) {
                 try {
                     List<EpisodeDto> episodes = invokedList.get(i).get();
                     showScheduleList.add(episodes);
@@ -130,9 +132,9 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
             }
         }
 
-        if(showScheduleList != null && showScheduleList.size() > 0) {
-            for(int i = 0; i < showScheduleList.size(); i++) {
-                if(showScheduleList != null) {
+        if (showScheduleList != null && showScheduleList.size() > 0) {
+            for (int i = 0; i < showScheduleList.size(); i++) {
+                if (showScheduleList != null) {
                     List<EpisodeDto> episodes = showScheduleList.get(i);
                     if (episodes != null && episodes.size() > 0) {
                         for (int j = episodes.size() - 1; j >= 0; j--) {
@@ -153,57 +155,20 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
 
         dismissProgress();
         setScheduleListAdapter();
-
-      /*  schedule.clear();
-        notifyDataSetChanged();
-        List<io.reactivex.Observable> requests = new ArrayList<>();
-        TvSeriesApiInterface tvSeriesApiInterface = TvSeriesApiClient.getClient().create(TvSeriesApiInterface.class);
-
-        for (Map.Entry<Long, ShowDto> show : TvSeriesTrackerApp.favoritesList.entrySet())
-        {
-            long showId = show.getKey();
-            requests.add((io.reactivex.Observable) tvSeriesApiInterface.getAllEpisodes(showId));
-            ApiHelper.getInstance(getContext()).getAllEpisodes(showId, new ApiResponseListener() {
-                @Override
-                public void onResponse(Object response) {
-                    List<EpisodeDto> episodes = (List<EpisodeDto>) response;
-                    if(episodes != null && episodes.size() > 0) {
-                        for(int i = episodes.size() - 1; i >= 0; i--) {
-                            EpisodeDto episode = episodes.get(i);
-                            if(Utils.episodePassed(episode)) {
-                                break;
-                            }
-                            if(Utils.episodeAirsInUpcomingWeek(episode)) {
-                                schedule.add(episode);
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                @Override
-                public void onFail(TVSeriesApiError apiError) {
-                    dismissProgress();
-                }
-            });
-        }
-        dismissProgress();
-        setScheduleListAdapter();*/
-    }
-
-    private void notifyDataSetChanged() {
-        if(scheduleListAdapter != null) {
-            notifyDataSetChanged();
-        }
+        setNoScheduleRLVisibility();
     }
 
     private void setScheduleListAdapter() {
-     //   if(scheduleListAdapter == null) {
-            scheduleListAdapter = new ScheduleListAdapter(getContext(), R.layout.list_row_schedule, schedule);
-            scheduleList.setAdapter(scheduleListAdapter);
-       // } else {
-         //   scheduleListAdapter.notifyDataSetChanged();
-       // }
+        scheduleListAdapter = new ScheduleListAdapter(getContext(), R.layout.list_row_schedule, schedule);
+        scheduleList.setAdapter(scheduleListAdapter);
+    }
+
+    private void setNoScheduleRLVisibility() {
+        if (schedule == null || schedule.size() == 0) {
+            noScheduleRL.setVisibility(View.VISIBLE);
+        } else {
+            noScheduleRL.setVisibility(View.GONE);
+        }
     }
 
     @Override
