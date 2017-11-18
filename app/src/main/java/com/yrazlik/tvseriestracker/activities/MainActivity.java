@@ -1,6 +1,7 @@
 package com.yrazlik.tvseriestracker.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -37,7 +38,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ClearableAutoCompleteTextView.OnClearListener, ApiResponseListener, AdapterView.OnItemClickListener{
 
     public interface OnFavoritesChangedListener {
-        void onFavoritesChanged(ShowDto show);
+        void onFavoritesChanged();
     }
 
     private int currentTabId;
@@ -253,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     OnFavoritesChangedListener favoritesChangedListener = new OnFavoritesChangedListener() {
         @Override
-        public void onFavoritesChanged(ShowDto show) {
+        public void onFavoritesChanged() {
             Fragment favoritesFragment = getSupportFragmentManager().findFragmentByTag(FragmentTags.FRAGMENT_FAVORITES);
             if (favoritesFragment != null && favoritesFragment instanceof FavoritesFragment) {
                 ((FavoritesFragment)favoritesFragment).notifyDataSetChanged();
@@ -265,6 +266,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        favoritesChangedListener.onFavoritesChanged();
+    }
 
     @Override
     public void onResponse(Object response) {

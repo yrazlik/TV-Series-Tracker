@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/castOverviewRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <ImageView
+            android:id="@+id/castIV"
+            android:layout_width="65dp"
+            android:layout_height="89dp"
+            android:layout_centerVertical="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/castIV"
+            android:padding="10dp">
+
+            <com.yrazlik.tvseriestracker.view.RobotoTextView
+                android:id="@+id/castName"
+                style="@style/CastNameStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/castShowsLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/castOverviewRL"
+        android:divider="@drawable/list_divider_gray_with_margin"
+        android:dividerHeight="0.5dp">
+
+
+    </ListView>
+
+</RelativeLayout>

@@ -35,11 +35,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void startActivity(Context currentActivity, Class nextActivity) {
-        Intent i = new Intent(currentActivity, nextActivity);
-        startActivity(i);
-    }
-
     protected void showProgressWithWhiteBG() {
         CardView loadingView = (CardView) findViewById(R.id.loadingView);
         if (loadingView != null) {

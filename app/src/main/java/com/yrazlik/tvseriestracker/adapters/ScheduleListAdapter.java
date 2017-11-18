@@ -8,14 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import com.yrazlik.tvseriestracker.R;
-import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.ShowSchedule;
 import com.yrazlik.tvseriestracker.util.PicassoImageLoader;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -59,7 +56,7 @@ public class ScheduleListAdapter extends ArrayAdapter<ShowSchedule> {
 
         holder.showTitle.setText(schedule.getShow().getName());
         holder.episodeTV.setText(mContext.getResources().getString(R.string.season) + " " + schedule.getEpisode().getSeason()
-            + ", " + mContext.getResources().getString(R.string.episode) + schedule.getEpisode().getNumber());
+            + ", " + mContext.getResources().getString(R.string.episode) + " " + schedule.getEpisode().getNumber());
 
         holder.episodeDateTV.setText(getDateText(schedule));
         return convertView;

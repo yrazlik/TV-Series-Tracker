@@ -2,6 +2,7 @@ package com.yrazlik.tvseriestracker.restclient;
 
 import android.content.Context;
 
+import com.yrazlik.tvseriestracker.data.CastCreditDto;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.SearchResultDto;
 import com.yrazlik.tvseriestracker.data.SeasonDto;
@@ -253,6 +254,23 @@ public class ApiHelper {
             }
         }
         return null;
+    }
+
+    public void getCastDetail(final long id, final ApiResponseListener responseListener) {
+        if(id > 0) {
+            Call<List<CastCreditDto>> call = TvSeriesApiClient.getApiInterface().getCastDetail(id, "show");
+            call.enqueue(new Callback<List<CastCreditDto>>() {
+                @Override
+                public void onResponse(Call<List<CastCreditDto>> call, Response<List<CastCreditDto>> response) {
+                    onSuccessResponse(new TvSeriesTrackerResponseHandler(responseListener), response);
+                }
+
+                @Override
+                public void onFailure(Call<List<CastCreditDto>> call, Throwable t) {
+                    onFailResponse(new TvSeriesTrackerResponseHandler(responseListener), t);
+                }
+            });
+        }
     }
 
     public void cancelAllRequests() {

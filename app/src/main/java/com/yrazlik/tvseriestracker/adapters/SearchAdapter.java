@@ -109,7 +109,7 @@ public class SearchAdapter extends ArrayAdapter<SearchResultDto> {
                             Utils.removeFromFavoritesList(mContext, show);
                         }
                         if(favoritesChangedListener != null) {
-                            favoritesChangedListener.onFavoritesChanged(show);
+                            favoritesChangedListener.onFavoritesChanged();
                         }
                     }
                 });

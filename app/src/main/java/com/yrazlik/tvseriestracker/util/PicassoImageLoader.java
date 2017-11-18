@@ -46,7 +46,7 @@ public class PicassoImageLoader implements IImageLoader{
 
     @Override
     public void loadImage(String url, ImageView iv) {
-        if(url.isEmpty()) {
+        if(url == null || url.isEmpty()) {
             iv.setImageResource(R.drawable.placeholder);
         } else {
             Picasso.with(mContext).load(url).placeholder(placeholderResId).error(errorResId).into(iv);
@@ -55,7 +55,7 @@ public class PicassoImageLoader implements IImageLoader{
 
     @Override
     public void loadCircleImage(String url, ImageView iv) {
-        if(url.isEmpty()) {
+        if(url == null || url.isEmpty()) {
             Picasso.with(mContext).load(url).placeholder(placeholderResId).error(errorResId).transform(new CircleTransform()).into(iv);
         } else {
             Picasso.with(mContext).load(url).placeholder(placeholderResId).error(errorResId).into(iv);

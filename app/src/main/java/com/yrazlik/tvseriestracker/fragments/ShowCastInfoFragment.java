@@ -1,21 +1,25 @@
 package com.yrazlik.tvseriestracker.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.activities.CastDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.CastInfoListAdapter;
+import com.yrazlik.tvseriestracker.data.CastDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 
 /**
  * Created by yrazlik on 11.11.2017.
  */
 
-public class ShowCastInfoFragment extends BaseFragment{
+public class ShowCastInfoFragment extends BaseFragment implements AdapterView.OnItemClickListener{
 
     private ListViewCompat castLV;
     private CastInfoListAdapter castInfoListAdapter;
@@ -39,6 +43,20 @@ public class ShowCastInfoFragment extends BaseFragment{
 
     private void initUI() {
         castLV = rootView.findViewById(R.id.castLV);
+        castLV.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        CastDto cast = castInfoListAdapter.getItem(position);
+        if(cast.getPerson() != null) {
+            Intent i = new Intent(getActivity(), CastDetailActivity.class);
+            i.putExtra(CastDetailActivity.EXTRA_CAST_NAME, cast.getPerson().getName());
+            i.putExtra(CastDetailActivity.EXTRA_CAST_ID, cast.getPerson().getId());
+            i.putExtra(CastDetailActivity.EXTRA_CAST_IMG, cast.getPerson().getImage() != null ? cast.getPerson().getImage().getMedium() : null);
+            startActivity(i);
+            getActivity().overridePendingTransition(R.anim.slide_bottom_in, R.anim.fadeout);
+        }
     }
 
     @Override

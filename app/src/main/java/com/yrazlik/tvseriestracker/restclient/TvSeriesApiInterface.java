@@ -1,5 +1,6 @@
 package com.yrazlik.tvseriestracker.restclient;
 
+import com.yrazlik.tvseriestracker.data.CastCreditDto;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.SearchResultDto;
 import com.yrazlik.tvseriestracker.data.SeasonDto;
@@ -44,5 +45,8 @@ public interface TvSeriesApiInterface {
 
     @GET("shows/{id}/seasons")
     Call<List<SeasonDto>> getSeasons(@Path("id") long id);
+
+    @GET("people/{id}/castcredits")
+    Call<List<CastCreditDto>> getCastDetail(@Path("id") long id, @Query("embed") String show);
 
 }
