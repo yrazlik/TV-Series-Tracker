@@ -2,12 +2,17 @@ package com.yrazlik.tvseriestracker.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
 import java.lang.reflect.Type;
 import java.util.Calendar;
@@ -259,5 +264,14 @@ public class Utils {
         }
 
         return false;
+    }
+
+    public static void underline(RobotoTextView tv) {
+        if(tv != null && tv.getText() != null) {
+            String text = tv.getText().toString();
+            SpannableString spanString = new SpannableString(text);
+            spanString.setSpan(new UnderlineSpan(), 0, spanString.length(), 0);
+            tv.setText(spanString);
+        }
     }
 }

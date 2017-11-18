@@ -7,6 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:id="@+id/showDetailTitleContainer"
             android:layout_width="match_parent"
@@ -179,6 +180,31 @@
                     android:ellipsize="end"
                     android:maxLines="1" />
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/imdbRL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/statusRL">
+
+                <com.yrazlik.tvseriestracker.view.RobotoTextView
+                    android:id="@+id/imdbTitle"
+                    style="@style/ShowDetailTitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IMDB:" />
+
+                <com.yrazlik.tvseriestracker.view.RobotoTextView
+                    android:id="@+id/imdbTV"
+                    style="@style/ShowDetailTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/imdbTitle"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+            </RelativeLayout>
+
         </RelativeLayout>
 
         <com.yrazlik.tvseriestracker.view.RobotoTextView

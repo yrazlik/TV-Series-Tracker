@@ -1,16 +1,21 @@
 package com.yrazlik.tvseriestracker.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.data.ExternalsDto;
 import com.yrazlik.tvseriestracker.data.NetworkDto;
 import com.yrazlik.tvseriestracker.data.RatingDto;
 import com.yrazlik.tvseriestracker.data.ScheduleDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.util.Utils;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
 import java.util.List;
@@ -21,11 +26,10 @@ import java.util.List;
 
 public class ShowSummaryInfoFragment extends BaseFragment {
 
-    private RobotoTextView showTitle, airsOnTV, scheduledTV, premieredTV, genresTV, statusTV, ratingTV, showSummaryTV;
+    private RelativeLayout imdbRL;
+    private RobotoTextView showTitle, airsOnTV, scheduledTV, premieredTV, genresTV, statusTV, ratingTV, showSummaryTV, imdbTV;
 
     private ShowDto showDto;
-
-    public ShowSummaryInfoFragment() {}
 
     public static ShowSummaryInfoFragment newInstance(ShowDto showDto) {
         ShowSummaryInfoFragment showSummaryInfoFragment = new ShowSummaryInfoFragment();
@@ -50,6 +54,8 @@ public class ShowSummaryInfoFragment extends BaseFragment {
         statusTV = rootView.findViewById(R.id.statusTV);
         ratingTV = rootView.findViewById(R.id.ratingTV);
         showSummaryTV = rootView.findViewById(R.id.showSummaryTV);
+        imdbRL = rootView.findViewById(R.id.imdbRL);
+        imdbTV = rootView.findViewById(R.id.imdbTV);
 
         if(showDto != null) {
             RatingDto ratingDto = showDto.getRating();
@@ -58,6 +64,7 @@ public class ShowSummaryInfoFragment extends BaseFragment {
             String premiered = showDto.getPremiered();
             String genres = showDto.getGenresText();
             String status = showDto.getStatus();
+            final ExternalsDto externals = showDto.getExternals();
 
             showTitle.setText(showDto.getName());
             ratingTV.setText(ratingDto != null ? ratingDto.getAverage() + "" : "-");
@@ -71,7 +78,9 @@ public class ShowSummaryInfoFragment extends BaseFragment {
                     for(String day : days) {
                         scheduledText += day + ",";
                     }
-                    scheduledText += " at " + schedule.getTime();
+                    if(schedule.getTime() != null && schedule.getTime().length() > 0) {
+                        scheduledText += " at " + schedule.getTime();
+                    }
                 }
             }
 
@@ -81,6 +90,20 @@ public class ShowSummaryInfoFragment extends BaseFragment {
             statusTV.setText(status != null && !status.equalsIgnoreCase("") ? status : "-");
             showSummaryTV.setText(showDto.getSummary() != null ? android.text.Html.fromHtml(showDto.getSummary()).toString() : "...");
 
+            if(externals != null && externals.getImdb() != null && externals.getImdb().length() > 0) {
+                imdbTV.setText(externals.getImdb());
+                Utils.underline(imdbTV);
+                imdbRL.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(getResources().getString(R.string.imdb_title_url) + externals.getImdb()));
+                        startActivity(i);
+                    }
+                });
+            } else {
+                imdbTV.setText("-");
+            }
         }
     }
 

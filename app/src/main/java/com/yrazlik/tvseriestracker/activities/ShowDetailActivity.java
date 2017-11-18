@@ -18,13 +18,12 @@ import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
 import com.yrazlik.tvseriestracker.util.PicassoImageLoader;
-import com.yrazlik.tvseriestracker.view.PagerSlidingTabStrip;
 
 /**
  * Created by yrazlik on 11.11.2017.
  */
 
-public class ShowDetailActivity extends BaseActivity implements ApiResponseListener{
+public class ShowDetailActivity extends BaseActivity implements ApiResponseListener {
 
     public static final String EXTRA_SHOW_ID = "extraShowId";
     public static final String EXTRA_SHOW_NAME = "extraShowName";
@@ -44,7 +43,7 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
         getExtras();
         super.onCreate(savedInstanceState);
         enterAnim = R.anim.fadein;
-        exitAnim =  R.anim.slide_top_out;
+        exitAnim = R.anim.slide_top_out;
         showProgressWithWhiteBG();
         initUI();
         requestShowDetail();
@@ -98,9 +97,9 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
 
     private void populatePage() {
         setupShowsPager();
-        if(showData != null) {
+        if (showData != null) {
             ImageDto showImage = showData.getImage();
-            if(showImage != null) {
+            if (showImage != null) {
                 PicassoImageLoader.getInstance(this).loadImage(showImage.getOriginal(), showIV);
             }
         }
