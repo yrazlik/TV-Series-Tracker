@@ -1,5 +1,6 @@
 package com.yrazlik.tvseriestracker.activities;
 
+import android.app.job.JobInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 
+import com.firebase.jobdispatcher.Constraint;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
+import com.yrazlik.tvseriestracker.BackgroundJobService;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.adapters.SearchAdapter;
 import com.yrazlik.tvseriestracker.data.SearchResultDto;
@@ -35,7 +44,10 @@ import com.yrazlik.tvseriestracker.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.yrazlik.tvseriestracker.BackgroundJobService.BG_JOB_SERVICE_TAG;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ClearableAutoCompleteTextView.OnClearListener, ApiResponseListener, AdapterView.OnItemClickListener{
+
 
     public interface OnFavoritesChangedListener {
         void onFavoritesChanged();
@@ -239,17 +251,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
-
-      //  ApiHelper.getInstance(this).searchShows("hello", this);
-      //  ApiHelper.getInstance(this).searchShow("friends", this);
-      //  ApiHelper.getInstance(this).searchShowById(82, this);
-      //  ApiHelper.getInstance(this).searchShowByIdWithCast(82, this);
-      //  ApiHelper.getInstance(this).getAllEpisodes(1, this);
-      //  ApiHelper.getInstance(this).getEpisode(1, 1, 1, this);
-      //  ApiHelper.getInstance(this).getSeasons(1, this);
-      //  ApiHelper.getInstance(this).getSeasonEpisodes(1, this);
+        startBackgroundJobService();
 
 
+    }
+
+    private void startBackgroundJobService() {
+        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
+
+        Job myJob = dispatcher.newJobBuilder()
+                // the JobService that will be called
+                .setService(BackgroundJobService.class)
+                // uniquely identifies the job
+                .setTag(BG_JOB_SERVICE_TAG)
+                // oreschedule
+                .setRecurring(true)
+                // don't persist past a device reboot
+                .setLifetime(Lifetime.FOREVER)
+                // start between 0 and 60 seconds from now
+                .setTrigger(Trigger.executionWindow(0, 60))
+                // overwrite an existing job with the same tag
+                .setReplaceCurrent(true)
+                // retry with exponential backoff
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                // run jov while it is connected to network
+                .setConstraints(Constraint.ON_ANY_NETWORK)
+                .build();
+
+        dispatcher.mustSchedule(myJob);
     }
 
     OnFavoritesChangedListener favoritesChangedListener = new OnFavoritesChangedListener() {

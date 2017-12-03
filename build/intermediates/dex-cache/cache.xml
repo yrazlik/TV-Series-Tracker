@@ -21,6 +21,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/f80b257cce9cc7c92a3b1e3fc60ca0911c0eadeb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e176fd06c2ad5b50a2f5cb4de6000a83a7cb48f5">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_da8c798d24eda8d177381201061dce1e48a7dc8b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yrazlik/.android/build-cache/802b17ea3fd872c2e6e00306c2bf56943ba8b332/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="5dc164eb87171afdb749a9ec0b0a7f5e5aa0a4ac">
+        <dex dex="/Users/yrazlik/Projects/android/TVSeriesTracker/app/build/intermediates/pre-dexed/debug/classes_7b6d5c78fb4dd44700a3b01529141423d0cbee91.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/yrazlik/.android/build-cache/909bc34b26bcea10014cffed642538ac430360ba/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
