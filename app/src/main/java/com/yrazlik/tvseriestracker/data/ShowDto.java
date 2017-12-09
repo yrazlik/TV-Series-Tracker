@@ -23,6 +23,8 @@ public class ShowDto {
     private long runtime;
     private String premiered;
     private String officialsite;
+
+
     private ScheduleDto schedule;
     private RatingDto rating;
     private long weight;
