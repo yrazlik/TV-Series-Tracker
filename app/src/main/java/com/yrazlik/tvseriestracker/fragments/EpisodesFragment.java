@@ -12,6 +12,7 @@ import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.activities.EpisodeDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.SeasonsListAdapter;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
+import com.yrazlik.tvseriestracker.data.SeasonWithAd;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
@@ -77,9 +78,11 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
         if(episodes != null && episodes.size() > 0) {
             long firstSeasonNumber = episodes.get(0).getSeason();
             long lastSeasonNumber = episodes.get(episodes.size() - 1).getSeason();
-            List<Long> seasons = new ArrayList<>();
+            List<SeasonWithAd> seasons = new ArrayList<>();
             for(long i = firstSeasonNumber; i <= lastSeasonNumber; i++) {
-                seasons.add(i);
+                SeasonWithAd seasonWithAd = new SeasonWithAd(false);
+                seasonWithAd.setId(i);
+                seasons.add(seasonWithAd);
             }
 
             Map<Long, List<EpisodeDto>> episodesMap = new HashMap<>();
@@ -87,7 +90,7 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
 
             for(int i = 0; i < seasons.size(); i++) {
                 List<EpisodeDto> episodeDtos = new ArrayList<>();
-                long season = seasons.get(i);
+                long season = seasons.get(i).getId();
                 for (int j = 0; j < episodes.size(); j++) {
                     if(season == episodes.get(j).getSeason()) {
                         episodeDtos.add(episodes.get(j));
@@ -95,6 +98,8 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
                 }
                 episodesMap.put(season, episodeDtos);
             }
+
+            seasons.add(new SeasonWithAd(true));
 
             SeasonsListAdapter seasonsListAdapter = new SeasonsListAdapter(getContext(), seasons, episodesMap, showDto.getId());
             episodesLV.setAdapter(seasonsListAdapter);

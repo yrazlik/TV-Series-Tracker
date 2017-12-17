@@ -12,8 +12,11 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.ads.AdView;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
+import com.yrazlik.tvseriestracker.data.SeasonWithAd;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.util.Utils;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
@@ -27,11 +30,11 @@ import java.util.Map;
 public class SeasonsListAdapter extends BaseExpandableListAdapter{
 
     private Context mContext;
-    private List<Long> seasons;
+    private List<SeasonWithAd> seasons;
     private Map<Long, List<EpisodeDto>> episodes;
     private long showId;
 
-    public SeasonsListAdapter(Context context, List<Long> seasons,
+    public SeasonsListAdapter(Context context, List<SeasonWithAd> seasons,
                                  Map<Long, List<EpisodeDto>> episodes, long showId) {
         this.mContext = context;
         this.seasons = seasons;
@@ -46,7 +49,11 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.episodes.get(this.seasons.get(groupPosition)).size();
+        try {
+            return this.episodes.get((this.seasons.get(groupPosition).getId())).size();
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     @Override
@@ -56,7 +63,7 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this.episodes.get(this.seasons.get(groupPosition)).get(childPosition);
+        return this.episodes.get(this.seasons.get(groupPosition).getId()).get(childPosition);
     }
 
     @Override
@@ -78,12 +85,13 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup viewGroup) {
 
         HeaderHolder holder;
-        String headerTitle = mContext.getResources().getString (R.string.season) + " " + getGroup(groupPosition);
+        String headerTitle = mContext.getResources().getString (R.string.season) + " " + ((SeasonWithAd)getGroup(groupPosition)).getId();
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_row_seasons_header, null);
             holder = new HeaderHolder();
+            holder.adView = convertView.findViewById(R.id.bannerAdView);
             holder.seasonTV = convertView.findViewById(R.id.seasonTV);
             holder.arrowIV = convertView.findViewById(R.id.arrowIV);
             convertView.setTag(holder);
@@ -91,13 +99,23 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
             holder = (HeaderHolder) convertView.getTag();
         }
 
-        if (isExpanded) {
-            holder.arrowIV.setImageResource(R.drawable.arrow_up_black_thin);
-        } else {
-            holder.arrowIV.setImageResource(R.drawable.arrow_down_black_thin);
-        }
+        if(!((SeasonWithAd)getGroup(groupPosition)).isAd()) {
+            holder.adView.setVisibility(View.GONE);
+            holder.arrowIV.setVisibility(View.VISIBLE);
+            holder.seasonTV.setVisibility(View.VISIBLE);
+            if (isExpanded) {
+                holder.arrowIV.setImageResource(R.drawable.arrow_up_black_thin);
+            } else {
+                holder.arrowIV.setImageResource(R.drawable.arrow_down_black_thin);
+            }
 
-        holder.seasonTV.setText(headerTitle);
+            holder.seasonTV.setText(headerTitle);
+        } else {
+            holder.adView.setVisibility(View.VISIBLE);
+            holder.arrowIV.setVisibility(View.GONE);
+            holder.seasonTV.setVisibility(View.GONE);
+            AdUtils.loadBannerAd(holder.adView);
+        }
 
         return convertView;
     }
@@ -158,6 +176,7 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
     }
 
     static class HeaderHolder {
+        private AdView adView;
         public RobotoTextView seasonTV;
         private ImageView arrowIV;
     }
