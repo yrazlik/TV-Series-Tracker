@@ -3,7 +3,10 @@ package com.yrazlik.tvseriestracker.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
+
+import com.google.android.gms.ads.AdView;
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.util.PicassoImageLoader;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 

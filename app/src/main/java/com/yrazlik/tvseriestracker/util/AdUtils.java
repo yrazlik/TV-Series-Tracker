@@ -39,6 +39,13 @@ public class AdUtils {
         }
     }
 
+    public static void loadBigBannerAd(AdView adView) {
+        if(ADS_ENABLED) {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        }
+    }
+
     public static void initInterstitialAds(Context context) {
         if(ADS_ENABLED) {
             mInterstitialAd = new InterstitialAd(context);

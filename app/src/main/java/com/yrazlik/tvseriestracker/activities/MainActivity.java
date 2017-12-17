@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         void onFavoritesChanged();
     }
 
-    private AdView mAdView;
-
     private int currentTabId;
 
     private List<SearchResultDto> searchResults = new ArrayList<>();
@@ -253,8 +251,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initAds() {
         AdUtils.initAds(this);
-        mAdView = (AdView) findViewById(R.id.bannerAdView);
-        AdUtils.loadBannerAd(mAdView);
         AdUtils.initInterstitialAds(this);
     }
 

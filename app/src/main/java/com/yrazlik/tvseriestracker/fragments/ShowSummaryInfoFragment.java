@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.ads.AdView;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.data.ExternalsDto;
 import com.yrazlik.tvseriestracker.data.NetworkDto;
@@ -27,6 +28,7 @@ import java.util.List;
 
 public class ShowSummaryInfoFragment extends BaseFragment {
 
+    private AdView mAdView;
     private RelativeLayout imdbRL;
     private RobotoTextView showTitle, airsOnTV, scheduledTV, premieredTV, genresTV, statusTV, ratingTV, showSummaryTV, imdbTV;
 
@@ -43,7 +45,13 @@ public class ShowSummaryInfoFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         initUI();
+        initAds();
         return rootView;
+    }
+
+    private void initAds() {
+        mAdView = rootView.findViewById(R.id.bannerAdViewBig);
+        AdUtils.loadBigBannerAd(mAdView);
     }
 
     private void initUI() {

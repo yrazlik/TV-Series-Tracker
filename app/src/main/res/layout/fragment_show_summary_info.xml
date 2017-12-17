@@ -12,6 +12,7 @@
             android:id="@+id/showDetailTitleContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
             android:padding="15dp">
 
 
@@ -215,5 +216,22 @@
             android:layout_marginTop="10dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp" />
+
+        <RelativeLayout
+            android:id="@+id/bannerAdContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/showSummaryTV"
+            android:layout_marginTop="10dp">
+
+            <include
+                android:id="@+id/bannerAdViewBig"
+                layout="@layout/banner_ad_view_big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
     </RelativeLayout>
 </ScrollView>
