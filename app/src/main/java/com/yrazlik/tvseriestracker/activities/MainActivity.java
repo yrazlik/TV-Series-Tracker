@@ -19,6 +19,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdView;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.adapters.SearchAdapter;
 import com.yrazlik.tvseriestracker.data.SearchResultDto;
@@ -30,6 +31,7 @@ import com.yrazlik.tvseriestracker.fragments.TrendingShowsFragment;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 import java.util.ArrayList;
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public interface OnFavoritesChangedListener {
         void onFavoritesChanged();
     }
+
+    private AdView mAdView;
 
     private int currentTabId;
 
@@ -234,20 +238,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AdUtils.initAds(this);
+        mAdView = (AdView) findViewById(R.id.bannerAdView);
+        AdUtils.loadBannerAd(mAdView);
         initSearchBar(getResources().getString(R.string.app_name));
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
-
-      //  ApiHelper.getInstance(this).searchShows("hello", this);
-      //  ApiHelper.getInstance(this).searchShow("friends", this);
-      //  ApiHelper.getInstance(this).searchShowById(82, this);
-      //  ApiHelper.getInstance(this).searchShowByIdWithCast(82, this);
-      //  ApiHelper.getInstance(this).getAllEpisodes(1, this);
-      //  ApiHelper.getInstance(this).getEpisode(1, 1, 1, this);
-      //  ApiHelper.getInstance(this).getSeasons(1, this);
-      //  ApiHelper.getInstance(this).getSeasonEpisodes(1, this);
 
 
     }

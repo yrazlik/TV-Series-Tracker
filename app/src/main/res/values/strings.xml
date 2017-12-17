@@ -1,4 +1,6 @@
 <resources>
+    <string name="ads_app_id">ca-app-pub-3219973945608696~7978829548</string>
+    <string name="banner_adunit_id">ca-app-pub-3219973945608696/3045356622</string>
     <string name="app_name">TV Series Tracker</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_schedule">Schedule</string>
