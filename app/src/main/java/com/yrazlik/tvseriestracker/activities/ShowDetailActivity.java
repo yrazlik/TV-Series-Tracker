@@ -17,6 +17,7 @@ import com.yrazlik.tvseriestracker.fragments.ShowSummaryInfoFragment;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.util.PicassoImageLoader;
 
 /**
@@ -66,6 +67,7 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
 
             @Override
             public void onPageSelected(int position) {
+                AdUtils.showInterstitial();
                 BaseFragment fragment = (BaseFragment) showDetailPagerAdapter.getItem(position);
                 fragment.setActionBar();
             }

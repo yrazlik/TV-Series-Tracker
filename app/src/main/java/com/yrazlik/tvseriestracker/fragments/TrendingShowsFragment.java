@@ -17,6 +17,7 @@ import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.util.Utils;
 import java.util.List;
 
@@ -68,6 +69,7 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        AdUtils.showInterstitial();
         ShowDto show = trendingShowsListAdapter.getItem(i);
         Intent intent = new Intent(getContext(), ShowDetailActivity.class);
         intent.putExtra(EXTRA_SHOW_ID, show.getId());

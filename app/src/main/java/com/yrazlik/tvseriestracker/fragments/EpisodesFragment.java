@@ -16,6 +16,7 @@ import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,6 +103,7 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
 
     @Override
     public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long l) {
+        AdUtils.showInterstitial();
         EpisodeDto episodeDto = (EpisodeDto) expandableListView.getExpandableListAdapter().getChild(groupPosition, childPosition);
 
         Intent i = new Intent(getContext(), EpisodeDetailActivity.class);

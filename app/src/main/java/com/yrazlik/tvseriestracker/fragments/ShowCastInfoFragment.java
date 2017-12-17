@@ -14,6 +14,7 @@ import com.yrazlik.tvseriestracker.activities.CastDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.CastInfoListAdapter;
 import com.yrazlik.tvseriestracker.data.CastDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 
 /**
  * Created by yrazlik on 11.11.2017.
@@ -48,6 +49,7 @@ public class ShowCastInfoFragment extends BaseFragment implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+        AdUtils.showInterstitial();
         CastDto cast = castInfoListAdapter.getItem(position);
         if(cast.getPerson() != null) {
             Intent i = new Intent(getActivity(), CastDetailActivity.class);

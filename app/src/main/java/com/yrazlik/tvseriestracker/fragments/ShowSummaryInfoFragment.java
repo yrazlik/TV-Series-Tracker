@@ -15,6 +15,7 @@ import com.yrazlik.tvseriestracker.data.NetworkDto;
 import com.yrazlik.tvseriestracker.data.RatingDto;
 import com.yrazlik.tvseriestracker.data.ScheduleDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.util.Utils;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
@@ -96,6 +97,7 @@ public class ShowSummaryInfoFragment extends BaseFragment {
                 imdbRL.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        AdUtils.showInterstitial();
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(getResources().getString(R.string.imdb_title_url) + externals.getImdb()));
                         startActivity(i);

@@ -19,6 +19,7 @@ import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.ScheduleTask;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.data.ShowSchedule;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.util.Utils;
 
 import java.util.ArrayList;
@@ -79,6 +80,7 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        AdUtils.showInterstitial();
         ShowSchedule showSchedule = (ShowSchedule) scheduleList.getAdapter().getItem(i);
 
         Intent intent = new Intent(getContext(), EpisodeDetailActivity.class);

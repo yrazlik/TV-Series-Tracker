@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        AdUtils.showInterstitial();
         if(searchBox.getText() != null) {
             searchBox.setText("");
         }
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            AdUtils.showInterstitial();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     switchToTab(R.id.navigation_home);

@@ -15,6 +15,8 @@ import com.yrazlik.tvseriestracker.activities.MainActivity;
 import com.yrazlik.tvseriestracker.activities.ShowDetailActivity;
 import com.yrazlik.tvseriestracker.adapters.FavoritesListAdapter;
 import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.util.AdUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -98,6 +100,7 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        AdUtils.showInterstitial();
         ShowDto show = favoritesListAdapter.getItem(i);
         Intent intent = new Intent(getContext(), ShowDetailActivity.class);
         intent.putExtra(EXTRA_SHOW_ID, show.getId());

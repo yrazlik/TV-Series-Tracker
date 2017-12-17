@@ -18,6 +18,7 @@ public class AdUtils {
 
     public static boolean ADS_ENABLED = true;
     private static final String TAG_ADS = "ADS_TAG";
+    private static int mClickCount = 0;
 
     private static InterstitialAd mInterstitialAd;
 
@@ -55,11 +56,14 @@ public class AdUtils {
     }
 
     public static void showInterstitial() {
+        mClickCount++;
         if(ADS_ENABLED) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d(TAG_ADS, "The interstitial not loaded yet.");
+            if(mClickCount == 5 || mClickCount % 30 == 0) {
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d(TAG_ADS, "The interstitial not loaded yet.");
+                }
             }
         }
     }
