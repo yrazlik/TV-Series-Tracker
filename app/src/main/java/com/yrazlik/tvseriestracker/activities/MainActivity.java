@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.adapters.SearchAdapter;
 import com.yrazlik.tvseriestracker.data.SearchResultDto;
@@ -238,9 +239,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AdUtils.initAds(this);
-        mAdView = (AdView) findViewById(R.id.bannerAdView);
-        AdUtils.loadBannerAd(mAdView);
+        initAds();
         initSearchBar(getResources().getString(R.string.app_name));
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -248,6 +247,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navigation.setSelectedItemId(R.id.navigation_home);
 
 
+    }
+
+    private void initAds() {
+        AdUtils.initAds(this);
+        mAdView = (AdView) findViewById(R.id.bannerAdView);
+        AdUtils.loadBannerAd(mAdView);
+        AdUtils.initInterstitialAds(this);
     }
 
     OnFavoritesChangedListener favoritesChangedListener = new OnFavoritesChangedListener() {

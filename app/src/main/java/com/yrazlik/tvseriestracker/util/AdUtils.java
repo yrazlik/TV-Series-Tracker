@@ -1,9 +1,12 @@
 package com.yrazlik.tvseriestracker.util;
 
 import android.content.Context;
+import android.util.Log;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.yrazlik.tvseriestracker.R;
 
@@ -14,6 +17,9 @@ import com.yrazlik.tvseriestracker.R;
 public class AdUtils {
 
     public static boolean ADS_ENABLED = true;
+    private static final String TAG_ADS = "ADS_TAG";
+
+    private static InterstitialAd mInterstitialAd;
 
     public static void disableAds() {
         ADS_ENABLED = false;
@@ -29,6 +35,32 @@ public class AdUtils {
         if(ADS_ENABLED) {
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
+        }
+    }
+
+    public static void initInterstitialAds(Context context) {
+        if(ADS_ENABLED) {
+            mInterstitialAd = new InterstitialAd(context);
+            mInterstitialAd.setAdUnitId("ca-app-pub-3219973945608696/7557702300");
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            mInterstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    // Load the next interstitial.
+                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                }
+
+            });
+        }
+    }
+
+    public static void showInterstitial() {
+        if(ADS_ENABLED) {
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            } else {
+                Log.d(TAG_ADS, "The interstitial not loaded yet.");
+            }
         }
     }
 }
