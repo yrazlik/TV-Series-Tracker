@@ -114,7 +114,7 @@ public class SeasonsListAdapter extends BaseExpandableListAdapter{
             holder.adView.setVisibility(View.VISIBLE);
             holder.arrowIV.setVisibility(View.GONE);
             holder.seasonTV.setVisibility(View.GONE);
-            AdUtils.loadBannerAd(holder.adView);
+            AdUtils.loadBannerAd(holder.adView, null);
         }
 
         return convertView;

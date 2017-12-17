@@ -32,17 +32,23 @@ public class AdUtils {
         }
     }
 
-    public static void loadBannerAd(AdView adView) {
+    public static void loadBannerAd(AdView adView, AdListener adListener) {
         if(ADS_ENABLED) {
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
+            if(adListener != null) {
+                adView.setAdListener(adListener);
+            }
         }
     }
 
-    public static void loadBigBannerAd(AdView adView) {
+    public static void loadBigBannerAd(AdView adView, AdListener adListener) {
         if(ADS_ENABLED) {
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
+            if(adListener != null) {
+                adView.setAdListener(adListener);
+            }
         }
     }
 

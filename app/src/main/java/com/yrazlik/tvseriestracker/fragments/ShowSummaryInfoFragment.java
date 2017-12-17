@@ -51,7 +51,7 @@ public class ShowSummaryInfoFragment extends BaseFragment {
 
     private void initAds() {
         mAdView = rootView.findViewById(R.id.bannerAdViewBig);
-        AdUtils.loadBigBannerAd(mAdView);
+        AdUtils.loadBigBannerAd(mAdView, null);
     }
 
     private void initUI() {

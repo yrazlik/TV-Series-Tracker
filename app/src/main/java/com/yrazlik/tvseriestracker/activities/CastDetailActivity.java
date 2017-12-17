@@ -2,9 +2,12 @@ package com.yrazlik.tvseriestracker.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdView;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.adapters.TrendingShowsListAdapter;
 import com.yrazlik.tvseriestracker.data.CastCreditDto;
@@ -13,6 +16,7 @@ import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.util.PicassoImageLoader;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 
@@ -29,6 +33,7 @@ public class CastDetailActivity extends BaseActivity implements ApiResponseListe
     public static final String EXTRA_CAST_ID = "EXTRA_CAST_ID";
     public static final String EXTRA_CAST_IMG = "EXTRA_CAST_IMG";
 
+    private AdView adView;
     private ImageView castIV;
     private RobotoTextView castNameTV;
     private ListView castShowsLV;
@@ -57,13 +62,20 @@ public class CastDetailActivity extends BaseActivity implements ApiResponseListe
     }
 
     private void initUI() {
+        adView = (AdView) findViewById(R.id.bannerAdView);
         castIV = (ImageView) findViewById(R.id.castIV);
         castNameTV = (RobotoTextView) findViewById(R.id.castName);
         castShowsLV = (ListView) findViewById(R.id.castShowsLV);
 
         PicassoImageLoader.getInstance(this).loadCircleImage(castImg, castIV);
         castNameTV.setText(castName);
-
+        AdUtils.loadBannerAd(adView, new AdListener() {
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                adView.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void getCastInfo() {

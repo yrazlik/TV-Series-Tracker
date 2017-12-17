@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
 
         <ImageView
             android:id="@+id/episodeIV"
@@ -15,6 +16,7 @@
             android:adjustViewBounds="true" />
 
         <RelativeLayout
+            android:id="@+id/episodeDetailContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/episodeIV"
@@ -55,5 +57,14 @@
                 android:layout_below="@+id/episodeDateTV"
                 android:layout_marginTop="15dp" />
         </RelativeLayout>
+
+        <include
+            android:id="@+id/bannerAdView"
+            layout="@layout/banner_ad_view_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/episodeDetailContainer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
     </RelativeLayout>
 </ScrollView>

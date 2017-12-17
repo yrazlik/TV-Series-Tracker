@@ -6,4 +6,4 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     ads:adSize="MEDIUM_RECTANGLE"
-    ads:adUnitId="ca-app-pub-3219973945608696/7605803769"></com.google.android.gms.ads.AdView>
+    ads:adUnitId="@string/banner_ad_unit_big"></com.google.android.gms.ads.AdView>

@@ -25,6 +25,7 @@ public class EpisodeDetailActivity extends BaseActivity {
     public static final String EXTRA_EPISODE_SUMMARY = "episodeSummary";
     public static final String EXTRA_EPISODE_DATE = "episodeDate";
 
+    private AdView adView;
     private ImageView episodeIV;
     private RobotoTextView seriesNameTV, episodeNameTV, episodeCountTV, episodeDateTV, episodeSummaryTV;
 
@@ -44,6 +45,7 @@ public class EpisodeDetailActivity extends BaseActivity {
     }
 
     private void initUI() {
+        adView = (AdView) findViewById(R.id.bannerAdView);
         episodeIV = (ImageView) findViewById(R.id.episodeIV);
         seriesNameTV = (RobotoTextView) findViewById(R.id.seriesNameTV);
         episodeNameTV = (RobotoTextView) findViewById(R.id.episodeNameTV);
@@ -57,6 +59,7 @@ public class EpisodeDetailActivity extends BaseActivity {
         episodeCountTV.setText(getResources().getString(R.string.season) + " " + season + " " + getResources().getString(R.string.episode) + " " + episode);
         episodeDateTV.setText(date);
         episodeSummaryTV.setText(android.text.Html.fromHtml(summary == null ? "-" : summary));
+        AdUtils.loadBigBannerAd(adView, null);
     }
 
     private void getExtras() {
