@@ -10,8 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21427f26-83a0-4f40-b767-dd609a7595d8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/TrendingShowsListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/TrendingShowsListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" afterDir="false" />
     </list>
     <ignored path="TV Series Tracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,15 +72,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+            <state relative-caret-position="173">
+              <caret line="99" column="53" lean-forward="true" selection-start-line="99" selection-start-column="53" selection-end-line="99" selection-end-column="53" />
               <folding>
                 <element signature="e#2795#3421#0" expanded="true" />
                 <element signature="e#3420#3421#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="173">
+              <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -102,11 +110,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>DEEPLIN_SHOW_DETAIL</find>
-      <find>ACTION_SHOW_DETAIL</find>
-      <find>bottom</find>
-      <find>mOnNavigationItemSelectedListener</find>
-      <find>onNavigationItemSelected</find>
       <find>botto</find>
       <find>onna</find>
       <find>menuite</find>
@@ -132,6 +135,11 @@
       <find>addad</find>
       <find>checkbox</find>
       <find>check</find>
+      <find>i</find>
+      <find>i</find>
+      <find>i +</find>
+      <find>settex</find>
+      <find>addads</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -192,7 +200,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/data/ShowDto.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/util/AdUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_row_small_nativeadview.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/TvSeriesTrackerApp.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
@@ -200,6 +207,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/TrendingShowsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/TrendingShowsListAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" />
       </list>
     </option>
   </component>
@@ -1009,13 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1137,12 +1138,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="80" column="23" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
+        <state relative-caret-position="173">
+          <caret line="99" column="53" lean-forward="true" selection-start-line="99" selection-start-column="53" selection-end-line="99" selection-end-column="53" />
           <folding>
             <element signature="e#2795#3421#0" expanded="true" />
             <element signature="e#3420#3421#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
         </state>
       </provider>
     </entry>

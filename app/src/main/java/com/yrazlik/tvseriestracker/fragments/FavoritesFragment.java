@@ -68,7 +68,7 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
             favoriteShowsList.add(entry.getValue());
         }
 
-        addAdsView(favoriteShowsList);
+        //addAdsView(favoriteShowsList);
 
         if (favoritesListAdapter == null) {
             if (TvSeriesTrackerApp.favoritesList != null || TvSeriesTrackerApp.favoritesList.size() > 0) {
