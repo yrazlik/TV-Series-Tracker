@@ -17,7 +17,7 @@
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"/>
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,9 +27,9 @@
             app:tabIndicatorHeight="4dp"
             app:layout_anchorGravity="bottom"
             android:layout_alignBottom="@+id/showIV">
-        </android.support.design.widget.TabLayout>
+        </com.google.android.material.tabs.TabLayout>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/showDetailPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
