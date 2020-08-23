@@ -381,11 +381,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     } else {
                         item.setChecked(false);
                     }
-                    item.setChecked(i == 1);
                 }
                 MenuItem item = menu.getItem(1);
                 item.setChecked(true);
                mOnNavigationItemSelectedListener.onNavigationItemSelected(item);
+            } else if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.SCHEDULE) {
+                Menu menu = navigation.getMenu();
+                for (int i = 0, size = menu.size(); i < size; i++) {
+                    MenuItem item = menu.getItem(i);
+                    if(i == 2) {
+                        item.setChecked(true);
+                    } else {
+                        item.setChecked(false);
+                    }
+                }
+                MenuItem item = menu.getItem(2);
+                item.setChecked(true);
+                mOnNavigationItemSelectedListener.onNavigationItemSelected(item);
             }
             else {
                 //new PushNotificationDialog(MainActivity.this, getBody(notification)).show();

@@ -18,6 +18,7 @@ public class TvSeriesTrackerNotification {
     public static final String DEEPLINK_TVSERIESTRACKERAPP = "tvseriestrackerapp";
     public static final String DEEPLIN_SHOW_DETAIL = "showdetail";
     public static final String DEEPLINK_TRENDING = "trending";
+    public static final String DEEPLINK_SCHEDULE = "schedule";
     public static final String DEEPLINK_HTTP = "http";
     public static final String DEEPLINK_HTTPS = "https";
 
@@ -42,6 +43,7 @@ public class TvSeriesTrackerNotification {
         ACTION_WEB_URL,
         ACTION_SHOW_DETAIL,
         ACTION_TRENDING,
+        SCHEDULE,
         DEEPLINK_TVSERIESTRACKERAPP
     }
 
@@ -125,6 +127,8 @@ public class TvSeriesTrackerNotification {
                         return NOTIFICATION_ACTION.ACTION_SHOW_DETAIL;
                     } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_TRENDING)) {
                         return NOTIFICATION_ACTION.ACTION_TRENDING;
+                    } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_SCHEDULE)) {
+                        return NOTIFICATION_ACTION.SCHEDULE;
                     }
                 }
             }
