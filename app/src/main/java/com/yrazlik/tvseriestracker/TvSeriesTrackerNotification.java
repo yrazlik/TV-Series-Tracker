@@ -129,6 +129,8 @@ public class TvSeriesTrackerNotification {
                         return NOTIFICATION_ACTION.ACTION_TRENDING;
                     } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_SCHEDULE)) {
                         return NOTIFICATION_ACTION.SCHEDULE;
+                    } else if(deeplinkHost.equalsIgnoreCase(DEEPLINK_PLAY_STORE)) {
+                        return NOTIFICATION_ACTION.ACTION_PLAY_STORE;
                     }
                 }
             }

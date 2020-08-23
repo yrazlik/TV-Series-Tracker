@@ -358,12 +358,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void handleDeeplinkIntent(TvSeriesTrackerNotification notification) {
         if(notification != null) {
-            AdUtils.showInterstitial(true);
             if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.ACTION_HOME) {
-                /*try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
-                } catch (Exception ignored) {}*/
+                AdUtils.showInterstitial(true);
             } else if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.ACTION_SHOW_DETAIL) {
+                AdUtils.showInterstitial(true);
                 Uri dl = Uri.parse(notification.getDeeplink());
                 String path = dl.getPath().replaceAll("\\/", "");
                // ShowDto show = favoritesListAdapter.getItem(i);
@@ -373,6 +371,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_bottom_in, R.anim.fadeout);
             } else if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.ACTION_TRENDING) {
+                AdUtils.showInterstitial(true);
                 Menu menu = navigation.getMenu();
                 for (int i = 0, size = menu.size(); i < size; i++) {
                     MenuItem item = menu.getItem(i);
@@ -386,6 +385,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 item.setChecked(true);
                mOnNavigationItemSelectedListener.onNavigationItemSelected(item);
             } else if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.SCHEDULE) {
+                AdUtils.showInterstitial(true);
                 Menu menu = navigation.getMenu();
                 for (int i = 0, size = menu.size(); i < size; i++) {
                     MenuItem item = menu.getItem(i);
@@ -398,6 +398,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 MenuItem item = menu.getItem(2);
                 item.setChecked(true);
                 mOnNavigationItemSelectedListener.onNavigationItemSelected(item);
+            } else if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.ACTION_PLAY_STORE) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.yrazlik.tvseriestracker")));
+                } catch (Exception e) {
+                    try {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.yrazlik.tvseriestracker"));
+                        startActivity(i);
+                    }catch (Exception ex) {
+                        Log.d("TvSeriesTrackerApp", "Invalid url");
+                    }
+                }
             }
             else {
                 //new PushNotificationDialog(MainActivity.this, getBody(notification)).show();
