@@ -1,6 +1,7 @@
 package com.yrazlik.tvseriestracker.util;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 
 import com.google.android.gms.ads.AdListener;
@@ -68,15 +69,23 @@ public class AdUtils {
         }
     }
 
-    public static void showInterstitial() {
+    public static void showInterstitial(boolean forceShow) {
         mClickCount++;
         if(ADS_ENABLED) {
-            if(mClickCount == 5 || mClickCount % 30 == 0) {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                } else {
-                    Log.d(TAG_ADS, "The interstitial not loaded yet.");
-                }
+            if((mClickCount == 8 || mClickCount % 40 == 0) || forceShow) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        if (mInterstitialAd.isLoaded()) {
+                            mInterstitialAd.show();
+                        } else {
+                            Log.d(TAG_ADS, "The interstitial not loaded yet.");
+                        }
+                    }
+                }, 2000);
+
             }
         }
     }

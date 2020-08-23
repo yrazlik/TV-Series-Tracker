@@ -80,7 +80,7 @@ public class ScheduleFragment extends BaseFragment implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        AdUtils.showInterstitial();
+        AdUtils.showInterstitial(false);
         ShowSchedule showSchedule = (ShowSchedule) scheduleList.getAdapter().getItem(i);
 
         Intent intent = new Intent(getContext(), EpisodeDetailActivity.class);

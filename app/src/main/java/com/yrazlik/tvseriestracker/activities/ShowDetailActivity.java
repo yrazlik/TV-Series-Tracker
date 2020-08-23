@@ -67,7 +67,7 @@ public class ShowDetailActivity extends BaseActivity implements ApiResponseListe
 
             @Override
             public void onPageSelected(int position) {
-                AdUtils.showInterstitial();
+                AdUtils.showInterstitial(false);
                 BaseFragment fragment = (BaseFragment) showDetailPagerAdapter.getItem(position);
                 fragment.setActionBar();
             }

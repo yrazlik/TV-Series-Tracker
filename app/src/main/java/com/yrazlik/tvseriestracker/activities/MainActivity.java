@@ -47,6 +47,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.yrazlik.tvseriestracker.TvSeriesTrackerFirebaseMessagingService.FIREBASE_PUSH_TOPIC;
+import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_ID;
+import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SHOW_NAME;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ClearableAutoCompleteTextView.OnClearListener, ApiResponseListener, AdapterView.OnItemClickListener{
 
@@ -155,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        AdUtils.showInterstitial();
+        AdUtils.showInterstitial(false);
         SearchResultDto item = searchResults.get(i);
         ShowDto show = item.getShow();
         CheckBox favoriteCB = view.findViewById(R.id.favoriteCB);
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            AdUtils.showInterstitial();
+            AdUtils.showInterstitial(false);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     switchToTab(R.id.navigation_home);
@@ -294,7 +296,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initAds() {
         AdUtils.initAds(this);
-        AdUtils.initInterstitialAds(this);
     }
 
     OnFavoritesChangedListener favoritesChangedListener = new OnFavoritesChangedListener() {
@@ -355,11 +356,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void handleDeeplinkIntent(TvSeriesTrackerNotification notification) {
         if(notification != null) {
+            AdUtils.showInterstitial(true);
             if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.ACTION_HOME) {
-                try {
+                /*try {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
-                } catch (Exception ignored) {}
-            } else {
+                } catch (Exception ignored) {}*/
+            } else if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.ACTION_SHOW_DETAIL) {
+                Uri dl = Uri.parse(notification.getDeeplink());
+                String path = dl.getPath().replaceAll("\\/", "");
+               // ShowDto show = favoritesListAdapter.getItem(i);
+                Intent intent = new Intent(MainActivity.this, ShowDetailActivity.class);
+                intent.putExtra(EXTRA_SHOW_ID, Long.parseLong(path));
+                intent.putExtra(EXTRA_SHOW_NAME, "");
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_bottom_in, R.anim.fadeout);
+            }
+            else {
                 //new PushNotificationDialog(MainActivity.this, getBody(notification)).show();
             }
             //((TvSeriesTrackerApp)getApplication()).showInterstitialOnPushNotificaion();

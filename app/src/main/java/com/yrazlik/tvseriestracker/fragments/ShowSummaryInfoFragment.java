@@ -105,7 +105,7 @@ public class ShowSummaryInfoFragment extends BaseFragment {
                 imdbRL.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AdUtils.showInterstitial();
+                        AdUtils.showInterstitial(false);
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(getResources().getString(R.string.imdb_title_url) + externals.getImdb()));
                         startActivity(i);

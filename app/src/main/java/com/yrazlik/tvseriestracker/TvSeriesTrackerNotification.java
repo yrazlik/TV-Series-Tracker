@@ -16,6 +16,7 @@ public class TvSeriesTrackerNotification {
     public static final String DEEPLINK_HOME_PAGE = "home";
     public static final String DEEPLINK_PLAY_STORE = "market";
     public static final String DEEPLINK_TVSERIESTRACKERAPP = "tvseriestrackerapp";
+    public static final String DEEPLIN_SHOW_DETAIL = "showdetail";
     public static final String DEEPLINK_HTTP = "http";
     public static final String DEEPLINK_HTTPS = "https";
 
@@ -38,6 +39,7 @@ public class TvSeriesTrackerNotification {
         ACTION_HOME,
         ACTION_PLAY_STORE,
         ACTION_WEB_URL,
+        ACTION_SHOW_DETAIL,
         DEEPLINK_TVSERIESTRACKERAPP
     }
 
@@ -117,6 +119,8 @@ public class TvSeriesTrackerNotification {
                 if(deeplinkHost != null) {
                     if(deeplinkHost.equalsIgnoreCase(DEEPLINK_HOME_PAGE)) {
                         return NOTIFICATION_ACTION.ACTION_HOME;
+                    } else if(deeplinkHost.equalsIgnoreCase(DEEPLIN_SHOW_DETAIL)) {
+                        return NOTIFICATION_ACTION.ACTION_SHOW_DETAIL;
                     }
                 }
             }

@@ -49,7 +49,7 @@ public class ShowCastInfoFragment extends BaseFragment implements AdapterView.On
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        AdUtils.showInterstitial();
+        AdUtils.showInterstitial(false);
         CastDto cast = castInfoListAdapter.getItem(position);
         if(cast.getPerson() != null) {
             Intent i = new Intent(getActivity(), CastDetailActivity.class);

@@ -100,7 +100,7 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        AdUtils.showInterstitial();
+        AdUtils.showInterstitial(false);
         ShowDto show = favoritesListAdapter.getItem(i);
         Intent intent = new Intent(getContext(), ShowDetailActivity.class);
         intent.putExtra(EXTRA_SHOW_ID, show.getId());

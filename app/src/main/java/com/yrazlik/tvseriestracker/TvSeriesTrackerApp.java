@@ -17,6 +17,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.yrazlik.tvseriestracker.activities.MainActivity;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
+import com.yrazlik.tvseriestracker.util.AdUtils;
 import com.yrazlik.tvseriestracker.util.Utils;
 
 import java.util.ArrayList;
@@ -78,6 +79,7 @@ public class TvSeriesTrackerApp extends Application {
         MobileAds.initialize(getApplicationContext());
         watchedList = Utils.getWatchedList(mAppContext);
         favoritesList = Utils.getFavoritesList(mAppContext);
+        AdUtils.initInterstitialAds(this);
     }
 
     public static Context getAppContext() {

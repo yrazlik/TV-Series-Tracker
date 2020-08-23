@@ -69,7 +69,7 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        AdUtils.showInterstitial();
+        AdUtils.showInterstitial(false);
         ShowDto show = trendingShowsListAdapter.getItem(i);
         Intent intent = new Intent(getContext(), ShowDetailActivity.class);
         intent.putExtra(EXTRA_SHOW_ID, show.getId());

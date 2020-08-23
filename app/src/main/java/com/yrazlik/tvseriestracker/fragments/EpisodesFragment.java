@@ -108,7 +108,7 @@ public class EpisodesFragment extends BaseFragment implements ApiResponseListene
 
     @Override
     public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long l) {
-        AdUtils.showInterstitial();
+        AdUtils.showInterstitial(false);
         EpisodeDto episodeDto = (EpisodeDto) expandableListView.getExpandableListAdapter().getChild(groupPosition, childPosition);
 
         Intent i = new Intent(getContext(), EpisodeDetailActivity.class);
