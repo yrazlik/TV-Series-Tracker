@@ -46,10 +46,10 @@ public class TvSeriesTrackerApp extends Application {
         super.onCreate();
         mAppContext = getApplicationContext();
         List<String> testDevices = new ArrayList<>();
-        testDevices.add("9D9D289B3C0209123947B9B256CD2AB0");
+        //testDevices.add("9D9D289B3C0209123947B9B256CD2AB0");
         RequestConfiguration requestConfiguration
                 = new RequestConfiguration.Builder()
-                .setTestDeviceIds(testDevices)
+                /*.setTestDeviceIds(testDevices)*/
                 .build();
 
         // val deviceIds = arrayListOf(AdRequest.DEVICE_ID_EMULATOR)
