@@ -68,6 +68,8 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
             favoriteShowsList.add(entry.getValue());
         }
 
+        addAdsView(favoriteShowsList);
+
         if (favoritesListAdapter == null) {
             if (TvSeriesTrackerApp.favoritesList != null || TvSeriesTrackerApp.favoritesList.size() > 0) {
                 favoritesListAdapter = new FavoritesListAdapter(getContext(), R.layout.list_row_favorites, favoriteShowsList, new FavoritesListAdapter.FavoritesEmptyListener() {
@@ -81,6 +83,16 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
         } else {
             favoritesListAdapter.notifyDataSetChanged();
         }
+    }
+
+    private void addAdsView(List<ShowDto> shows) {
+        ShowDto ad = new ShowDto();
+        ad.setAd(true);
+        try {
+            if(shows.size() > 3) {
+                shows.add(3, ad);
+            }
+        } catch (Exception ignored) {}
     }
 
     public void notifyDataSetChanged() {

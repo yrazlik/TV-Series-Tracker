@@ -59,6 +59,7 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
                 case ROW_NATIVE_AD:
                     holder.nativeAdView = (UnifiedNativeAdView) AdUtils.getInstance().createSmallAdView(NATIVE_ADUNIT_ID);
                     convertView = holder.nativeAdView;
+                    convertView.setTag(holder);
                     break;
                 default:
                     break;
