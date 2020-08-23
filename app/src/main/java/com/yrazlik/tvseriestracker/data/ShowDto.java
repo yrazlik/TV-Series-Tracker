@@ -38,6 +38,8 @@ public class ShowDto {
     private LinksDto links;
     private EmbeddedDto _embedded;
 
+    private boolean ad;
+
     public long getId() {
         return id;
     }
@@ -225,5 +227,13 @@ public class ShowDto {
             }
         }
         return (genresText != null && genresText.length() > 0) ? genresText : "-";
+    }
+
+    public boolean isAd() {
+        return ad;
+    }
+
+    public void setAd(boolean ad) {
+        this.ad = ad;
     }
 }

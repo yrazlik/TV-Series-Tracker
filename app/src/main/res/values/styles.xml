@@ -112,4 +112,29 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <style name="sp14BlackBold">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="sp12GrayRegular">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="sp12BlackRegular">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="sp14BlueRegular">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_blue</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

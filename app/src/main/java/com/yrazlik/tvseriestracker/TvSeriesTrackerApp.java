@@ -80,6 +80,8 @@ public class TvSeriesTrackerApp extends Application {
         watchedList = Utils.getWatchedList(mAppContext);
         favoritesList = Utils.getFavoritesList(mAppContext);
         AdUtils.initInterstitialAds(this);
+        AdUtils.getInstance().getCachedAd(AdUtils.NATIVE_ADUNIT_ID);
+
     }
 
     public static Context getAppContext() {

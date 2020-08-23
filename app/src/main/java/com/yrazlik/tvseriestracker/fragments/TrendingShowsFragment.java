@@ -83,8 +83,17 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
         dismissProgress();
         List<ShowDto> trendingShows = (List<ShowDto>) response;
         trendingShows = Utils.sortShowsByWeightedRating(trendingShows);
+        addAdsView(trendingShows);
         trendingShowsListAdapter = new TrendingShowsListAdapter(getContext(), R.layout.list_row_trending_shows, trendingShows);
         trendingShowsList.setAdapter(trendingShowsListAdapter);
+    }
+
+    private void addAdsView(List<ShowDto> trendingShows) {
+        ShowDto ad = new ShowDto();
+        ad.setAd(true);
+        try {
+            trendingShows.add(5, ad);
+        } catch (Exception ignored) {}
     }
 
     @Override
