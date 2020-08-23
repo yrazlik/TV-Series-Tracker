@@ -37,6 +37,7 @@ public class ShowDto {
     @SerializedName("_links")
     private LinksDto links;
     private EmbeddedDto _embedded;
+    private int order;
 
     private boolean ad;
 
@@ -235,5 +236,13 @@ public class ShowDto {
 
     public void setAd(boolean ad) {
         this.ad = ad;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
     }
 }

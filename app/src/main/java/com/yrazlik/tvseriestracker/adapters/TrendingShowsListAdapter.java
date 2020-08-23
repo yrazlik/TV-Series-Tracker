@@ -56,57 +56,62 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
                     holder.showGenres = convertView.findViewById(R.id.showGenres);
                     holder.showRating = convertView.findViewById(R.id.showRating);
                     holder.favoriteCB = convertView.findViewById(R.id.favoriteCB);
-                    convertView.setTag(holder);
                     break;
                 case ROW_NATIVE_AD:
+                    //convertView = inflater.inflate(R.layout.list_row_small_nativeadview, parent, false);
                     holder.nativeAdView = (UnifiedNativeAdView) AdUtils.getInstance().createSmallAdView(NATIVE_ADUNIT_ID);
                     convertView = holder.nativeAdView;
-                    convertView.setTag(holder);
+                    //convertView.setTag(holder);
                     break;
                 default:
                     break;
             }
+            convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
         switch (type) {
             case ROW_SHOW:
-                final ShowDto show = getItem(position);
-                PicassoImageLoader.getInstance(mContext).loadImage(show.getImage() != null ? show.getImage().getMedium() : "", holder.showImage);
-                holder.showTitle.setText((position + 1) + ". " + show.getName());
-                holder.showGenres.setText(show.getGenresText());
-                holder.showRating.setText((show.getRating() != null && show.getRating().getAverage() > 0) ? show.getRating().getAverage() + "" : "-");
+                try {
+                    final ShowDto show = getItem(position);
+                    PicassoImageLoader.getInstance(mContext).loadImage(show.getImage() != null ? show.getImage().getMedium() : "", holder.showImage);
+                    holder.showTitle.setText(show.getOrder() + ". " + show.getName());
+                    holder.showGenres.setText(show.getGenresText());
+                    holder.showRating.setText((show.getRating() != null && show.getRating().getAverage() > 0) ? show.getRating().getAverage() + "" : "-");
 
-                holder.favoriteCB.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        final boolean isChecked = holder.favoriteCB.isChecked();
-                        if(isChecked) {
-                            Utils.saveToFavoritesList(mContext, show);
-                        } else {
-                            Utils.removeFromFavoritesList(mContext, show);
+                    holder.favoriteCB.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View arg0) {
+                            final boolean isChecked = holder.favoriteCB.isChecked();
+                            if(isChecked) {
+                                Utils.saveToFavoritesList(mContext, show);
+                            } else {
+                                Utils.removeFromFavoritesList(mContext, show);
+                            }
                         }
-                    }
-                });
+                    });
 
-                final View cbParent = (View) holder.favoriteCB.getParent();  // button: the view you want to enlarge hit area
-                cbParent.post( new Runnable() {
-                    public void run() {
-                        final Rect rect = new Rect();
-                        holder.favoriteCB.getHitRect(rect);
-                        rect.top -= 15;    // increase top hit area
-                        rect.left -= 15;   // increase left hit area
-                        rect.bottom += 15; // increase bottom hit area
-                        rect.right += 15;  // increase right hit area
-                        cbParent.setTouchDelegate( new TouchDelegate( rect , holder.favoriteCB));
-                    }
-                });
+                    final View cbParent = (View) holder.favoriteCB.getParent();  // button: the view you want to enlarge hit area
+                    cbParent.post( new Runnable() {
+                        public void run() {
+                            final Rect rect = new Rect();
+                            holder.favoriteCB.getHitRect(rect);
+                            rect.top -= 15;    // increase top hit area
+                            rect.left -= 15;   // increase left hit area
+                            rect.bottom += 15; // increase bottom hit area
+                            rect.right += 15;  // increase right hit area
+                            cbParent.setTouchDelegate( new TouchDelegate( rect , holder.favoriteCB));
+                        }
+                    });
 
-                if(Utils.isFavoriteShow(show.getId())) {
-                    holder.favoriteCB.setChecked(true);
-                } else {
-                    holder.favoriteCB.setChecked(false);
+                    if(Utils.isFavoriteShow(show.getId())) {
+                        holder.favoriteCB.setChecked(true);
+                    } else {
+                        holder.favoriteCB.setChecked(false);
+                    }
+                } catch (Exception e) {
+
                 }
                 break;
             default:
@@ -128,6 +133,11 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
             }
         }
         return ROW_SHOW;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2;
     }
 
     static class ViewHolder {
