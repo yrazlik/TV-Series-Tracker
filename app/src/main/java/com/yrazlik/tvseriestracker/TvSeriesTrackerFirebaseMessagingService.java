@@ -142,7 +142,7 @@ public class TvSeriesTrackerFirebaseMessagingService extends FirebaseMessagingSe
             return notif;
         }else {
             //createNotificationChannel();
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID).setSmallIcon(R.mipmap.ic_launcher/*.push_icon_lollipop*/)
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID).setSmallIcon(R.drawable.ic_tv/*.push_icon_lollipop*/)
                     .setTicker(ticker).setContentTitle(title).setContentText(contentText).setContentIntent(pIntent)
                     .setColor(getResources().getColor(R.color.colorPrimary)).setStyle(new NotificationCompat.BigTextStyle().bigText(contentText));;
 

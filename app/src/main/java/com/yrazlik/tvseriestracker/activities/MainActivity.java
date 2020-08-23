@@ -17,6 +17,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private View search_bar;
     private ImageView searchIcon;
     private RobotoTextView titleTV;
+    private BottomNavigationView navigation;
 
     public void initSearchBar(String title) {
         ActionBar actionBar = getSupportActionBar();
@@ -268,7 +270,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initAds();
         initSearchBar(getResources().getString(R.string.app_name));
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
         subscribeToTopic();
@@ -370,6 +372,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra(EXTRA_SHOW_NAME, "");
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_bottom_in, R.anim.fadeout);
+            } else if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.ACTION_TRENDING) {
+                Menu menu = navigation.getMenu();
+                for (int i = 0, size = menu.size(); i < size; i++) {
+                    MenuItem item = menu.getItem(i);
+                    if(i == 1) {
+                        item.setChecked(true);
+                    } else {
+                        item.setChecked(false);
+                    }
+                    item.setChecked(i == 1);
+                }
+                MenuItem item = menu.getItem(1);
+                item.setChecked(true);
+               mOnNavigationItemSelectedListener.onNavigationItemSelected(item);
             }
             else {
                 //new PushNotificationDialog(MainActivity.this, getBody(notification)).show();
