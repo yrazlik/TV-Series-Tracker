@@ -1,7 +1,10 @@
 package com.yrazlik.tvseriestracker;
 
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -81,7 +84,25 @@ public class TvSeriesTrackerApp extends Application {
         favoritesList = Utils.getFavoritesList(mAppContext);
         AdUtils.initInterstitialAds(this);
         AdUtils.getInstance().getCachedAd(AdUtils.NATIVE_ADUNIT_ID);
+        createNotificationChannel();
+    }
 
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                CharSequence name = getString(R.string.channel_name);
+                String description = getString(R.string.channel_description);
+                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                NotificationChannel channel = new NotificationChannel(TvSeriesTrackerFirebaseMessagingService.CHANNEL_ID, name, importance);
+                channel.setDescription(description);
+                // Register the channel with the system; you can't change the importance
+                // or other notification behaviors after this
+                NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
+            }
+        } catch (Exception ignored) {}
     }
 
     public static Context getAppContext() {

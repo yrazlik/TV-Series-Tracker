@@ -33,7 +33,7 @@
     <string name="imdb_title_url">http://www.imdb.com/title/</string>
     <string name="no_upcoming_episodes">There seems to be no new episodes in the upcoming week for the shows in your favorites list.</string>
 
-    <string name="channel_name">Notifications</string>
+    <string name="channel_name">TvSeriesNotifications</string>
     <string name="channel_description">Notifications for latest news.</string>
     <string name="msg_token_fmt">msg_token_fmt</string>
     <string name="read_more">Read More</string>

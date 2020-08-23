@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TvSeriesApiClient {
 
-    private static String apiBaseUrl = "http://api.tvmaze.com/";
+    private static String apiBaseUrl = "https://api.tvmaze.com/";
     private static Retrofit retrofit = null;
     private static TvSeriesApiInterface mApiInterface = null;
     private static OkHttpClient.Builder builder;
