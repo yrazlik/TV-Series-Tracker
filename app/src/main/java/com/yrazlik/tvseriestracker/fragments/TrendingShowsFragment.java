@@ -3,11 +3,11 @@ package com.yrazlik.tvseriestracker.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.activities.MainActivity;
@@ -30,7 +30,7 @@ import static com.yrazlik.tvseriestracker.activities.ShowDetailActivity.EXTRA_SH
 
 public class TrendingShowsFragment extends BaseFragment implements ApiResponseListener, AdapterView.OnItemClickListener {
 
-    private ListViewCompat trendingShowsList;
+    private ListView trendingShowsList;
     private TrendingShowsListAdapter trendingShowsListAdapter;
 
     @Nullable

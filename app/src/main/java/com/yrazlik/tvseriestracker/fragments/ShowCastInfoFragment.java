@@ -3,11 +3,11 @@ package com.yrazlik.tvseriestracker.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.activities.CastDetailActivity;
@@ -22,7 +22,7 @@ import com.yrazlik.tvseriestracker.util.AdUtils;
 
 public class ShowCastInfoFragment extends BaseFragment implements AdapterView.OnItemClickListener{
 
-    private ListViewCompat castLV;
+    private ListView castLV;
     private CastInfoListAdapter castInfoListAdapter;
 
     private ShowDto showDto;
