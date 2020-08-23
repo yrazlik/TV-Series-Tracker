@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
+
+import android.graphics.Rect;
 import android.view.LayoutInflater;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -64,6 +67,18 @@ public class FavoritesListAdapter  extends ArrayAdapter<ShowDto> {
                     holder.showGenres = convertView.findViewById(R.id.showGenres);
                     holder.showRating = convertView.findViewById(R.id.showRating);
                     holder.favoriteCB = convertView.findViewById(R.id.favoriteCB);
+                    final View cbParent = (View) holder.favoriteCB.getParent();  // button: the view you want to enlarge hit area
+                    cbParent.post( new Runnable() {
+                        public void run() {
+                            final Rect rect = new Rect();
+                            holder.favoriteCB.getHitRect(rect);
+                            rect.top -= 15;    // increase top hit area
+                            rect.left -= 15;   // increase left hit area
+                            rect.bottom += 15; // increase bottom hit area
+                            rect.right += 15;  // increase right hit area
+                            cbParent.setTouchDelegate( new TouchDelegate( rect , holder.favoriteCB));
+                        }
+                    });
                     convertView.setTag(holder);
                     break;
                 case ROW_NATIVE_AD:
