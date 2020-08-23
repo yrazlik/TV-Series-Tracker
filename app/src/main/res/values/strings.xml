@@ -24,7 +24,7 @@
     <string name="episode">Episode</string>
     <string name="episode_detail">Episode Detail</string>
     <string name="episodes">Episodes</string>
-    <string name="no_favorite_show">You have no favorite shows. Search for shows and add to your favorite list!</string>
+    <string name="no_favorite_show">You have no favorite shows. Search for shows from the search bar above and add to your favorite list!</string>
     <string name="are_you_sure_t_remove_from_favorites">Are you sure you want to remove %1$s from favorites?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>

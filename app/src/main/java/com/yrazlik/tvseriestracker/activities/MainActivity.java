@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 
 import com.google.android.gms.ads.AdView;
@@ -33,6 +34,7 @@ import com.yrazlik.tvseriestracker.restclient.ApiHelper;
 import com.yrazlik.tvseriestracker.restclient.ApiResponseListener;
 import com.yrazlik.tvseriestracker.restclient.error.TVSeriesApiError;
 import com.yrazlik.tvseriestracker.util.AdUtils;
+import com.yrazlik.tvseriestracker.util.Utils;
 import com.yrazlik.tvseriestracker.view.ClearableAutoCompleteTextView;
 import com.yrazlik.tvseriestracker.view.RobotoTextView;
 import java.util.ArrayList;
@@ -144,8 +146,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         AdUtils.showInterstitial();
-        if(searchBox.getText() != null) {
-            searchBox.setText("");
+        SearchResultDto item = searchResults.get(i);
+        ShowDto show = item.getShow();
+        CheckBox favoriteCB = view.findViewById(R.id.favoriteCB);
+        final boolean isChecked = favoriteCB.isChecked();
+        if(isChecked) {
+            Utils.removeFromFavoritesList(getApplicationContext(), show);
+        } else {
+            Utils.saveToFavoritesList(getApplicationContext(), show);
+        }
+        searchBox.setText("");
+        if(favoritesChangedListener != null) {
+            favoritesChangedListener.onFavoritesChanged();
         }
     }
 
