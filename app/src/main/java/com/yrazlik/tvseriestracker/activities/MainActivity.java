@@ -1,8 +1,13 @@
 package com.yrazlik.tvseriestracker.activities;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -19,7 +24,11 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.yrazlik.tvseriestracker.Commons;
 import com.yrazlik.tvseriestracker.R;
+import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
+import com.yrazlik.tvseriestracker.TvSeriesTrackerNotification;
 import com.yrazlik.tvseriestracker.adapters.SearchAdapter;
 import com.yrazlik.tvseriestracker.data.SearchResultDto;
 import com.yrazlik.tvseriestracker.data.ShowDto;
@@ -37,7 +46,11 @@ import com.yrazlik.tvseriestracker.view.RobotoTextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.yrazlik.tvseriestracker.TvSeriesTrackerFirebaseMessagingService.FIREBASE_PUSH_TOPIC;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ClearableAutoCompleteTextView.OnClearListener, ApiResponseListener, AdapterView.OnItemClickListener{
+
+    private Intent deeplinkIntent;
 
     public interface OnFavoritesChangedListener {
         void onFavoritesChanged();
@@ -247,6 +260,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        deeplinkIntent = getIntent();
+        TvSeriesTrackerApp.appIsRunning = true;
         setContentView(R.layout.activity_main);
         initAds();
         initSearchBar(getResources().getString(R.string.app_name));
@@ -254,8 +269,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
+        subscribeToTopic();
 
 
+    }
+
+    private void subscribeToTopic() {
+        try {
+            FirebaseMessaging.getInstance().subscribeToTopic(FIREBASE_PUSH_TOPIC).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    String msg = "Subscribed";
+                    if (!task.isSuccessful()) {
+                        msg = "Cound not subscribe";
+                    }
+                    Log.d("FirebaseMsgService", msg);
+                    //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (Exception e) {
+            Log.d("TvSeriesTrackerApp", "Cannot subscribe to topic.");
+        }
     }
 
     private void initAds() {
@@ -282,6 +316,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         favoritesChangedListener.onFavoritesChanged();
+        if(deeplinkIntent != null) {
+            if(deeplinkIntent.getExtras() != null) {
+                if(Commons.isValidString(getIntentMessageBody())) {
+                    TvSeriesTrackerNotification notification = new TvSeriesTrackerNotification(deeplinkIntent);
+                    handleDeeplinkIntent(notification);
+                }
+            }
+        }
+        deeplinkIntent = null;
+    }
+
+    private String getIntentMessageBody() {
+        try {
+            return (String) deeplinkIntent.getExtras().get(TvSeriesTrackerNotification.PUSH_NOTIFICATION_BODY);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
@@ -300,5 +351,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onFail(TVSeriesApiError apiError) {
 
+    }
+
+    private void handleDeeplinkIntent(TvSeriesTrackerNotification notification) {
+        if(notification != null) {
+            if(notification.getNotificationAction() == TvSeriesTrackerNotification.NOTIFICATION_ACTION.ACTION_HOME) {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(notification.getDeeplink())));
+                } catch (Exception ignored) {}
+            } else {
+                //new PushNotificationDialog(MainActivity.this, getBody(notification)).show();
+            }
+            //((TvSeriesTrackerApp)getApplication()).showInterstitialOnPushNotificaion();
+        }
     }
 }
