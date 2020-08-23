@@ -96,7 +96,28 @@ public class TrendingShowsFragment extends BaseFragment implements ApiResponseLi
         ShowDto ad = new ShowDto();
         ad.setAd(true);
         try {
-            trendingShows.add(5, ad);
+            if(trendingShows.size() > 5) {
+                trendingShows.add(5, ad);
+            }
+            if(trendingShows.size() > 15) {
+                trendingShows.add(15, ad);
+            }
+            if(trendingShows.size() > 25) {
+                trendingShows.add(25, ad);
+            }
+            if(trendingShows.size() > 35) {
+                trendingShows.add(35, ad);
+            }
+            if(trendingShows.size() > 45) {
+                trendingShows.add(45, ad);
+            }
+            if(trendingShows.size() > 55) {
+                trendingShows.add(55, ad);
+            }
+            if(trendingShows.size() > 65) {
+                trendingShows.add(65, ad);
+            }
+
         } catch (Exception ignored) {}
     }
 

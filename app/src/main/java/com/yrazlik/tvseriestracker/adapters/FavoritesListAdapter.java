@@ -79,16 +79,15 @@ public class FavoritesListAdapter  extends ArrayAdapter<ShowDto> {
                             cbParent.setTouchDelegate( new TouchDelegate( rect , holder.favoriteCB));
                         }
                     });
-                    convertView.setTag(holder);
                     break;
                 case ROW_NATIVE_AD:
                     holder.nativeAdView = (UnifiedNativeAdView) AdUtils.getInstance().createSmallAdView(NATIVE_ADUNIT_ID);
                     convertView = holder.nativeAdView;
-                    convertView.setTag(holder);
                     break;
                 default:
                     break;
             }
+            convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
@@ -97,7 +96,7 @@ public class FavoritesListAdapter  extends ArrayAdapter<ShowDto> {
             case ROW_SHOW:
                 final ShowDto show = getItem(position);
                 PicassoImageLoader.getInstance(mContext).loadImage(show.getImage() != null ? show.getImage().getMedium() : "", holder.showImage);
-                holder.showTitle.setText((position + 1) + ". " + show.getName());
+                holder.showTitle.setText(show.getOrder() + ". " + show.getName());
                 holder.showGenres.setText(show.getGenresText());
                 holder.showRating.setText((show.getRating() != null && show.getRating().getAverage() > 0) ? show.getRating().getAverage() + "" : "-");
 
@@ -154,6 +153,11 @@ public class FavoritesListAdapter  extends ArrayAdapter<ShowDto> {
             }
         }
         return ROW_SHOW;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2;
     }
 
     static class ViewHolder {

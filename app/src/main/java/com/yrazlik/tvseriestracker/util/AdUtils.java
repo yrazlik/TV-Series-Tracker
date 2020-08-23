@@ -1,6 +1,7 @@
 package com.yrazlik.tvseriestracker.util;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -239,7 +240,10 @@ public class AdUtils {
             if(ad.getIcon() != null && ad.getIcon().getDrawable() != null) {
                 adIV.setVisibility(View.VISIBLE);
                 adIV.setImageDrawable(ad.getIcon().getDrawable());
-            } else {
+            } else if(ad.getImages() != null && ad.getImages().size() > 0 && ad.getImages().get(0).getDrawable() != null) {
+                adIV.setImageDrawable(ad.getImages().get(0).getDrawable());
+            }
+            else {
                 adIV.setVisibility(View.INVISIBLE);
             }
             adView.setIconView(adIV);

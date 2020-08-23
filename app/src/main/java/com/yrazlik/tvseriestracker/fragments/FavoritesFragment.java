@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
+import com.google.android.gms.ads.formats.UnifiedNativeAd;
+import com.google.android.gms.ads.formats.UnifiedNativeAdView;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
 import com.yrazlik.tvseriestracker.activities.MainActivity;
@@ -64,11 +67,15 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     private void setFavoritesAdapter() {
         favoriteShowsList.clear();
 
+        int i = 1;
         for (Map.Entry<Long, ShowDto> entry : TvSeriesTrackerApp.favoritesList.entrySet()) {
+            ShowDto show = entry.getValue();
+            show.setOrder(i);
+            i++;
             favoriteShowsList.add(entry.getValue());
         }
 
-        //addAdsView(favoriteShowsList);
+        addAdsView(favoriteShowsList);
 
         if (favoritesListAdapter == null) {
             if (TvSeriesTrackerApp.favoritesList != null || TvSeriesTrackerApp.favoritesList.size() > 0) {
@@ -86,13 +93,17 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     }
 
     private void addAdsView(List<ShowDto> shows) {
-        ShowDto ad = new ShowDto();
-        ad.setAd(true);
-        try {
-            if(shows.size() > 3) {
-                shows.add(3, ad);
-            }
-        } catch (Exception ignored) {}
+        UnifiedNativeAd nativeAd = AdUtils.getInstance().getCachedAd(AdUtils.NATIVE_ADUNIT_ID);
+        if
+        (nativeAd != null && nativeAd.getHeadline() != null) {
+            ShowDto ad = new ShowDto();
+            ad.setAd(true);
+            try {
+                if(shows.size() > 3) {
+                    shows.add(3, ad);
+                }
+            } catch (Exception ignored) {}
+        }
     }
 
     public void notifyDataSetChanged() {
