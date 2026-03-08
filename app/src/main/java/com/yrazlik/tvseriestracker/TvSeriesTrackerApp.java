@@ -14,8 +14,8 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+// import com.google.firebase.iid.FirebaseInstanceId;
+// import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.yrazlik.tvseriestracker.activities.MainActivity;
 import com.yrazlik.tvseriestracker.data.EpisodeDto;
@@ -58,26 +58,29 @@ public class TvSeriesTrackerApp extends Application {
 
         MobileAds.setRequestConfiguration(requestConfiguration);
 
-        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+        try {
+            FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w("FirebaseMessaging", "getInstanceId failed", task.getException());
-                            return;
+            FirebaseMessaging.getInstance().getToken()
+                    .addOnCompleteListener(new OnCompleteListener<String>() {
+                        @Override
+                        public void onComplete(@NonNull Task<String> task) {
+                            if (!task.isSuccessful()) {
+                                Log.w("FirebaseMessaging", "Fetching FCM registration token failed", task.getException());
+                                return;
+                            }
+
+                            // Get new FCM registration token
+                            // String token = task.getResult();
+
+                            // Log and toast
+                            // String msg = getString(R.string.msg_token_fmt, token);
+                            // Log.d("FirebaseMessaging", msg);
                         }
-
-                        // Get new Instance ID token
-                       // String token = task.getResult().getToken();
-
-                        // Log and toast
-                        //String msg = getString(R.string.msg_token_fmt, token);
-                        //Log.d("FirebaseMessaging", msg);
-                        //Toast.makeText(getAppContext(), msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    });
+        } catch (Exception e) {
+            Log.e("FirebaseMessaging", "Firebase initialization failed. Make sure google-services.json is present.", e);
+        }
 
         MobileAds.initialize(getApplicationContext());
         watchedList = Utils.getWatchedList(mAppContext);

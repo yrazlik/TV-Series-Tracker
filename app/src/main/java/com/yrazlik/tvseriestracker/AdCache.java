@@ -1,12 +1,12 @@
 package com.yrazlik.tvseriestracker;
 
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
+import com.google.android.gms.ads.nativead.NativeAd;
 
 public class AdCache {
 
     private long lastRequestTime;
     private String adUnitId;
-    private UnifiedNativeAd nativeAd;
+    private NativeAd nativeAd;
 
     public long getLastRequestTime() {
         return lastRequestTime;
@@ -24,11 +24,11 @@ public class AdCache {
         this.adUnitId = adUnitId;
     }
 
-    public UnifiedNativeAd getNativeAd() {
+    public NativeAd getNativeAd() {
         return nativeAd;
     }
 
-    public void setNativeAd(UnifiedNativeAd nativeAd) {
+    public void setNativeAd(NativeAd nativeAd) {
         this.nativeAd = nativeAd;
     }
 }

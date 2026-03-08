@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.adapters.TrendingShowsListAdapter;
 import com.yrazlik.tvseriestracker.data.CastCreditDto;
@@ -71,8 +72,8 @@ public class CastDetailActivity extends BaseActivity implements ApiResponseListe
         castNameTV.setText(castName);
         AdUtils.loadBannerAd(adView, new AdListener() {
             @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
+            public void onAdFailedToLoad(LoadAdError adError) {
+                super.onAdFailedToLoad(adError);
                 adView.setVisibility(View.GONE);
             }
         });

@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.google.android.gms.ads.formats.UnifiedNativeAdView;
+import com.google.android.gms.ads.nativead.NativeAdView;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.data.ShowDto;
 import com.yrazlik.tvseriestracker.util.AdUtils;
@@ -59,7 +59,7 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
                     break;
                 case ROW_NATIVE_AD:
                     //convertView = inflater.inflate(R.layout.list_row_small_nativeadview, parent, false);
-                    holder.nativeAdView = (UnifiedNativeAdView) AdUtils.getInstance().createSmallAdView(NATIVE_ADUNIT_ID);
+                    holder.nativeAdView = (NativeAdView) AdUtils.getInstance().createSmallAdView(NATIVE_ADUNIT_ID);
                     convertView = holder.nativeAdView;
                     //convertView.setTag(holder);
                     break;
@@ -147,7 +147,7 @@ public class TrendingShowsListAdapter extends ArrayAdapter<ShowDto> {
         public RobotoTextView showGenres;
         public RobotoTextView showRating;
         public CheckBox favoriteCB;
-        public UnifiedNativeAdView nativeAdView;
+        public NativeAdView nativeAdView;
 
     }
 }

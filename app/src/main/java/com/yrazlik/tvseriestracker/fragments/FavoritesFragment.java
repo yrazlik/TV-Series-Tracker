@@ -10,8 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
-import com.google.android.gms.ads.formats.UnifiedNativeAdView;
+import com.google.android.gms.ads.nativead.NativeAd;
+import com.google.android.gms.ads.nativead.NativeAdView;
 import com.yrazlik.tvseriestracker.R;
 import com.yrazlik.tvseriestracker.TvSeriesTrackerApp;
 import com.yrazlik.tvseriestracker.activities.MainActivity;
@@ -93,7 +93,7 @@ public class FavoritesFragment extends BaseFragment implements AdapterView.OnIte
     }
 
     private void addAdsView(List<ShowDto> shows) {
-        UnifiedNativeAd nativeAd = AdUtils.getInstance().getCachedAd(AdUtils.NATIVE_ADUNIT_ID);
+        NativeAd nativeAd = AdUtils.getInstance().getCachedAd(AdUtils.NATIVE_ADUNIT_ID);
         if
         (nativeAd != null && nativeAd.getHeadline() != null) {
             ShowDto ad = new ShowDto();
