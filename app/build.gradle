@@ -8,8 +8,8 @@ android {
     defaultConfig {
         applicationId "com.yrazlik.tvseriestracker"
         minSdk 33
-        targetSdk 40
-        versionCode 11
+        targetSdk 36
+        versionCode 35
         versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
