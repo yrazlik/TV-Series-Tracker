@@ -5,7 +5,6 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.yrazlik.tvseriestracker.activities.MainActivity">
 
     <FrameLayout
@@ -13,9 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/navigation"
-        android:layout_weight="1">
-
-
+        android:layout_marginTop="?attr/actionBarSize">
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

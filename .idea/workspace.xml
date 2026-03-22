@@ -5,6 +5,31 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar_default.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/actionbar_search.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_cast_detail.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_episode_detail.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_show_detail.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -25,32 +50,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="21427f26-83a0-4f40-b767-dd609a7595d8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/AndroidProjectSystem.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/migrations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/studiobot.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TVSeriesTracker.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/AdCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/AdCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/TvSeriesTrackerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/TvSeriesTrackerApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/CastDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/activities/CastDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/FavoritesListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/TrendingShowsListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/adapters/TrendingShowsListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/fragments/FavoritesFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/util/AdUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/yrazlik/tvseriestracker/util/AdUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_row_small_nativeadview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_row_small_nativeadview.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/output-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/actionbar_default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/actionbar_default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/actionbar_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/actionbar_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_cast_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_cast_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_episode_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_episode_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_show_detail.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +72,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Default::serial=192.168.56.102:5555;connection=4ed30b40]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\yasin.razlik\.android\avd\Medium_Phone.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -241,7 +250,7 @@
     </replaceStrings>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="$USER_HOME$/Desktop/keystore/tvshowtrackernew.jks" />
+    <option name="KEY_STORE_PATH" value="C:\Users\yasin.razlik\AndroidStudioProjects\TV-Series-Tracker\tvshowtrackernew.jks" />
     <option name="KEY_ALIAS" value="tvshowtrackernew" />
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
@@ -467,7 +476,10 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ApkExportedModule&quot;: &quot;TV-Series-Tracker.app&quot;,
+    &quot;ExportApk.ApkPathForTV-Series-Tracker.app&quot;: &quot;C:\\Users\\yasin.razlik\\AndroidStudioProjects\\TV-Series-Tracker\\app&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
@@ -476,11 +488,16 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/yrazlik/Projects/TV-Series-Tracker&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yasin.razlik/AndroidStudioProjects/TV-Series-Tracker&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Suggestions&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;recommended.upgrade.last.time.stamp&quot;: &quot;1772923401345&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -491,16 +508,17 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-mdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yasin.razlik\AndroidStudioProjects\TV-Series-Tracker" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/java" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.yrazlik.tvseriestracker" />
       <recent name="com.yrazlik.tvseriestracker.activities" />
       <recent name="com.yrazlik.tvseriestracker.view" />
       <recent name="com.yrazlik.tvseriestracker.util" />
       <recent name="com.yrazlik.tvseriestracker.restclient" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/java" />
     </key>
   </component>
   <component name="RunManager">
@@ -1218,12 +1236,12 @@
       <map>
         <entry key="com.yrazlik.tvseriestracker">
           <value>
-            <CheckInfo lastCheckTimestamp="1772993903753" />
+            <CheckInfo lastCheckTimestamp="1774172568941" />
           </value>
         </entry>
         <entry key="com.yrazlik.tvseriestracker.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1772993903755" />
+            <CheckInfo lastCheckTimestamp="1774172568954" />
           </value>
         </entry>
       </map>
